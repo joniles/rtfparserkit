@@ -25,6 +25,7 @@ import java.io.PushbackInputStream;
 import com.rtfparserkit.parser.IRtfListener;
 import com.rtfparserkit.parser.IRtfParser;
 import com.rtfparserkit.rtf.Command;
+import com.rtfparserkit.utils.HexUtils;
 
 /**
  * This class implements a low level RTF parser. It performs the minimum amount
@@ -130,13 +131,13 @@ public class RawRtfParser implements IRtfParser
    {
       if (parsingHex)
       {
-         int b = parseHexDigit(ch) << 4;
+         int b = HexUtils.parseHexDigit(ch) << 4;
          ch = fp.read();
          if (ch == -1)
          {
             throw new IllegalStateException("Unexpected end of file");
          }
-         b += parseHexDigit(ch);
+         b += HexUtils.parseHexDigit(ch);
          buffer.add(b);
          parsingHex = false;
       }
@@ -144,38 +145,6 @@ public class RawRtfParser implements IRtfParser
       {
          buffer.add(ch);
       }
-   }
-
-   /**
-    * Parse a hex digit.
-    */
-   private int parseHexDigit(int ch)
-   {
-      int b;
-      if (Character.isDigit(ch))
-      {
-         b = ch - '0';
-      }
-      else
-      {
-         if (Character.isLowerCase(ch))
-         {
-            if (ch < 'a' || ch > 'f')
-            {
-               throw new IllegalArgumentException("Invalid hex digit " + ch);
-            }
-            b = (char) ch - 'a' + 10;
-         }
-         else
-         {
-            if (ch < 'A' || ch > 'F')
-            {
-               throw new IllegalArgumentException("Invalid hex digit " + ch);
-            }
-            b = (char) ch - 'A' + 10;
-         }
-      }
-      return b;
    }
 
    /**
