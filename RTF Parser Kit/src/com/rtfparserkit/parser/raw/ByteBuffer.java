@@ -30,7 +30,7 @@ class ByteBuffer
    {
       if (bufferSize == buffer.length)
       {
-         byte[] newBuffer = new byte[buffer.length + BUFFER_BLOCK_SIZE];
+         byte[] newBuffer = new byte[buffer.length + (buffer.length >> 1)];
          System.arraycopy(buffer, 0, newBuffer, 0, bufferSize);
          buffer = newBuffer;
       }
@@ -69,7 +69,7 @@ class ByteBuffer
       return "[ByteBuffer bufferSize=" + bufferSize + " buffer=" + new String(buffer, 0, bufferSize) + "]";
    }
 
-   private static final int BUFFER_BLOCK_SIZE = 1024;
+   private static final int INITIAL_BUFFER_CAPACITY = 10240;
    private int bufferSize = 0;
-   private byte[] buffer = new byte[BUFFER_BLOCK_SIZE];
+   private byte[] buffer = new byte[INITIAL_BUFFER_CAPACITY];
 }
