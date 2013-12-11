@@ -66,7 +66,7 @@ class ByteBuffer
 
    public String toString()
    {
-      return "[ByteBufferbufferSize=" + bufferSize + " buffer=" + new String(buffer, 0, bufferSize) + "]";
+      return "[ByteBuffer bufferSize=" + bufferSize + " buffer=" + new String(buffer, 0, bufferSize) + "]";
    }
 
    private static final int BUFFER_BLOCK_SIZE = 1024;
