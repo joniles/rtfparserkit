@@ -55,5 +55,11 @@ class StringEvent implements IParserEvent
       return data;
    }
 
+   @Override
+   public String toString()
+   {
+      return "[StringEvent data=" + data + "]";
+   }
+
    private final String data;
 }

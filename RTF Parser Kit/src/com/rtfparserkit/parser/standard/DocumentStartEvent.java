@@ -38,4 +38,10 @@ class DocumentStartEvent implements IParserEvent
    {
       return ParserEventType.DOCUMENT_START_EVENT;
    }
+
+   @Override
+   public String toString()
+   {
+      return "[DocumentStartEvent]";
+   }
 }

@@ -47,5 +47,11 @@ class BinaryBytesEvent implements IParserEvent
       listener.processBinaryBytes(data);
    }
 
+   @Override
+   public String toString()
+   {
+      return "[BinaryBytesEvent " + data.length + " bytes]";
+   }
+
    private final byte[] data;
 }

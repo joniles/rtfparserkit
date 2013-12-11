@@ -38,4 +38,10 @@ class GroupStartEvent implements IParserEvent
    {
       return ParserEventType.GROUP_START_EVENT;
    }
+
+   @Override
+   public String toString()
+   {
+      return "[GroupStartEvent]";
+   }
 }

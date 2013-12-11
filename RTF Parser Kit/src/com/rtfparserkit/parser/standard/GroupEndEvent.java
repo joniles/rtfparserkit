@@ -38,4 +38,10 @@ class GroupEndEvent implements IParserEvent
    {
       return ParserEventType.GROUP_END_EVENT;
    }
+
+   @Override
+   public String toString()
+   {
+      return "[GroupEndEvent]";
+   }
 }

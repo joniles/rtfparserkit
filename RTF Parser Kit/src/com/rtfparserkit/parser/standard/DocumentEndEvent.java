@@ -38,4 +38,10 @@ class DocumentEndEvent implements IParserEvent
    {
       return ParserEventType.DOCUMENT_END_EVENT;
    }
+
+   @Override
+   public String toString()
+   {
+      return "[DocumentEndEvent]";
+   }
 }

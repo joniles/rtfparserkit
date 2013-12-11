@@ -59,6 +59,11 @@ class CommandEvent implements IParserEvent
       return command;
    }
 
+   public String toString()
+   {
+      return "[CommandEvent command=" + command + (hasParameter ? " parameter=" + parameter : "") + (optional ? " optional" : "") + "]";
+   }
+
    private final Command command;
    private final int parameter;
    private final boolean hasParameter;
