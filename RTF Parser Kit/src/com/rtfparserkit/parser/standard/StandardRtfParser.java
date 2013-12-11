@@ -135,7 +135,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
    {
       if (command.getCommandType() == CommandType.Encoding)
       {
-         processEncoding(command, parameter);
+         processEncoding(command, hasParameter, parameter);
       }
       else
       {
@@ -261,7 +261,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
    /**
     * Switch the encoding based on the RTF command received.
     */
-   private void processEncoding(Command command, int parameter)
+   private void processEncoding(Command command, boolean hasParameter, int parameter)
    {
       String encoding = null;
       switch (command)
@@ -286,14 +286,20 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
 
          case ansicpg:
          {
-            encoding = Encoding.LOCALEID_MAPPING.get(Integer.toString(parameter));
+            encoding = hasParameter ? Encoding.LOCALEID_MAPPING.get(Integer.toString(parameter)) : null;
             break;
          }
 
          default:
          {
-            throw new IllegalArgumentException("Unsupported encoding command " + command.getCommandName());
+            encoding = null;
+            break;
          }
+      }
+
+      if (encoding == null)
+      {
+         throw new IllegalArgumentException("Unsupported encoding command " + command.getCommandName() + (hasParameter ? parameter : ""));
       }
 
       state.currentEncoding = encoding;
