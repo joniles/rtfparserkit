@@ -67,6 +67,7 @@ class Encoding
       LOCALEID_MAPPING.put("1092", "Cp1251"); // Tatar
       LOCALEID_MAPPING.put("1104", "Cp1251"); // Mongolian (Cyrillic)
       LOCALEID_MAPPING.put("1252", "Cp1252"); // Mongolian (Cyrillic)
+      LOCALEID_MAPPING.put("1255", "Cp1255"); // Windows Hebrew
       LOCALEID_MAPPING.put("2049", "Cp1256"); // Arabic (Iraq)
       LOCALEID_MAPPING.put("2052", "MS936"); // Chinese (PRC)
       LOCALEID_MAPPING.put("2074", "Cp1250"); // Serbian (Latin)
