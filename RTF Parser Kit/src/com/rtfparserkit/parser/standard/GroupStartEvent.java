@@ -26,6 +26,7 @@ class GroupStartEvent implements IParserEvent
    /**
     * Pass the event to the listener.
     */
+   @Override
    public void fire(IRtfListener listener)
    {
       listener.processGroupStart();
@@ -34,6 +35,7 @@ class GroupStartEvent implements IParserEvent
    /**
     * Retrieve the event type.
     */
+   @Override
    public ParserEventType getType()
    {
       return ParserEventType.GROUP_START_EVENT;

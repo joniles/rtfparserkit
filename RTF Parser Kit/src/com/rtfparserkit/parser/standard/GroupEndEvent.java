@@ -26,6 +26,7 @@ class GroupEndEvent implements IParserEvent
    /**
     * Pass the event to the listener.
     */
+   @Override
    public void fire(IRtfListener listener)
    {
       listener.processGroupEnd();
@@ -34,6 +35,7 @@ class GroupEndEvent implements IParserEvent
    /**
     * Retrieve the event type.
     */
+   @Override
    public ParserEventType getType()
    {
       return ParserEventType.GROUP_END_EVENT;

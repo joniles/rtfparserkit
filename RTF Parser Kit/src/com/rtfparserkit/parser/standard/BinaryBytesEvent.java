@@ -34,6 +34,7 @@ class BinaryBytesEvent implements IParserEvent
    /**
     * Retrieve the event type.
     */
+   @Override
    public ParserEventType getType()
    {
       return ParserEventType.BINARY_BYTES_EVENT;
@@ -42,6 +43,7 @@ class BinaryBytesEvent implements IParserEvent
    /**
     * Pass the event to the listener.
     */
+   @Override
    public void fire(IRtfListener listener)
    {
       listener.processBinaryBytes(data);

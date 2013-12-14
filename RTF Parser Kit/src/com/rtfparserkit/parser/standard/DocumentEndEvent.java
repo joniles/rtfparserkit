@@ -26,6 +26,7 @@ class DocumentEndEvent implements IParserEvent
    /**
     * Pass the event to the listener.
     */
+   @Override
    public void fire(IRtfListener listener)
    {
       listener.processDocumentEnd();
@@ -34,6 +35,7 @@ class DocumentEndEvent implements IParserEvent
    /**
     * Retrieve the event type.
     */
+   @Override
    public ParserEventType getType()
    {
       return ParserEventType.DOCUMENT_END_EVENT;

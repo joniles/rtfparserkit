@@ -26,6 +26,7 @@ class DocumentStartEvent implements IParserEvent
    /**
     * Pass the event to the listener.
     */
+   @Override
    public void fire(IRtfListener listener)
    {
       listener.processDocumentStart();
@@ -34,6 +35,7 @@ class DocumentStartEvent implements IParserEvent
    /**
     * Retrieve the event type.
     */
+   @Override
    public ParserEventType getType()
    {
       return ParserEventType.DOCUMENT_START_EVENT;

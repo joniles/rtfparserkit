@@ -38,6 +38,7 @@ class CommandEvent implements IParserEvent
    /**
     * Retrieve the event type.
     */
+   @Override
    public ParserEventType getType()
    {
       return ParserEventType.COMMAND_EVENT;
@@ -46,6 +47,7 @@ class CommandEvent implements IParserEvent
    /**
     * Pass the event to the listener.
     */
+   @Override
    public void fire(IRtfListener listener)
    {
       listener.processCommand(command, parameter, hasParameter, optional);
@@ -59,6 +61,7 @@ class CommandEvent implements IParserEvent
       return command;
    }
 
+   @Override
    public String toString()
    {
       return "[CommandEvent command=" + command + (hasParameter ? " parameter=" + parameter : "") + (optional ? " optional" : "") + "]";

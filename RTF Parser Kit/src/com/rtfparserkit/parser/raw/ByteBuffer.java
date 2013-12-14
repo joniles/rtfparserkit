@@ -64,12 +64,13 @@ class ByteBuffer
       return bufferSize == 0;
    }
 
+   @Override
    public String toString()
    {
       return "[ByteBuffer bufferSize=" + bufferSize + " buffer=" + new String(buffer, 0, bufferSize) + "]";
    }
 
    private static final int INITIAL_BUFFER_CAPACITY = 10240;
-   private int bufferSize = 0;
+   private int bufferSize;
    private byte[] buffer = new byte[INITIAL_BUFFER_CAPACITY];
 }

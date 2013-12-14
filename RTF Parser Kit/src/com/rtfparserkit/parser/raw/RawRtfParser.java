@@ -42,6 +42,7 @@ public class RawRtfParser implements IRtfParser
    /**
     * Parse RTF data from an input stream.
     */
+   @Override
    public void parse(InputStream is, IRtfListener listener) throws IOException
    {
       this.listener = listener;

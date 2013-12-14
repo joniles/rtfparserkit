@@ -34,6 +34,7 @@ class StringEvent implements IParserEvent
    /**
     * Retrieve the event type.
     */
+   @Override
    public ParserEventType getType()
    {
       return ParserEventType.STRING_EVENT;
@@ -42,6 +43,7 @@ class StringEvent implements IParserEvent
    /**
     * Pass the event to the listener.
     */
+   @Override
    public void fire(IRtfListener listener)
    {
       listener.processString(data);

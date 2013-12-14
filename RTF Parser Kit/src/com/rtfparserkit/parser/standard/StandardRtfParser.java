@@ -40,6 +40,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
     * Main entry point: parse RTF data from the input stream, and pass events based on
     * the RTF content to the listener.
     */
+   @Override
    public void parse(InputStream is, IRtfListener listener) throws IOException
    {
       handler = new DefaultEventHandler(listener);
