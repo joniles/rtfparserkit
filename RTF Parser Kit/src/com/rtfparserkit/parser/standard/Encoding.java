@@ -25,7 +25,6 @@ import java.util.Map;
 class Encoding
 {
    public static final String ANSI_ENCODING = "Cp1252";
-   public static final String DEFAULT_ENCODING = ANSI_ENCODING;
    public static final String PC_ENCODING = "Cp437";
    public static final String PCA_ENCODING = "Cp850";
 
