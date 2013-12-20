@@ -17,13 +17,13 @@
 package com.rtfparserkit.parser.standard;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 import com.rtfparserkit.parser.IRtfListener;
 import com.rtfparserkit.parser.IRtfParser;
+import com.rtfparserkit.parser.IRtfSource;
 import com.rtfparserkit.parser.raw.RawRtfParser;
 import com.rtfparserkit.rtf.Command;
 import com.rtfparserkit.rtf.CommandType;
@@ -41,11 +41,11 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
     * the RTF content to the listener.
     */
    @Override
-   public void parse(InputStream is, IRtfListener listener) throws IOException
+   public void parse(IRtfSource source, IRtfListener listener) throws IOException
    {
       handler = new DefaultEventHandler(listener);
       IRtfParser reader = new RawRtfParser();
-      reader.parse(is, this);
+      reader.parse(source, this);
    }
 
    /**

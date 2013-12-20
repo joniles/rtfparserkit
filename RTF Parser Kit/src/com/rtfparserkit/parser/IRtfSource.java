@@ -19,15 +19,22 @@ package com.rtfparserkit.parser;
 import java.io.IOException;
 
 /**
- * Standard interface implemented by an RTF parser.
+ * Classes implementing this interface can be used as the source of RTF data for the parser to consume.
  */
-public interface IRtfParser
+public interface IRtfSource
 {
    /**
-    * At the point the parser is constructed, a listener will have been
-    * supplied by the caller. When this method is called, the parser reads 
-    * RTF data from the source and calls the listener with details
-    * of the content.
+    * Read a single byte.
     */
-   public void parse(IRtfSource source, IRtfListener listener) throws IOException;
+   int read() throws IOException;
+
+   /**
+    * Push back a single byte to allow it to be read again by the parser.
+    */
+   void unread(int c) throws IOException;
+
+   /**
+    * Read enough bytes to fill the array.
+    */
+   int read(byte[] b) throws IOException;
 }

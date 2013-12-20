@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import com.rtfparserkit.parser.IRtfParser;
+import com.rtfparserkit.parser.RtfStreamSource;
 import com.rtfparserkit.parser.standard.StandardRtfParserTest;
 
 public class TestUtilities
@@ -59,7 +60,7 @@ public class TestUtilities
 
       try (InputStream is = parentTest.getClass().getResourceAsStream("data/" + filename + ".rtf"); OutputStream os = new FileOutputStream(outputFile))
       {
-         parser.parse(is, new RtfDump(os));
+         parser.parse(new RtfStreamSource(is), new RtfDump(os));
       }
 
       try (InputStream actualStream = new FileInputStream(outputFile); InputStream expectedStream = parentTest.getClass().getResourceAsStream("data/" + filename + ".xml"))
@@ -79,7 +80,7 @@ public class TestUtilities
       try (InputStream is = StandardRtfParserTest.class.getResourceAsStream("data/" + filename + ".rtf"); OutputStream os = new FileOutputStream(outputFile))
       {
 
-         parser.parse(is, new RtfDump(os));
+         parser.parse(new RtfStreamSource(is), new RtfDump(os));
       }
    }
 }

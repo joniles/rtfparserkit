@@ -16,14 +16,12 @@
 
 package com.rtfparserkit.parser.raw;
 
-import java.io.BufferedInputStream;
 import java.io.EOFException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
 
 import com.rtfparserkit.parser.IRtfListener;
 import com.rtfparserkit.parser.IRtfParser;
+import com.rtfparserkit.parser.IRtfSource;
 import com.rtfparserkit.rtf.Command;
 import com.rtfparserkit.utils.HexUtils;
 
@@ -40,17 +38,16 @@ import com.rtfparserkit.utils.HexUtils;
 public class RawRtfParser implements IRtfParser
 {
    /**
-    * Parse RTF data from an input stream.
+    * Parse RTF data from an input source.
     */
    @Override
-   public void parse(InputStream is, IRtfListener listener) throws IOException
+   public void parse(IRtfSource source, IRtfListener listener) throws IOException
    {
+      this.source = source;
       this.listener = listener;
       groupDepth = 0;
       parsingHex = false;
       buffer = new ByteBuffer();
-
-      PushbackInputStream fp = new PushbackInputStream(new BufferedInputStream(is));
 
       listener.processDocumentStart();
 
@@ -60,7 +57,7 @@ public class RawRtfParser implements IRtfParser
       while (true)
       {
 
-         ch = fp.read();
+         ch = source.read();
          if (ch == -1)
          {
             break;
@@ -87,7 +84,7 @@ public class RawRtfParser implements IRtfParser
 
             case '\\':
             {
-               handleCommand(fp);
+               handleCommand();
                break;
             }
 
@@ -106,7 +103,7 @@ public class RawRtfParser implements IRtfParser
 
             default:
             {
-               handleCharacterByte(fp, ch);
+               handleCharacterByte(ch);
                break;
             }
          }
@@ -128,12 +125,12 @@ public class RawRtfParser implements IRtfParser
    /**
     * Process a single character byte, or hex encoded character byte.
     */
-   private void handleCharacterByte(InputStream fp, int ch) throws IOException
+   private void handleCharacterByte(int ch) throws IOException
    {
       if (parsingHex)
       {
          int b = HexUtils.parseHexDigit(ch) << 4;
-         ch = fp.read();
+         ch = source.read();
          if (ch == -1)
          {
             throw new IllegalStateException("Unexpected end of file");
@@ -151,7 +148,7 @@ public class RawRtfParser implements IRtfParser
    /**
     * Read and process an RTF command.
     */
-   private void handleCommand(PushbackInputStream fp) throws IOException
+   private void handleCommand() throws IOException
    {
       handleCharacterData();
 
@@ -161,7 +158,7 @@ public class RawRtfParser implements IRtfParser
       StringBuilder commandText = new StringBuilder();
       StringBuilder parameterText = new StringBuilder();
 
-      int ch = fp.read();
+      int ch = source.read();
       if (ch == -1)
       {
          throw new EOFException();
@@ -171,13 +168,13 @@ public class RawRtfParser implements IRtfParser
 
       if (!Character.isLetter(ch))
       {
-         handleCommand(fp, commandText, 0, commandHasParameter);
+         handleCommand(commandText, 0, commandHasParameter);
          return;
       }
 
       while (true)
       {
-         ch = fp.read();
+         ch = source.read();
          if (ch == -1 || !Character.isLetter(ch))
          {
             break;
@@ -202,7 +199,7 @@ public class RawRtfParser implements IRtfParser
       if (ch == '-')
       {
          parameterIsNegative = true;
-         ch = fp.read();
+         ch = source.read();
          if (ch == -1)
          {
             throw new EOFException();
@@ -214,7 +211,7 @@ public class RawRtfParser implements IRtfParser
          parameterText.append((char) ch);
          while (true)
          {
-            ch = fp.read();
+            ch = source.read();
             if (ch == -1 || !Character.isDigit(ch))
             {
                break;
@@ -240,16 +237,16 @@ public class RawRtfParser implements IRtfParser
 
       if (ch != ' ')
       {
-         fp.unread(ch);
+         source.unread(ch);
       }
 
-      handleCommand(fp, commandText, parameterValue, commandHasParameter);
+      handleCommand(commandText, parameterValue, commandHasParameter);
    }
 
    /**
     * Determine what to do with the extracted command. 
     */
-   private void handleCommand(InputStream fp, StringBuilder commandBuffer, int parameter, boolean hasParameter) throws IOException
+   private void handleCommand(StringBuilder commandBuffer, int parameter, boolean hasParameter) throws IOException
    {
       String commandName = commandBuffer.toString();
       Command command = Command.getInstance(commandName);
@@ -262,7 +259,7 @@ public class RawRtfParser implements IRtfParser
       {
          case bin:
          {
-            handleBinaryData(fp, parameter);
+            handleBinaryData(parameter);
             break;
          }
 
@@ -293,10 +290,10 @@ public class RawRtfParser implements IRtfParser
    /**
     * Pass binary data to the listener.
     */
-   private void handleBinaryData(InputStream is, int size) throws IOException
+   private void handleBinaryData(int size) throws IOException
    {
       byte[] data = new byte[size];
-      int bytesRead = is.read(data);
+      int bytesRead = source.read(data);
       if (bytesRead != size)
       {
          throw new EOFException();
@@ -324,6 +321,7 @@ public class RawRtfParser implements IRtfParser
       groupDepth--;
    }
 
+   private IRtfSource source;
    private int groupDepth;
    private boolean parsingHex;
    private ByteBuffer buffer;
