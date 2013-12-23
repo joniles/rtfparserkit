@@ -1,10 +1,9 @@
 RTF Parser Kit
 ==============
 
-I haver often been frustrated by the lack of comprehensive support for working with RTF in Java.
-The RTF Parser Kit project is an attempt to address this omission.
+I have often been frustrated by the lack of comprehensive support for working with RTF in Java, and the need to use RTF parsers which are incomplete and form part of larger projects whose libraries I don't want to import just to use the RTF parser. The RTF Parser Kit project is an attempt to address these points.
 
-The idea is to provide a "kit" of components which can either be used "as-is", for example to extract plain text or HTML from an RTF file, or can be used as a component in a larger application.
+The idea is to provide a "kit" of components which can either be used "as-is", for example to extract plain text or HTML from an RTF file, or can be used as a component in a larger application which requires the capability to parse RTF documents.
 
 What's currently included?
 --------------------------
