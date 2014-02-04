@@ -250,29 +250,31 @@ public class RawRtfParser implements IRtfParser
    {
       String commandName = commandBuffer.toString();
       Command command = Command.getInstance(commandName);
-      if (command == null)
+
+      //
+      // Note that we silently ignore commands that we don't recognise
+      //
+      if (command != null)
       {
-         throw new IllegalArgumentException("Unknown command " + commandName);
-      }
-
-      switch (command)
-      {
-         case bin:
+         switch (command)
          {
-            handleBinaryData(parameter);
-            break;
-         }
+            case bin:
+            {
+               handleBinaryData(parameter);
+               break;
+            }
 
-         case hex:
-         {
-            parsingHex = true;
-            break;
-         }
+            case hex:
+            {
+               parsingHex = true;
+               break;
+            }
 
-         default:
-         {
-            listener.processCommand(command, parameter, hasParameter, false);
-            break;
+            default:
+            {
+               listener.processCommand(command, parameter, hasParameter, false);
+               break;
+            }
          }
       }
    }
