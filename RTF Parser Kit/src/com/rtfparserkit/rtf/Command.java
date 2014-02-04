@@ -3646,7 +3646,11 @@ public enum Command
 
    zwnj("zwnj", CommandType.Symbol),
 
-   outdisponlyhtml("outdisponlyhtml", CommandType.Toggle); // Not in the spec
+   outdisponlyhtml("outdisponlyhtml", CommandType.Toggle), // Not in the spec
+
+   cocoartf("cocoartf", CommandType.Value), // Not in the spec
+
+   cocoasubrtf("cocoasubrtf", CommandType.Value); // Not in the spec
 
    /**
     * Constructor.
