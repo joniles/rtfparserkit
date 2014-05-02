@@ -372,10 +372,10 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
    }
 
    private IParserEventHandler handler;
-   private final Deque<IParserEventHandler> handlerStack = new ArrayDeque<>();
+   private final Deque<IParserEventHandler> handlerStack = new ArrayDeque<IParserEventHandler>();
 
    private ParserState state = new ParserState();
-   private final Deque<ParserState> stack = new ArrayDeque<>();
+   private final Deque<ParserState> stack = new ArrayDeque<ParserState>();
    private int skipBytes;
 
    private static final IParserEvent DOCUMENT_START = new DocumentStartEvent();
