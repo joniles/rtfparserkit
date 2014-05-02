@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="deff" parameter="0"/>
+    <command name="deflang" parameter="2057"/>
+    <group>
+      <command name="fonttbl"/>
+      <group>
+        <command name="f" parameter="0"/>
+        <command name="fnil"/>
+        <command name="fcharset" parameter="0"/>
+        <chars>Calibri;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="1"/>
+        <command name="fnil"/>
+        <command name="fcharset" parameter="0"/>
+        <chars>Arial;</chars>
+      </group>
+    </group>
+    <group>
+      <command name="generator" optional="true"/>
+      <chars>Msftedit 5.41.21.2510;</chars>
+    </group>
+    <command name="viewkind" parameter="4"/>
+    <command name="pard"/>
+    <command name="sa" parameter="200"/>
+    <command name="sl" parameter="276"/>
+    <command name="slmult" parameter="1"/>
+    <command name="lang" parameter="9"/>
+    <command name="f" parameter="0"/>
+    <command name="fs" parameter="22"/>
+    <chars>Test 1 - normal.</chars>
+    <command name="par"/>
+    <command name="i"/>
+    <chars>Test 2 - italic.</chars>
+    <command name="par"/>
+    <command name="b"/>
+    <command name="i" parameter="0"/>
+    <chars>Test 3 - bold.</chars>
+    <command name="par"/>
+    <command name="b" parameter="0"/>
+    <chars>Test 4 -normal.</chars>
+    <command name="par"/>
+    <chars>Test 5 - Calibri 11.</chars>
+    <command name="par"/>
+    <command name="f" parameter="1"/>
+    <chars>Test 6 - Arial 11.</chars>
+    <command name="par"/>
+    <command name="f" parameter="0"/>
+    <chars>Test 7 - Calibri 11.</chars>
+    <command name="par"/>
+    <command name="f" parameter="1"/>
+    <command name="fs" parameter="24"/>
+    <chars>Test 6 - Arial 12.</chars>
+    <command name="par"/>
+    <command name="f" parameter="0"/>
+    <command name="fs" parameter="22"/>
+    <chars>Test 7 - Calibri 11.</chars>
+    <command name="par"/>
+    <command name="par"/>
+  </group>
+</rtf>
