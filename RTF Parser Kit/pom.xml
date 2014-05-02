@@ -23,9 +23,6 @@
   </licenses>
 
   <build>
-    <directory>${project.basedir}/target</directory>
-    <sourceDirectory>${project.basedir}/src</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
