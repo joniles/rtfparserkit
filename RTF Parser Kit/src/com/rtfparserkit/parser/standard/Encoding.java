@@ -28,7 +28,7 @@ class Encoding
    public static final String PC_ENCODING = "Cp437";
    public static final String PCA_ENCODING = "Cp850";
 
-   public static final Map<String, String> LOCALEID_MAPPING = new HashMap<>();
+   public static final Map<String, String> LOCALEID_MAPPING = new HashMap<String, String>();
    static
    {
       LOCALEID_MAPPING.put("936", "Cp936"); // Simplified Chinese

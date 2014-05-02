@@ -33,16 +33,26 @@ public class StringTextConverterTest
    {
       StringTextConverter tc = new StringTextConverter();
 
-      try (InputStream is = StringTextConverterTest.class.getResourceAsStream("data/testTextConversion.rtf"))
+      InputStream is = StringTextConverterTest.class.getResourceAsStream("data/testTextConversion.rtf");
+      try
       {
          tc.convert(new RtfStreamSource(is));
       }
+      finally
+      {
+         is.close();
+      }
 
-      try (InputStream expectedStream = StringTextConverterTest.class.getResourceAsStream("data/testTextConversion.txt"))
+      InputStream expectedStream = StringTextConverterTest.class.getResourceAsStream("data/testTextConversion.txt");
+      try
       {
          String expectedText = TestUtilities.readStreamToString(expectedStream);
          String actualText = tc.getText();
          assertEquals(expectedText, actualText);
+      }
+      finally
+      {
+         expectedStream.close();
       }
    }
 }

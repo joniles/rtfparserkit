@@ -188,5 +188,5 @@ public class UprHandler implements IParserEventHandler
    private final IParserEventHandler handler;
    private int groupCount = 1;
    private boolean complete;
-   private final List<IParserEvent> events = new ArrayList<>();
+   private final List<IParserEvent> events = new ArrayList<IParserEvent>();
 }
