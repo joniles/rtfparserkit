@@ -39,17 +39,41 @@ public class StreamTextConverterTest
       File tempFile = File.createTempFile("testTextConversion", ".rtf");
       tempFile.deleteOnExit();
 
-      try (InputStream is = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.rtf"); OutputStream os = new FileOutputStream(tempFile))
+      InputStream is = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.rtf");
+      try
       {
-         tc.convert(new RtfStreamSource(is), os, "UTF-8");
+         OutputStream os = new FileOutputStream(tempFile);
+         try
+         {
+            tc.convert(new RtfStreamSource(is), os, "UTF-8");
+         }
+         finally
+         {
+            os.close();
+         }
       }
-
-      try (InputStream actualStream = new FileInputStream(tempFile); InputStream expectedStream = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.txt"))
+      finally
       {
-
-         String expectedText = TestUtilities.readStreamToString(expectedStream);
-         String actualText = TestUtilities.readStreamToString(actualStream);
-         assertEquals(expectedText, actualText);
+         is.close();
+      }
+      InputStream actualStream = new FileInputStream(tempFile);
+      try
+      {
+         InputStream expectedStream = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.txt");
+         try
+         {
+            String expectedText = TestUtilities.readStreamToString(expectedStream);
+            String actualText = TestUtilities.readStreamToString(actualStream);
+            assertEquals(expectedText, actualText);
+         }
+         finally
+         {
+            expectedStream.close();
+         }
+      }
+      finally
+      {
+         actualStream.close();
       }
    }
 }

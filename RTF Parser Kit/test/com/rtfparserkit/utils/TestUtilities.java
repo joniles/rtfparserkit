@@ -57,18 +57,42 @@ public class TestUtilities
       File outputFile = File.createTempFile(filename, ".xml");
       outputFile.deleteOnExit();
       //File outputFile = new File("c:/temp/" + filename + ".xml");
-
-      try (InputStream is = parentTest.getClass().getResourceAsStream("data/" + filename + ".rtf"); OutputStream os = new FileOutputStream(outputFile))
+      InputStream is = parentTest.getClass().getResourceAsStream("data/" + filename + ".rtf");
+      try
       {
-         parser.parse(new RtfStreamSource(is), new RtfDump(os));
+         OutputStream os = new FileOutputStream(outputFile);
+         try
+         {
+            parser.parse(new RtfStreamSource(is), new RtfDump(os));
+         }
+         finally
+         {
+            os.close();
+         }
       }
-
-      try (InputStream actualStream = new FileInputStream(outputFile); InputStream expectedStream = parentTest.getClass().getResourceAsStream("data/" + filename + ".xml"))
+      finally
+      {
+         is.close();
+      }
+      InputStream actualStream = new FileInputStream(outputFile);
+      try
       {
 
-         String expectedText = TestUtilities.readStreamToString(expectedStream);
-         String actualText = TestUtilities.readStreamToString(actualStream);
-         assertEquals(expectedText, actualText);
+         InputStream expectedStream = parentTest.getClass().getResourceAsStream("data/" + filename + ".xml");
+         try
+         {
+            String expectedText = TestUtilities.readStreamToString(expectedStream);
+            String actualText = TestUtilities.readStreamToString(actualStream);
+            assertEquals(expectedText, actualText);
+         }
+         finally
+         {
+            expectedStream.close();
+         }
+      }
+      finally
+      {
+         actualStream.close();
       }
    }
 
@@ -77,10 +101,22 @@ public class TestUtilities
 
       File outputFile = new File(outputFilename);
 
-      try (InputStream is = StandardRtfParserTest.class.getResourceAsStream("data/" + filename + ".rtf"); OutputStream os = new FileOutputStream(outputFile))
+      InputStream is = StandardRtfParserTest.class.getResourceAsStream("data/" + filename + ".rtf");
+      try
       {
-
-         parser.parse(new RtfStreamSource(is), new RtfDump(os));
+         OutputStream os = new FileOutputStream(outputFile);
+         try
+         {
+            parser.parse(new RtfStreamSource(is), new RtfDump(os));
+         }
+         finally
+         {
+            os.close();
+         }
+      }
+      finally
+      {
+         is.close();
       }
    }
 }
