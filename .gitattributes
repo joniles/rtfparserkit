@@ -1,0 +1,5 @@
+# Explicitly declare test files to have only LF as line ending (Windows!)
+# See https://help.github.com/articles/dealing-with-line-endings
+
+*.txt text eol=lf
+*.xml text eol=lf
