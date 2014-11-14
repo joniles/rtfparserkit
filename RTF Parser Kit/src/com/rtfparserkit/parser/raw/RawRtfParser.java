@@ -150,8 +150,6 @@ public class RawRtfParser implements IRtfParser
     */
    private void handleCommand() throws IOException
    {
-      handleCharacterData();
-
       boolean commandHasParameter = false;
       boolean parameterIsNegative = false;
       int parameterValue = 0;
@@ -256,6 +254,11 @@ public class RawRtfParser implements IRtfParser
       //
       if (command != null)
       {
+         if (command != Command.hex)
+         {
+            handleCharacterData();
+         }
+
          switch (command)
          {
             case bin:

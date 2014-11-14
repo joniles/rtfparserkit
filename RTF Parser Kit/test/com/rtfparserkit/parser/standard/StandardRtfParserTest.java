@@ -60,6 +60,12 @@ public class StandardRtfParserTest
    }
 
    @Test
+   public void testMultiByteHex() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testMultiByteHex");
+   }
+
+   @Test
    public void testSpecialChars() throws Exception
    {
       TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testSpecialChars");

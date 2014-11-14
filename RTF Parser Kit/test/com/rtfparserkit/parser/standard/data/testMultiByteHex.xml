@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="deff" parameter="0"/>
+    <command name="deflang" parameter="1033"/>
+    <command name="deflangfe" parameter="1041"/>
+    <group>
+      <command name="fonttbl"/>
+      <group>
+        <command name="f" parameter="0"/>
+        <command name="froman"/>
+        <command name="fprq" parameter="1"/>
+        <command name="fcharset" parameter="128"/>
+        <chars>ＭＳ Ｐゴシック;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="1"/>
+        <command name="fnil"/>
+        <command name="fprq" parameter="2"/>
+        <command name="fcharset" parameter="128"/>
+        <chars>Tahoma;</chars>
+      </group>
+    </group>
+    <group>
+      <command name="generator" optional="true"/>
+      <chars>Riched20 5.50.99.2014;</chars>
+    </group>
+    <command name="viewkind" parameter="4"/>
+    <command name="pard"/>
+    <command name="f" parameter="0"/>
+    <command name="fs" parameter="18"/>
+    <command name="lang" parameter="1041"/>
+    <chars>お元気ですか？</chars>
+    <command name="f" parameter="1"/>
+    <command name="par"/>
+  </group>
+</rtf>

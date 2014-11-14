@@ -56,7 +56,6 @@ public class TestUtilities
 
       File outputFile = File.createTempFile(filename, ".xml");
       outputFile.deleteOnExit();
-      //File outputFile = new File("c:/temp/" + filename + ".xml");
 
       try (InputStream is = parentTest.getClass().getResourceAsStream("data/" + filename + ".rtf"); OutputStream os = new FileOutputStream(outputFile))
       {
