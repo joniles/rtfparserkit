@@ -16,6 +16,7 @@
 
 package com.rtfparserkit.parser.raw;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -23,8 +24,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.Random;
 
 import org.junit.Test;
-
-import com.rtfparserkit.parser.raw.ByteBuffer;
 
 public class ByteBufferTest
 {
@@ -47,6 +46,7 @@ public class ByteBufferTest
       assertEquals(0, array.length);
    }
 
+   @Test
    public void testBufferSizeIncrease()
    {
       Random r = new Random();
@@ -62,6 +62,6 @@ public class ByteBufferTest
       }
 
       byte[] actualArray = buffer.toArray();
-      assertEquals(array, actualArray);
+      assertArrayEquals(array, actualArray);
    }
 }

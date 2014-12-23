@@ -57,29 +57,129 @@ public class TestUtilities
       File outputFile = File.createTempFile(filename, ".xml");
       outputFile.deleteOnExit();
 
-      try (InputStream is = parentTest.getClass().getResourceAsStream("data/" + filename + ".rtf"); OutputStream os = new FileOutputStream(outputFile))
+      InputStream is = null;
+      OutputStream os = null;
+
+      try
       {
+         is = parentTest.getClass().getResourceAsStream("data/" + filename + ".rtf");
+         os = new FileOutputStream(outputFile);
          parser.parse(new RtfStreamSource(is), new RtfDump(os));
       }
 
-      try (InputStream actualStream = new FileInputStream(outputFile); InputStream expectedStream = parentTest.getClass().getResourceAsStream("data/" + filename + ".xml"))
+      finally
       {
+         if (is != null)
+         {
+            try
+            {
+               is.close();
+            }
 
+            catch (Exception ex)
+            {
+               // Ignored
+            }
+         }
+
+         if (os != null)
+         {
+            try
+            {
+               os.close();
+            }
+
+            catch (Exception ex)
+            {
+               // Ignored
+            }
+         }
+      }
+
+      InputStream actualStream = null;
+      InputStream expectedStream = null;
+
+      try
+      {
+         actualStream = new FileInputStream(outputFile);
+         expectedStream = parentTest.getClass().getResourceAsStream("data/" + filename + ".xml");
          String expectedText = TestUtilities.readStreamToString(expectedStream);
          String actualText = TestUtilities.readStreamToString(actualStream);
          assertEquals(expectedText, actualText);
+      }
+
+      finally
+      {
+         if (actualStream != null)
+         {
+            try
+            {
+               actualStream.close();
+            }
+
+            catch (Exception ex)
+            {
+               // Ignored
+            }
+         }
+
+         if (expectedStream != null)
+         {
+            try
+            {
+               expectedStream.close();
+            }
+
+            catch (Exception ex)
+            {
+               // Ignored
+            }
+         }
+
       }
    }
 
    public static void dump(IRtfParser parser, String filename, String outputFilename) throws Exception
    {
-
       File outputFile = new File(outputFilename);
 
-      try (InputStream is = StandardRtfParserTest.class.getResourceAsStream("data/" + filename + ".rtf"); OutputStream os = new FileOutputStream(outputFile))
-      {
+      InputStream is = null;
+      OutputStream os = null;
 
+      try
+      {
+         is = StandardRtfParserTest.class.getResourceAsStream("data/" + filename + ".rtf");
+         os = new FileOutputStream(outputFile);
          parser.parse(new RtfStreamSource(is), new RtfDump(os));
+      }
+
+      finally
+      {
+         if (is != null)
+         {
+            try
+            {
+               is.close();
+            }
+
+            finally
+            {
+               // Ignored
+            }
+         }
+
+         if (os != null)
+         {
+            try
+            {
+               os.close();
+            }
+
+            finally
+            {
+               // Ignored
+            }
+         }
       }
    }
 }

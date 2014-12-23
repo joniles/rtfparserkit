@@ -114,5 +114,5 @@ public abstract class AbstractTextConverter extends RtfListenerAdaptor
    }
 
    private Command currentDestination = Command.rtf;
-   private final Deque<Command> destinationStack = new ArrayDeque<>();
+   private final Deque<Command> destinationStack = new ArrayDeque<Command>();
 }

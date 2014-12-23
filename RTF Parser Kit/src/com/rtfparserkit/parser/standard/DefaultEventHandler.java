@@ -123,5 +123,5 @@ class DefaultEventHandler implements IParserEventHandler
    private static final int MAX_EVENTS = 5;
 
    private final IRtfListener listener;
-   private final Deque<IParserEvent> events = new ArrayDeque<>();
+   private final Deque<IParserEvent> events = new ArrayDeque<IParserEvent>();
 }

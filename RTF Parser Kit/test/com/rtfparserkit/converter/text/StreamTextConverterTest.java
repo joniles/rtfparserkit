@@ -39,17 +39,78 @@ public class StreamTextConverterTest
       File tempFile = File.createTempFile("testTextConversion", ".rtf");
       tempFile.deleteOnExit();
 
-      try (InputStream is = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.rtf"); OutputStream os = new FileOutputStream(tempFile))
+      InputStream is = null;
+      OutputStream os = null;
+
+      try
       {
+         is = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.rtf");
+         os = new FileOutputStream(tempFile);
          tc.convert(new RtfStreamSource(is), os, "UTF-8");
       }
 
-      try (InputStream actualStream = new FileInputStream(tempFile); InputStream expectedStream = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.txt"))
+      finally
       {
+         if (is != null)
+         {
+            try
+            {
+               is.close();
+            }
 
+            catch (Exception ex)
+            {
+               // Ignored
+            }
+         }
+
+         if (os != null)
+         {
+            try
+            {
+               os.close();
+            }
+
+            catch (Exception ex)
+            {
+               // Ignored
+            }
+         }
+      }
+
+      InputStream actualStream = null;
+      InputStream expectedStream = null;
+
+      try
+      {
+         actualStream = new FileInputStream(tempFile);
+         expectedStream = StreamTextConverterTest.class.getResourceAsStream("data/testTextConversion.txt");
          String expectedText = TestUtilities.readStreamToString(expectedStream);
          String actualText = TestUtilities.readStreamToString(actualStream);
          assertEquals(expectedText, actualText);
+      }
+
+      finally
+      {
+         try
+         {
+            actualStream.close();
+         }
+
+         catch (Exception ex)
+         {
+            // Ignored
+         }
+
+         try
+         {
+            expectedStream.close();
+         }
+
+         catch (Exception ex)
+         {
+            // Ignored
+         }
       }
    }
 }
