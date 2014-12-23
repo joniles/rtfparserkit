@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="rtfparserkit-1.0.0.jar"/>
+    <jar path="rtfparserkit-1.1.0.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/RTF Parser Kit/RTF Parser Kit.jardesc" exportErrors="false" exportWarnings="false" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
