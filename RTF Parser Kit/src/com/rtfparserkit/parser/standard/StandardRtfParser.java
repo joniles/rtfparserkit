@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.rtfparserkit.parser.IRtfListener;
 import com.rtfparserkit.parser.IRtfParser;
@@ -56,6 +58,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
    {
       handleEvent(GROUP_START);
       stack.push(state);
+      state = new ParserState(state);
    }
 
    /**
@@ -80,7 +83,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
          {
             if (skipBytes < data.length)
             {
-               handleEvent(new StringEvent(new String(data, skipBytes, data.length - skipBytes, state.currentEncoding)));
+               handleEvent(new StringEvent(new String(data, skipBytes, data.length - skipBytes, currentEncoding())));
             }
             skipBytes = 0;
          }
@@ -90,6 +93,14 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
       {
          throw new RuntimeException(ex);
       }
+   }
+
+   /**
+    * Determine which encoding to use, one defined by the current font, or the current default encoding.
+    */
+   private String currentEncoding()
+   {
+      return state.currentFontEncoding == null ? state.currentEncoding : state.currentFontEncoding;
    }
 
    /**
@@ -250,12 +261,47 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
                break;
             }
 
+            case f:
+            {
+               processFont(parameter);
+               handleCommand(command, parameter, hasParameter, optionalFlag);
+               break;
+            }
+
+            case fcharset:
+            {
+               processFontCharset(parameter);
+               handleCommand(command, parameter, hasParameter, optionalFlag);
+               break;
+            }
+
             default:
             {
                handleCommand(command, parameter, hasParameter, optionalFlag);
                break;
             }
          }
+      }
+   }
+
+   /**
+    * Set the current font and current font encoding in the state.
+    */
+   private void processFont(int parameter)
+   {
+      state.currentFont = parameter;
+      state.currentFontEncoding = m_fontEncodings.get(Integer.valueOf(parameter));
+   }
+
+   /**
+    * Set the charset for the current font.
+    */
+   private void processFontCharset(int parameter)
+   {
+      String charset = FontCharset.getCharset(parameter);
+      if (charset != null)
+      {
+         m_fontEncodings.put(Integer.valueOf(state.currentFont), Encoding.LOCALEID_MAPPING.get(charset));
       }
    }
 
@@ -377,6 +423,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
    private ParserState state = new ParserState();
    private final Deque<ParserState> stack = new ArrayDeque<ParserState>();
    private int skipBytes;
+   private Map<Integer, String> m_fontEncodings = new HashMap<Integer, String>();
 
    private static final IParserEvent DOCUMENT_START = new DocumentStartEvent();
    private static final IParserEvent DOCUMENT_END = new DocumentEndEvent();

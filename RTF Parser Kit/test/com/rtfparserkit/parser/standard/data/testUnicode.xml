@@ -100,10 +100,10 @@
     <chars>ᓄᓇᕗᒻᒥᐅᑦ</chars>
     <command name="par"/>
     <command name="f" parameter="7"/>
-    <chars>ÖÐ¹ú</chars>
+    <chars>中国</chars>
     <command name="par"/>
     <command name="f" parameter="8"/>
-    <chars>Èeská republika</chars>
+    <chars>Česká republika</chars>
     <command name="par"/>
   </group>
 </rtf>
