@@ -25,7 +25,7 @@ import com.rtfparserkit.rtf.Command;
  * The upr command is used to wrap two different versions of the same set of
  * formatting commands. The first set of formatting commands uses ANSI encoding,
  * the second set uses Unicode. The upr command is expected to appear
- * in its own group, so this handler can be usde to consume all of the RTF events
+ * in its own group, so this handler can be used to consume all of the RTF events
  * received up to the end of the group It can then pass the Unicode version of
  * the command it wraps to the listener, discarding the ANSI version.
  */
