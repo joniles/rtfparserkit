@@ -1,59 +1,81 @@
-/**
- * Copyright 2015 DramaQueen GmbH. All rights reserved.
+/*
+ * Copyright 2015 Stephan Aßmus <superstippi@gmx.de>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.rtfparserkit.parser.builder;
 
-import com.rtfparserkit.document.ColorTable;
+import com.rtfparserkit.document.Annotation;
 import com.rtfparserkit.document.Document;
 import com.rtfparserkit.document.DocumentPart;
-import com.rtfparserkit.document.FontTable;
 import com.rtfparserkit.document.Style;
 import com.rtfparserkit.document.Style.Alignment;
 import com.rtfparserkit.document.Style.UnderlineStyle;
-import com.rtfparserkit.document.StyleSheet;
 import com.rtfparserkit.rtf.Command;
 
 /**
- *
- * @author stippi
+ * RtfContext for processing RTF events which have a main styled text 
+ * destination.
  */
 class DocumentPartContext extends AbstractRtfContext {
 
 	private final DocumentPart documentPart;
-	private final ColorTable colorTable;
-	private final FontTable fontTable;
-	private final StyleSheet styleSheet;
+	protected final Document document;
 	private final Style style;
+	
+	private Annotation currentAnnotation;
 	
 	DocumentPartContext(DocumentPart part, Document document) {
 		documentPart = part;
-		this.colorTable = document.getColorTable();
-		this.fontTable = document.getFontTable();
-		this.styleSheet = document.getStyleSheet();
+		this.document = document;
 		style = part.createDefaultStyle();
 	}
 
 	DocumentPartContext(DocumentPartContext parent) {
 		documentPart = parent.documentPart;
-		colorTable = parent.colorTable;
-		fontTable = parent.fontTable;
-		styleSheet = parent.styleSheet;
+		document = parent.document;
 		style = parent.style.createDerivedStyle();
 	}
 
 	@Override
 	public void processGroupStart(RtfContextStack stack) {
-		// TODO: Push new style context
 		stack.pushContext(new DocumentPartContext(this));
 	}
 
 	@Override
 	public void processGroupStart(RtfContextStack stack, Command command,
 		int parameter, boolean hasParameter, boolean optional) {
-		// TODO: Push new style context
-		stack.pushContext(new DocumentPartContext(this));
+		switch (command) {
+		case atnid:
+			// A new Annotation started
+			if (currentAnnotation != null) {
+				stack.handleError("An annotation has already"
+					+ "started, but encountered another annotation ID.");
+			}
+			currentAnnotation = documentPart.appendAnnotation();
+			stack.pushContext(new AnnotationIdContext());
+			break;
+		case atnauthor:
+			stack.pushContext(new AnnotationAuthorContext());
+			break;
+		case annotation:
+			stack.pushContext(new AnnotationContext(currentAnnotation, this));
+			break;
+		default:
+			stack.pushContext(new DocumentPartContext(this));
+		}
 	}
-
+	
 	@Override
 	public void processCharacterBytes(byte[] data) {
 		// Ignore
@@ -70,9 +92,10 @@ class DocumentPartContext extends AbstractRtfContext {
 	}
 
 	@Override
-	public void processCommand(Command command, int parameter,
-		boolean hasParameter, boolean optional) {
+	public void processCommand(RtfContextStack stack, Command command,
+		int parameter, boolean hasParameter, boolean optional) {
 		switch (command) {
+		// Paragraph control
 		case par:
 			documentPart.nextParagraph(style.createFlattenedStyle());
 			break;
@@ -80,12 +103,24 @@ class DocumentPartContext extends AbstractRtfContext {
 			documentPart.nextLine();
 			break;
 		
+		// Special characters
+		case chatn:
+			// This denotes a special character that is associated with an
+			// annotation. In most text processing applications, the text
+			// cursor can be "before" and "after" an annotation within the text.
+			// deleting this text position deletes the annotation.
+			// Before \chatn, there should have been an annotation started by
+			// \atnid and we have already appended an Annotation object to
+			// the DocumentPart. At the latest, this will happen with the
+			// next \annotation group.
+			break;
+		
 		// Text styles
 		case plain:
 			style.resetFontToDefaults();
 			break;	
 		case f:
-			style.setFont(fontTable.getFont(parameter));
+			style.setFont(document.getFontTable().fontAt(parameter));
 			break;
 		case fs:
 			style.setFontSize(fromHalfPoints(parameter));
@@ -175,10 +210,12 @@ class DocumentPartContext extends AbstractRtfContext {
 			setUnderlined(UnderlineStyle.WAVE, hasParameter, parameter);
 			break;
 		case cb:
-			style.setBackgroundColor(colorTable.colorAt(parameter));
+			style.setBackgroundColor(
+				document.getColorTable().colorAt(parameter));
 			break;
 		case cf:
-			style.setForegroundColor(colorTable.colorAt(parameter));
+			style.setForegroundColor(
+				document.getColorTable().colorAt(parameter));
 			break;
 		
 		// Alignment
@@ -226,7 +263,7 @@ class DocumentPartContext extends AbstractRtfContext {
 			break;
 		}
 	}
-	
+
 	private void setUnderlined(UnderlineStyle underline, boolean hasParamter,
 		int parameter) {
 		if (!hasParamter || parameter == 0)
@@ -242,4 +279,33 @@ class DocumentPartContext extends AbstractRtfContext {
 	private static float fromHalfPoints(int value) {
 		return (float) value / 2.0f;
 	}
+
+	private String append(String string, String toAppend) {
+		return string != null ? string + toAppend : toAppend;
+	}
+	
+	void annotationFinished() {
+		currentAnnotation = null;
+	}
+
+	private class AnnotationAuthorContext extends AbstractRtfContext {
+		@Override
+		public void processString(String string) {
+			if (currentAnnotation != null) {
+				currentAnnotation.setAuthor(
+					append(currentAnnotation.getAuthor(), string));
+			}
+		}
+	}
+
+	private class AnnotationIdContext extends AbstractRtfContext {
+		@Override
+		public void processString(String string) {
+			if (currentAnnotation != null) {
+				currentAnnotation.setId(
+					append(currentAnnotation.getId(), string));
+			}
+		}
+	}
+
 }

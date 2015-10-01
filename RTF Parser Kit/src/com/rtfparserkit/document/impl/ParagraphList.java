@@ -1,5 +1,17 @@
-/**
- * Copyright 2015 DramaQueen GmbH. All rights reserved.
+/*
+ * Copyright 2015 Stephan Aßmus <superstippi@gmx.de>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.rtfparserkit.document.impl;
 
@@ -7,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.rtfparserkit.document.Chunk;
+import com.rtfparserkit.document.Annotation;
 import com.rtfparserkit.document.DocumentPart;
 import com.rtfparserkit.document.Paragraph;
 import com.rtfparserkit.document.Style;
@@ -15,26 +27,24 @@ import com.rtfparserkit.document.Style;
 /**
  * A list of Paragraph objects. There is always at least one, empty paragraph
  * in the list.
- *
- * @author stippi
  */
-public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
-	private final List<DefaultParagraph> defaultParagraphs;
+public class ParagraphList implements Iterable<Paragraph>, DocumentPart {
+	private final List<DefaultParagraph> paragraphs;
 	
 	/**
 	 * Creates a new instance which already contains an empty initial paragraph
 	 * by calling clear().
 	 */
 	public ParagraphList() {
-		defaultParagraphs = new ArrayList<DefaultParagraph>();
+		paragraphs = new ArrayList<DefaultParagraph>();
 		clear();
 	}
 
 	/**
 	 * Returns and iterator over the Paragraphs contained in this list.
 	 */
-	public Iterator<DefaultParagraph> iterator() {
-		return defaultParagraphs.iterator();
+	public Iterator<Paragraph> iterator() {
+		return new ParagraphIterator(paragraphs.iterator());
 	}
 
 	/**
@@ -43,9 +53,8 @@ public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
 	 */
 	public void nextParagraph(Style lastStyle) {
 		if (countParagraphs() > 0)
-			getCurrentParagraph().end(lastStyle);
-		DefaultParagraph next = new DefaultParagraph();
-		defaultParagraphs.add(next);
+			getLastParagraph().end(lastStyle);
+		paragraphs.add(new DefaultParagraph());
 	}
 
 	/**
@@ -53,7 +62,7 @@ public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
 	 * to the current paragraph.
 	 */
 	public void nextLine() {
-		getCurrentParagraph().append("\u2028");
+		getLastParagraph().append("\u2028");
 	}
 	
 	/**
@@ -61,8 +70,8 @@ public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
 	 */
 	public String getText() {
 		StringBuilder builder = new StringBuilder();
-		for (DefaultParagraph defaultParagraph : defaultParagraphs)
-			builder.append(defaultParagraph.getText());
+		for (Paragraph paragraph : paragraphs)
+			builder.append(paragraph.getText());
 		return builder.toString();
 	}
 
@@ -94,20 +103,21 @@ public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
 			
 			int end = nextLineBreak > offset ? nextLineBreak : text.length();
 			String subString = text.substring(offset, end);
-			getCurrentParagraph().append(subString, style);
+			getLastParagraph().append(subString, style);
 		
 			offset = end;
 		}
 	}
-
+	
 	public void append(String string) {
-		Style style;
-		Chunk chunk = getCurrentParagraph().getLastChunk();
-		if (chunk != null)
-			style = chunk.getStyle();
-		else
-			style = new DefaultStyle();
+		Style style = getLastParagraph().getLastStyle();
 		append(string, style);
+	}
+
+	public Annotation appendAnnotation() {
+		Annotation annotation = new DefaultAnnotation();
+		getLastParagraph().append(annotation);
+		return annotation;
 	}
 	
 	/**
@@ -115,7 +125,7 @@ public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
 	 * empty Paragraph as the initial Paragraph by calling nextParagraph()
 	 */
 	public void clear() {
-		defaultParagraphs.clear();
+		paragraphs.clear();
 		// Add the initial empty paragraph
 		nextParagraph(new DefaultStyle());
 	}
@@ -124,15 +134,15 @@ public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
 	 * @return The last Paragraph of the list. There is always at least
 	 * 		one paragraph in the list.
 	 */
-	public DefaultParagraph getCurrentParagraph() {
-		return defaultParagraphs.get(defaultParagraphs.size() - 1);
+	public DefaultParagraph getLastParagraph() {
+		return paragraphs.get(paragraphs.size() - 1);
 	}
 	
 	/**
 	 * @return The number of paragraphs in this list.
 	 */
 	public int countParagraphs() {
-		return defaultParagraphs.size();
+		return paragraphs.size();
 	}
 
 	/**
@@ -144,6 +154,28 @@ public class ParagraphList implements Iterable<DefaultParagraph>, DocumentPart {
 	 * 		IndexOutOfBoundsExpception if index is out of bounds.
 	 */
 	public Paragraph paragraphAt(int index) {
-		return defaultParagraphs.get(index);
+		return paragraphs.get(index);
+	}
+	
+	private static class ParagraphIterator implements Iterator<Paragraph> {
+
+		private final Iterator<DefaultParagraph> internalIterator;
+		
+		ParagraphIterator(Iterator<DefaultParagraph> iterator) {
+			internalIterator = iterator;
+		}
+		
+		public boolean hasNext() {
+			return internalIterator.hasNext();
+		}
+
+		public Paragraph next() {
+			return internalIterator.next();
+		}
+
+		public void remove() {
+			internalIterator.remove();
+		}
+		
 	}
 }

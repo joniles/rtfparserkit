@@ -7,6 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.rtfparserkit.document.impl.DefaultAnnotation;
 import com.rtfparserkit.document.impl.DefaultParagraph;
 
 /**
@@ -80,6 +81,23 @@ public class ParagraphTest {
 		expectException(p, "\ntest", true);
 		// Paragraph must not have changed
 		assertEquals("test", p.getText());
+	}
+	
+	@Test
+	public void testAnnotation() {
+		DefaultParagraph p = new DefaultParagraph();
+		p.append("test");
+		p.append(new DefaultAnnotation());
+		p.append("test");
+		
+		assertEquals(3, p.countElements());
+
+		p = new DefaultParagraph();
+		p.append("test");
+		p.append(new DefaultAnnotation());
+		p.end();
+
+		assertEquals(3, p.countElements());
 	}
 
 	private void expectException(DefaultParagraph defaultParagraph, String toAppend,

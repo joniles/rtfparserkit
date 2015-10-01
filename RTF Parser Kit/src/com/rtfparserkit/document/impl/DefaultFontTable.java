@@ -23,7 +23,7 @@ public class DefaultFontTable implements FontTable {
 		return fonts.size();
 	}
 	
-	public Font getFont(int index) {
+	public Font fontAt(int index) {
 		return fonts.get(index);
 	}
 }

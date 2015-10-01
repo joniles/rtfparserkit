@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015 Stephan Aßmus <superstippi@gmx.de>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.document.Document;
@@ -5,6 +20,14 @@ import com.rtfparserkit.parser.IRtfListener;
 import com.rtfparserkit.rtf.Command;
 import com.rtfparserkit.rtf.CommandType;
 
+/**
+ * The main class used for building a Document model from parsing RTF events.
+ * The intended use is to construct an instance of DocumentBuilder with an
+ * instance of a Document, then pass the DocumentBuilder to
+ * StandardParser.parse(RtfSource, RtfListener) as the RtfListener.
+ *
+ * @author stippi
+ */
 public class DocumentBuilder implements IRtfListener {
 
 	private int level = 0;
@@ -77,8 +100,8 @@ public class DocumentBuilder implements IRtfListener {
 			System.out.print(" (optional)");
 		System.out.println();
 
-		stack.getContext().processCommand(command, parameter, hasParameter,
-			optional);
+		stack.getContext().processCommand(stack, command, parameter,
+			hasParameter, optional);
 	}
 
 	private String getIndentation() {

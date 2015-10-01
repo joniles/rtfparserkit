@@ -15,32 +15,45 @@
  */
 package com.rtfparserkit.document.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
-import com.rtfparserkit.document.Color;
-import com.rtfparserkit.document.ColorTable;
+import com.rtfparserkit.document.Annotation;
 
 /**
- * Default implementation of ColorTable.
+ * Default implementation for Annotation.
  */
-public class DefaultColorTable implements ColorTable {
+public class DefaultAnnotation extends ParagraphList implements Annotation {
 
-	private final List<DefaultColor> colors;
+	private String id = "";
+	private String author = "";
+	private long date = Calendar.getInstance().getTimeInMillis();
 	
-	public DefaultColorTable() {
-		colors = new ArrayList<DefaultColor>();
+	public DefaultAnnotation() {
 	}
 	
-	public void addColor(int red, int green, int blue) {
-		colors.add(new DefaultColor(red, green, blue));
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public int countColors() {
-		return colors.size();
+	public String getId() {
+		return id;
 	}
-	
-	public Color colorAt(int index) {
-		return colors.get(index);
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setDate(Date date) {
+		this.date = date.getTime();
+	}
+
+	public Date getDate() {
+		return new Date(date);
+	}
+
 }

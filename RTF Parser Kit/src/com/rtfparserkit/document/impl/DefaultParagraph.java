@@ -1,5 +1,17 @@
-/**
- * Copyright 2015 DramaQueen GmbH. All rights reserved.
+/*
+ * Copyright 2015 Stephan Aßmus <superstippi@gmx.de>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.rtfparserkit.document.impl;
 
@@ -8,62 +20,84 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.rtfparserkit.document.Chunk;
+import com.rtfparserkit.document.Element;
 import com.rtfparserkit.document.Paragraph;
 import com.rtfparserkit.document.Style;
 
 /**
- * A Paragraph contains text which is formed by chunks.
- * 
- * @author stippi
+ * Default Paragraph implementation
  */
-public class DefaultParagraph implements Iterable<Chunk>, Paragraph {
-	private final List<Chunk> chunks;
-	
+public class DefaultParagraph implements Iterable<Element>, Paragraph {
+	private final List<Element> chunks;
+	private Style style;
+
 	public DefaultParagraph() {
-		chunks = new ArrayList<Chunk>();
+		this(new DefaultStyle());
+	}
+	
+	public DefaultParagraph(Style style) {
+		chunks = new ArrayList<Element>();
+		this.style = style;
 	}
 
-	public Iterator<Chunk> iterator() {
+	public Iterator<Element> iterator() {
 		return chunks.iterator();
 	}
 	
 	public String getText() {
 		StringBuilder builder = new StringBuilder();
-		for (Chunk chunk : chunks)
-			builder.append(chunk.getString());
+		for (Element element : chunks) {
+			if (element instanceof Chunk)
+				builder.append(((Chunk) element).getText());
+		}
 		return builder.toString();
 	}
 	
-	public int countChunks() {
+	public int countElements() {
 		return chunks.size();
 	}
 	
-	public Chunk chunkAt(int index) {
+	public Element elementAt(int index) {
 		return chunks.get(index);
 	}
 	
-	public void append(Chunk chunk) {
-		if (chunk == null)
-			throw new IllegalArgumentException("Chunk may not be null");
-		chunks.add(chunk);
-	}
-
-	public Chunk getLastChunk() {
-		if (chunks.size() > 0)
-			return chunks.get(chunks.size() - 1);
-		return null;
-	}
-
-	public void append(String string) {
-		Style style;
-		Chunk defaultChunk = getLastChunk();
-		if (defaultChunk == null)
-			style = new DefaultStyle();
-		else
-			style = defaultChunk.getStyle();
-		append(string, style);
+	public Style getStyle() {
+		return style;
 	}
 	
+	public void append(Element element) {
+		if (element == null)
+			throw new IllegalArgumentException("Element may not be null");
+		chunks.add(element);
+	}
+
+	/**
+	 * Appends the string to the Paragraph. If the last Element of the Paragraph
+	 * is a Chunk, the string will be appended to the Chunk. Otherwise a new
+	 * Chunk will be created to hold the String. If the Paragraph already
+	 * contains any Chunks, the Style of the last Chunk is used for the string. 
+	 * The paragraph may not already be delimited (end with '\n'). The appended
+	 * string may contain a delimiter ('\n'), but it must be at the end of the
+	 * string.
+	 * 
+	 * @param string The string to append
+	 */
+	public void append(String string) {
+		append(string, getLastStyle());
+	}
+	
+	/**
+	 * Appends the string to the Paragraph. If the last Element of the Paragraph
+	 * is a Chunk, the string will be appended to that Chunk if the Style
+	 * matches the Style of the last Chunk. Otherwise a new Chunk with the given
+	 * Style will be created to hold the String. 
+	 * The paragraph may not already be delimited (end with '\n'). The appended
+	 * string may contain a delimiter ('\n'), but it must be at the end of the
+	 * string.
+	 * 
+	 * @param string The string to append
+	 * @param style The Style in which the string is to appear
+	 */
 	public void append(String string, Style style) {
 		if (string == null)
 			throw new IllegalArgumentException("String may not be null!");
@@ -78,31 +112,61 @@ public class DefaultParagraph implements Iterable<Chunk>, Paragraph {
 		appendString(string, style);
 	}
 
-	/**
-	 * Makes sure that the paragraph doesn't already end with '\n'.
-	 */
-	private void assertNotDelimited() {
-		Chunk last = getLastChunk();
-		if (last != null && last.getString().endsWith("\n")) {
-			throw new IllegalArgumentException(
-				"Paragraph is already delimited.");
-		}
-	}
-	
 	public void end() {
-		end(new DefaultStyle());
+		end(getLastStyle());
 	}
 	
 	public void end(Style lastStyle) {
 		append("\n", lastStyle);
 	}
 	
+	public Style getLastStyle() {
+		// Try to use the last used Style instead of the default style
+		Chunk lastChunk = findLastChunk();
+		if (lastChunk != null)
+			return lastChunk.getStyle();
+		
+		return style;
+	}
+
+	/**
+	 * Makes sure that the paragraph doesn't already end with '\n'.
+	 */
+	private void assertNotDelimited() {
+		for (int i = chunks.size() - 1; i >= 0; i--) {
+			Element element = chunks.get(i);
+			if (element instanceof Chunk) {
+				Chunk chunk = (Chunk) element;
+				if (chunk.getText().endsWith("\n")) {
+					throw new IllegalArgumentException(
+						"Paragraph is already delimited.");
+				}
+				break;
+			}
+		}
+	}
+	
 	private void appendString(String string, Style style) {
-		Chunk chunk = getLastChunk();
+		Chunk chunk = null;
+		if (chunks.size() > 0) {
+			Element last = chunks.get(chunks.size() - 1);
+			if (last instanceof Chunk)
+				chunk = (Chunk) last;
+		}
 		if (chunk == null || !chunk.getStyle().equals(style)) {
 			chunk = new DefaultChunk(style);
 			append(chunk);
 		}
 		chunk.append(string);
+	}
+	
+	private Chunk findLastChunk() {
+		for (int i = chunks.size() - 1; i >= 0; i--) {
+			Element element = chunks.get(i);
+			if (element instanceof Chunk)
+				return (Chunk) element;
+		}
+		
+		return null;
 	}
 }

@@ -13,32 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.rtfparserkit.document.impl;
-
-import com.rtfparserkit.document.Chunk;
-import com.rtfparserkit.document.Style;
+package com.rtfparserkit.document;
 
 /**
- * Default Chunk implementation.
+ * Base type for various possible children of a Paragraph.
  */
-public class DefaultChunk implements Chunk {
-	private final StringBuilder stringBuilder;
-	private final Style style;
+public interface Element {
 
-	public DefaultChunk(Style style) {
-		stringBuilder = new StringBuilder();
-		this.style = style;
-	}
-	
-	public String getText() {
-		return stringBuilder.toString();
-	}
-	
-	public Style getStyle() {
-		return style;
-	}
-
-	public void append(String string) {
-		stringBuilder.append(string);
-	}
 }

@@ -13,32 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.rtfparserkit.document.impl;
+package com.rtfparserkit.document;
 
-import com.rtfparserkit.document.Chunk;
-import com.rtfparserkit.document.Style;
+import java.util.Date;
 
 /**
- * Default Chunk implementation.
+ * Interface for annotation elements. The annotation contents are accessible
+ * via the DocumentPart functionality. Note that this would mean support for
+ * nested annotations.
  */
-public class DefaultChunk implements Chunk {
-	private final StringBuilder stringBuilder;
-	private final Style style;
-
-	public DefaultChunk(Style style) {
-		stringBuilder = new StringBuilder();
-		this.style = style;
-	}
+public interface Annotation extends DocumentPart {
 	
-	public String getText() {
-		return stringBuilder.toString();
-	}
+	public void setId(String id);
 	
-	public Style getStyle() {
-		return style;
-	}
+	public String getId();
+	
+	public void setAuthor(String author);
+	
+	public String getAuthor();
+	
+	public void setDate(Date date);
+	
+	public Date getDate();
 
-	public void append(String string) {
-		stringBuilder.append(string);
-	}
 }

@@ -23,7 +23,7 @@ public class DefaultStyleSheet implements StyleSheet {
 		return styles.size();
 	}
 	
-	public DefaultStyle get(int index) {
+	public DefaultStyle styleAt(int index) {
 		return styles.get(index);
 	}
 }
