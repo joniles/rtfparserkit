@@ -21,7 +21,7 @@ import com.rtfparserkit.document.DocumentSettings;
 import com.rtfparserkit.document.PageSettings;
 import com.rtfparserkit.document.Paragraph;
 import com.rtfparserkit.document.Section;
-import com.rtfparserkit.document.Style;
+import com.rtfparserkit.document.ParagraphStyle;
 
 /**
  * Default implementation of Document. Note that Document itself is also
@@ -96,7 +96,7 @@ public class DefaultDocument extends SectionList implements Document {
 	 * @param text The string to append
 	 * @param style The Style in which the appended string is to appear.
 	 */
-	public void append(String text, Style style) {
+	public void append(String text, ParagraphStyle style) {
 		getLastSection().append(text, style);
 	}
 
@@ -106,7 +106,7 @@ public class DefaultDocument extends SectionList implements Document {
 	 * 
 	 * @param lastStyle The Style to be set on the previous paragraph.
 	 */
-	public void nextParagraph(Style lastStyle) {
+	public void nextParagraph(ParagraphStyle lastStyle) {
 		getLastSection().nextParagraph(lastStyle);
 	}
 
@@ -120,7 +120,7 @@ public class DefaultDocument extends SectionList implements Document {
 	/**
 	 * @return The default Style created by the last Section.
 	 */
-	public Style createDefaultStyle() {
+	public ParagraphStyle createDefaultStyle() {
 		return getLastSection().createDefaultStyle();
 	}
 

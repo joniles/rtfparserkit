@@ -22,7 +22,7 @@ import java.util.List;
 import com.rtfparserkit.document.Annotation;
 import com.rtfparserkit.document.DocumentPart;
 import com.rtfparserkit.document.Paragraph;
-import com.rtfparserkit.document.Style;
+import com.rtfparserkit.document.ParagraphStyle;
 
 /**
  * A list of Paragraph objects. There is always at least one, empty paragraph
@@ -51,7 +51,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart {
 	 * Finalizes the current paragraph by appending a line-break character '\n'.
 	 * Starts the next paragraph by appending a new empty Paragraph to the list.
 	 */
-	public void nextParagraph(Style lastStyle) {
+	public void nextParagraph(ParagraphStyle lastStyle) {
 		if (countParagraphs() > 0)
 			getLastParagraph().end(lastStyle);
 		paragraphs.add(new DefaultParagraph());
@@ -75,8 +75,8 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart {
 		return builder.toString();
 	}
 
-	public Style createDefaultStyle() {
-		return new DefaultStyle();
+	public ParagraphStyle createDefaultStyle() {
+		return new DefaultParagraphStyle();
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart {
 	 * 
 	 * @see #nextParagraph()
 	 */
-	public void append(String text, Style style) {
+	public void append(String text, ParagraphStyle style) {
 		int offset = 0;
 		while (offset < text.length()) {
 			int nextLineBreak = text.indexOf('\n', offset);
@@ -110,7 +110,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart {
 	}
 	
 	public void append(String string) {
-		Style style = getLastParagraph().getLastStyle();
+		ParagraphStyle style = getLastParagraph().getLastStyle();
 		append(string, style);
 	}
 
@@ -127,7 +127,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart {
 	public void clear() {
 		paragraphs.clear();
 		// Add the initial empty paragraph
-		nextParagraph(new DefaultStyle());
+		nextParagraph(new DefaultParagraphStyle());
 	}
 
 	/**

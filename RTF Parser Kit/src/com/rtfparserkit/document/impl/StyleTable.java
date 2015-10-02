@@ -13,43 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.rtfparserkit.document;
+package com.rtfparserkit.document.impl;
 
-import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import com.rtfparserkit.document.Style;
 
 /**
- * Interface style base class. Also defines a bunch of properties.
+ * A table of Style objects. Styles can be added and retrieved by ID.
  */
-public interface Style {
+class StyleTable<E extends Style> implements Iterable<E> {
+	private final HashMap<Integer, E> styles;
+	
+	StyleTable() {
+		styles = new HashMap<Integer, E>();
+	}
 
-	public enum Property {
-		ALIGNMENT,
-		SPACING_TOP,
-		SPACING_BOTTOM,
-		FIRST_LINE_INDENT,
-		LEFT_INDENT,
-		RIGHT_INDENT,
-		LINE_SPACING,
-		TABS,
-		FONT,
-		FONT_SIZE,
-		BOLD,
-		ITALIC,
-		UNDERLINED,
-		STRIKE_OUT,
-		CAPS,
-		BACKGROUND_COLOR,
-		FOREGROUND_COLOR
+	public Iterator<E> iterator() {
+		return styles.values().iterator();
+	}
+
+	public void addStyle(int id, E style) {
+		styles.put(id, style);
 	}
 	
-	public void setName(String name);
+	public int countStyles() {
+		return styles.size();
+	}
 	
-	public String getName();
-
-	public EnumSet<Property> getOverriddenProperties();
-	
-	public void resetToDefaults();
-
-	public boolean equals(Style other);
-
+	public E styleFor(int id) {
+		return styles.get(id);
+	}
 }

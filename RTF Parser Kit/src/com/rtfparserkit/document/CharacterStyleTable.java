@@ -15,41 +15,18 @@
  */
 package com.rtfparserkit.document;
 
-import java.util.EnumSet;
-
 /**
- * Interface style base class. Also defines a bunch of properties.
+ * Interface for style table in which character styles can be
+ * retrieved by their ID.
  */
-public interface Style {
+public interface CharacterStyleTable extends Iterable<CharacterStyle> {
 
-	public enum Property {
-		ALIGNMENT,
-		SPACING_TOP,
-		SPACING_BOTTOM,
-		FIRST_LINE_INDENT,
-		LEFT_INDENT,
-		RIGHT_INDENT,
-		LINE_SPACING,
-		TABS,
-		FONT,
-		FONT_SIZE,
-		BOLD,
-		ITALIC,
-		UNDERLINED,
-		STRIKE_OUT,
-		CAPS,
-		BACKGROUND_COLOR,
-		FOREGROUND_COLOR
-	}
+	public CharacterStyle createStyle();
 	
-	public void setName(String name);
+	public void addStyle(int id, CharacterStyle style);
 	
-	public String getName();
-
-	public EnumSet<Property> getOverriddenProperties();
+	public CharacterStyle styleFor(int id);
 	
-	public void resetToDefaults();
-
-	public boolean equals(Style other);
+	public int countStyles();
 
 }

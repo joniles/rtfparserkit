@@ -32,11 +32,16 @@ public class DocumentBuilder implements IRtfListener {
 
 	private int level = 0;
 	private boolean atGroupStart = false;
+	private boolean debugEvents = false;
 
 	private final RtfContextStack stack;
 	
 	public DocumentBuilder(Document document) {
 		stack = new RtfContextStack(new RootContext(document));
+	}
+	
+	public void setDebugEvents(boolean debug) {
+		debugEvents = debug;
 	}
 	
 	public void processDocumentStart() {
@@ -51,7 +56,8 @@ public class DocumentBuilder implements IRtfListener {
 
 	public void processGroupEnd() {
 		handleDelayedGroupStart();
-		System.out.println(getIndentation() + "processGroupEnd()");
+		if (debugEvents)
+			System.out.println(getIndentation() + "processGroupEnd()");
 		stack.getContext().processGroupEnd(stack);
 		level--;
 		atGroupStart = false;
@@ -59,19 +65,22 @@ public class DocumentBuilder implements IRtfListener {
 
 	public void processCharacterBytes(byte[] data) {
 		handleDelayedGroupStart();
-		System.out.println(getIndentation() + "processCharacterBytes()");
+		if (debugEvents)
+			System.out.println(getIndentation() + "processCharacterBytes()");
 		stack.getContext().processCharacterBytes(data);
 	}
 
 	public void processBinaryBytes(byte[] data) {
 		handleDelayedGroupStart();
-		System.out.println(getIndentation() + "processBinaryBytes()");
+		if (debugEvents)
+			System.out.println(getIndentation() + "processBinaryBytes()");
 		stack.getContext().processBinaryBytes(data);
 	}
 
 	public void processString(String string) {
 		handleDelayedGroupStart();
-		System.out.println(getIndentation() + "processString(" + string + ")");
+		if (debugEvents)
+			System.out.println(getIndentation() + "processString(" + string + ")");
 		stack.getContext().processString(string);
 	}
 
@@ -79,9 +88,23 @@ public class DocumentBuilder implements IRtfListener {
 		boolean hasParameter, boolean optional) {
 		if (atGroupStart) {
 			// Handle delayed group start.
-			if (command.getCommandType() == CommandType.Destination) {
-				System.out.println(getIndentation() + "processGroupStart("
-					+ command + ")");
+			if (command == Command.optionalcommand) {
+				// Optional group with an unknown command, completely ignore
+				// this.
+				if (debugEvents) {
+					System.out.println(getIndentation() + "processGroupStart("
+						+ command + ")");
+				}
+				level++;
+				stack.pushContext(new NullContext());
+				// Do not handle this command as processCommand() a second time.
+				groupStarted();
+				return;
+			} if (command.getCommandType() == CommandType.Destination) {
+				if (debugEvents) {
+					System.out.println(getIndentation() + "processGroupStart("
+						+ command + ")");
+				}
 				level++;
 				stack.getContext().processGroupStart(stack, command, parameter,
 					hasParameter, optional);
@@ -93,12 +116,14 @@ public class DocumentBuilder implements IRtfListener {
 			}
 		}
 		
-		System.out.print(getIndentation() + "processCommand() " + command);
-		if (hasParameter)
-			System.out.print(", parameter: " + parameter);
-		if (optional)
-			System.out.print(" (optional)");
-		System.out.println();
+		if (debugEvents) {
+			System.out.print(getIndentation() + "processCommand() " + command);
+			if (hasParameter)
+				System.out.print(", parameter: " + parameter);
+			if (optional)
+				System.out.print(" (optional)");
+			System.out.println();
+		}
 
 		stack.getContext().processCommand(stack, command, parameter,
 			hasParameter, optional);
@@ -115,7 +140,8 @@ public class DocumentBuilder implements IRtfListener {
 	
 	private void handleDelayedGroupStart() {
 		if (atGroupStart) {
-			System.out.println(getIndentation() + "processGroupStart()");
+			if (debugEvents)
+				System.out.println(getIndentation() + "processGroupStart()");
 			level++;
 			stack.getContext().processGroupStart(stack);
 			groupStarted();

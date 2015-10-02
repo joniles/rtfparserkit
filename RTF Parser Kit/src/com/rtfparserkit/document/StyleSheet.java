@@ -16,14 +16,16 @@
 package com.rtfparserkit.document;
 
 /**
- * Interface for adding a style definition to a global style sheet.
+ * Interface for adding a style definition to a global style sheet. The style
+ * sheet contains four style tables: Paragraph styles, character styles,
+ * section styles and table styles. Each have their own index name space.
  */
 public interface StyleSheet {
 
-	public Style addStyle();
-	
-	public int countStyles();
+	public ParagraphStyleTable getParagraphStyleTable();
 
-	public Style styleAt(int index);
+	public CharacterStyleTable getCharacterStyleTable();
 
+	// TODO: Section style table
+	// TODO: Table style table
 }

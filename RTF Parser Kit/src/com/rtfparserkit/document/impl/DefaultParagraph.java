@@ -22,20 +22,20 @@ import java.util.List;
 import com.rtfparserkit.document.Chunk;
 import com.rtfparserkit.document.Element;
 import com.rtfparserkit.document.Paragraph;
-import com.rtfparserkit.document.Style;
+import com.rtfparserkit.document.ParagraphStyle;
 
 /**
  * Default Paragraph implementation
  */
 public class DefaultParagraph implements Iterable<Element>, Paragraph {
 	private final List<Element> chunks;
-	private Style style;
+	private ParagraphStyle style;
 
 	public DefaultParagraph() {
-		this(new DefaultStyle());
+		this(new DefaultParagraphStyle());
 	}
 	
-	public DefaultParagraph(Style style) {
+	public DefaultParagraph(ParagraphStyle style) {
 		chunks = new ArrayList<Element>();
 		this.style = style;
 	}
@@ -61,7 +61,7 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph {
 		return chunks.get(index);
 	}
 	
-	public Style getStyle() {
+	public ParagraphStyle getStyle() {
 		return style;
 	}
 	
@@ -98,7 +98,7 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph {
 	 * @param string The string to append
 	 * @param style The Style in which the string is to appear
 	 */
-	public void append(String string, Style style) {
+	public void append(String string, ParagraphStyle style) {
 		if (string == null)
 			throw new IllegalArgumentException("String may not be null!");
 		if (style == null)
@@ -116,11 +116,11 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph {
 		end(getLastStyle());
 	}
 	
-	public void end(Style lastStyle) {
+	public void end(ParagraphStyle lastStyle) {
 		append("\n", lastStyle);
 	}
 	
-	public Style getLastStyle() {
+	public ParagraphStyle getLastStyle() {
 		// Try to use the last used Style instead of the default style
 		Chunk lastChunk = findLastChunk();
 		if (lastChunk != null)
@@ -146,7 +146,7 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph {
 		}
 	}
 	
-	private void appendString(String string, Style style) {
+	private void appendString(String string, ParagraphStyle style) {
 		Chunk chunk = null;
 		if (chunks.size() > 0) {
 			Element last = chunks.get(chunks.size() - 1);

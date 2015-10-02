@@ -22,9 +22,9 @@ import com.rtfparserkit.parser.standard.StandardRtfParser;
 public class BuilderParseTest {
 
 	@Test
-	public void testParagraphContents() {
+	public void testParagraphContentsIText() {
 		DefaultDocument document = new DefaultDocument();
-		parseStream("lineSeparator", document);
+		parseStream("lineSeparator", document, false);
 	
 		Section section = document.getLastSection();
 		
@@ -55,6 +55,20 @@ public class BuilderParseTest {
 	}
 	
 	@Test
+	public void testParagraphContentsLibreOffice() {
+		DefaultDocument document = new DefaultDocument();
+		parseStream("annotationLibreOffice", document, true);
+	
+		Section section = document.getLastSection();
+		
+		int paragraphCount = section.countParagraphs();
+		assertEquals(2, paragraphCount);
+		
+		assertEquals("This word is commented.\n",
+			section.paragraphAt(0).getText());
+	}
+	
+	@Test
 	public void testStyles() {
 		
 		String[] files = {
@@ -67,7 +81,7 @@ public class BuilderParseTest {
 			System.out.println("################################");
 
 			DefaultDocument document = new DefaultDocument();
-			parseStream(file, document);
+			parseStream(file, document, false);
 		
 			assertEquals(1, document.countSections());
 			Section section = document.sectionAt(0);
@@ -78,7 +92,7 @@ public class BuilderParseTest {
 	@Test
 	public void testAnnotations() {
 		DefaultDocument document = new DefaultDocument();
-		parseStream("annotationSpec", document);
+		parseStream("annotationSpec", document, false);
 		
 		Section section = document.sectionAt(0);
 		
@@ -164,14 +178,16 @@ public class BuilderParseTest {
 		assertFalse(chunk.getStyle().getItalic());
 	}
 
-	private void parseStream(String fileName, Document document) {
+	private void parseStream(String fileName, Document document,
+		boolean debug) {
 		InputStream is = null;
 		try {
 			is = BuilderParseTest.class.getResourceAsStream("data/"
 				+ fileName + ".rtf");
 			StandardRtfParser parser = new StandardRtfParser();
-			parser.parse(new RtfStreamSource(is),
-				new DocumentBuilder(document));
+			DocumentBuilder builder = new DocumentBuilder(document);
+			builder.setDebugEvents(debug);
+			parser.parse(new RtfStreamSource(is), builder);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

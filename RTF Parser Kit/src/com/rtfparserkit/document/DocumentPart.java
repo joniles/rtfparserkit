@@ -26,13 +26,13 @@ public interface DocumentPart extends Text {
 	
 	public Paragraph paragraphAt(int index);
 
-	public void append(String text, Style style);
+	public void append(String text, ParagraphStyle style);
 	
-	public void nextParagraph(Style lastStyle);
+	public void nextParagraph(ParagraphStyle lastStyle);
 	
 	public void nextLine();
 
 	public Annotation appendAnnotation();
 	
-	public Style createDefaultStyle();
+	public ParagraphStyle createDefaultStyle();
 }

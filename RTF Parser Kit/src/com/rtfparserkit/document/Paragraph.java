@@ -25,5 +25,5 @@ public interface Paragraph extends Iterable<Element>, Text {
 	
 	public Element elementAt(int index);
 
-	public Style getStyle();
+	public ParagraphStyle getStyle();
 }

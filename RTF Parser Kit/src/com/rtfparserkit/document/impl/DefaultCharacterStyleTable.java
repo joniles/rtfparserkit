@@ -13,43 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.rtfparserkit.document;
+package com.rtfparserkit.document.impl;
 
-import java.util.EnumSet;
+import com.rtfparserkit.document.CharacterStyle;
+import com.rtfparserkit.document.CharacterStyleTable;
 
 /**
- * Interface style base class. Also defines a bunch of properties.
+ * Default CharacterStyleTable implementation.
  */
-public interface Style {
+public class DefaultCharacterStyleTable extends StyleTable<CharacterStyle>
+	implements CharacterStyleTable {
 
-	public enum Property {
-		ALIGNMENT,
-		SPACING_TOP,
-		SPACING_BOTTOM,
-		FIRST_LINE_INDENT,
-		LEFT_INDENT,
-		RIGHT_INDENT,
-		LINE_SPACING,
-		TABS,
-		FONT,
-		FONT_SIZE,
-		BOLD,
-		ITALIC,
-		UNDERLINED,
-		STRIKE_OUT,
-		CAPS,
-		BACKGROUND_COLOR,
-		FOREGROUND_COLOR
+	public CharacterStyle createStyle() {
+		return new DefaultCharacterStyle();
 	}
-	
-	public void setName(String name);
-	
-	public String getName();
-
-	public EnumSet<Property> getOverriddenProperties();
-	
-	public void resetToDefaults();
-
-	public boolean equals(Style other);
 
 }

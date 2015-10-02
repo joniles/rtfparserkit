@@ -18,9 +18,9 @@ package com.rtfparserkit.parser.builder;
 import com.rtfparserkit.document.Annotation;
 import com.rtfparserkit.document.Document;
 import com.rtfparserkit.document.DocumentPart;
-import com.rtfparserkit.document.Style;
-import com.rtfparserkit.document.Style.Alignment;
-import com.rtfparserkit.document.Style.UnderlineStyle;
+import com.rtfparserkit.document.ParagraphStyle;
+import com.rtfparserkit.document.ParagraphStyle.Alignment;
+import com.rtfparserkit.document.CharacterStyle.UnderlineStyle;
 import com.rtfparserkit.rtf.Command;
 
 /**
@@ -31,7 +31,7 @@ class DocumentPartContext extends AbstractRtfContext {
 
 	private final DocumentPart documentPart;
 	protected final Document document;
-	private final Style style;
+	private final ParagraphStyle style;
 	
 	private Annotation currentAnnotation;
 	
@@ -117,7 +117,7 @@ class DocumentPartContext extends AbstractRtfContext {
 		
 		// Text styles
 		case plain:
-			style.resetFontToDefaults();
+			style.resetToDefaults();
 			break;	
 		case f:
 			style.setFont(document.getFontTable().fontAt(parameter));

@@ -22,7 +22,7 @@ public interface Chunk extends Element {
 
 	public String getText();
 	
-	public Style getStyle();
+	public ParagraphStyle getStyle();
 
 	public void append(String string);
 }

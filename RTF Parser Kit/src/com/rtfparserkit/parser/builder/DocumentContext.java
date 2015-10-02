@@ -50,6 +50,9 @@ class DocumentContext extends DocumentPartContext {
 		case fonttbl:
 			stack.pushContext(new FontTableContext(document.getFontTable()));
 			break;
+		case stylesheet:
+			stack.pushContext(new StyleSheetContext(document.getStyleSheet()));
+			break;
 
 		default:
 			// Unknown destinations should be ignored.
