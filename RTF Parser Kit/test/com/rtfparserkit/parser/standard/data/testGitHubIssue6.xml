@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="deff" parameter="0"/>
+    <group>
+      <command name="fonttbl"/>
+      <group>
+        <command name="f" parameter="0"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="0"/>
+        <chars>Times New Roman;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="1"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="0"/>
+        <chars>Arial;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="2"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="0"/>
+        <chars>Courier;</chars>
+      </group>
+    </group>
+    <group>
+      <command name="colortbl"/>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+    </group>
+    <group>
+      <command name="stylesheet"/>
+      <group>
+        <command name="s" parameter="0"/>
+        <command name="ql"/>
+        <command name="fi" parameter="0"/>
+        <command name="li" parameter="0"/>
+        <command name="ri" parameter="0"/>
+        <command name="f" parameter="1"/>
+        <command name="fs" parameter="24"/>
+        <command name="cf" parameter="0"/>
+        <chars>Normal;</chars>
+      </group>
+      <group>
+        <command name="s" parameter="3"/>
+        <command name="ql"/>
+        <command name="fi" parameter="0"/>
+        <command name="li" parameter="0"/>
+        <command name="ri" parameter="0"/>
+        <command name="f" parameter="1"/>
+        <command name="fs" parameter="26"/>
+        <command name="b"/>
+        <command name="cf" parameter="0"/>
+        <chars>heading 3;</chars>
+      </group>
+      <group>
+        <command name="s" parameter="2"/>
+        <command name="ql"/>
+        <command name="fi" parameter="0"/>
+        <command name="li" parameter="0"/>
+        <command name="ri" parameter="0"/>
+        <command name="f" parameter="1"/>
+        <command name="fs" parameter="28"/>
+        <command name="b"/>
+        <command name="i"/>
+        <command name="cf" parameter="0"/>
+        <chars>heading 2;</chars>
+      </group>
+      <group>
+        <command name="s" parameter="1"/>
+        <command name="ql"/>
+        <command name="fi" parameter="0"/>
+        <command name="li" parameter="0"/>
+        <command name="ri" parameter="0"/>
+        <command name="f" parameter="1"/>
+        <command name="fs" parameter="32"/>
+        <command name="b"/>
+        <command name="cf" parameter="0"/>
+        <chars>heading 1;</chars>
+      </group>
+    </group>
+    <group>
+      <command name="listtable" optional="true"/>
+    </group>
+    <group>
+      <command name="listoverridetable" optional="true"/>
+    </group>
+    <group>
+      <command name="generator" optional="true"/>
+      <chars>iText 2.1.7 by 1T3XT</chars>
+    </group>
+    <group>
+      <command name="info"/>
+    </group>
+    <command name="paperw" parameter="12242"/>
+    <command name="paperh" parameter="15842"/>
+    <command name="margl" parameter="1425"/>
+    <command name="margr" parameter="360"/>
+    <command name="margt" parameter="950"/>
+    <command name="margb" parameter="1425"/>
+    <group>
+      <command name="header"/>
+      <command name="pard"/>
+      <command name="plain"/>
+      <command name="s" parameter="0"/>
+      <command name="qr"/>
+      <command name="fi" parameter="0"/>
+      <command name="li" parameter="0"/>
+      <command name="ri" parameter="0"/>
+      <command name="sl" parameter="320"/>
+      <command name="plain"/>
+      <command name="f" parameter="0"/>
+      <group>
+        <command name="field"/>
+        <group>
+          <command name="fldinst" optional="true"/>
+          <chars>PAGE</chars>
+        </group>
+        <group>
+          <command name="fldrslt"/>
+          <chars> </chars>
+        </group>
+      </group>
+      <command name="f" parameter="2"/>
+      <command name="fs" parameter="24"/>
+      <chars>.     </chars>
+      <command name="line"/>
+      <command name="par"/>
+    </group>
+    <command name="pgwsxn" parameter="12242"/>
+    <command name="pghsxn" parameter="15842"/>
+    <command name="marglsxn" parameter="1425"/>
+    <command name="margrsxn" parameter="360"/>
+    <command name="margtsxn" parameter="950"/>
+    <command name="margbsxn" parameter="1425"/>
+    <command name="pard"/>
+    <command name="plain"/>
+    <command name="s" parameter="0"/>
+    <command name="ql"/>
+    <command name="fi" parameter="-734"/>
+    <command name="li" parameter="734"/>
+    <command name="ri" parameter="0"/>
+    <command name="sb" parameter="480"/>
+    <command name="sa" parameter="240"/>
+    <command name="sl" parameter="240"/>
+    <command name="plain"/>
+    <command name="tx" parameter="720"/>
+    <command name="tqr"/>
+    <command name="tx" parameter="9580"/>
+    <command name="tx" parameter="9720"/>
+    <group>
+      <command name="f" parameter="2"/>
+      <command name="fs" parameter="24"/>
+      <command name="cf" parameter="0"/>
+      <command name="chcbpat" parameter="1"/>
+      <command name="tab"/>
+    </group>
+    <group>
+      <command name="f" parameter="2"/>
+      <command name="fs" parameter="24"/>
+      <command name="cf" parameter="0"/>
+      <command name="chcbpat" parameter="1"/>
+      <chars>INNEN. KÜCHE - TAG</chars>
+    </group>
+    <command name="par"/>
+    <command name="pard"/>
+    <command name="plain"/>
+    <command name="s" parameter="0"/>
+    <command name="qj"/>
+    <command name="fi" parameter="0"/>
+    <command name="li" parameter="734"/>
+    <command name="ri" parameter="864"/>
+    <command name="sb" parameter="240"/>
+    <command name="sa" parameter="240"/>
+    <command name="sl" parameter="240"/>
+    <command name="plain"/>
+    <command name="tx" parameter="1920"/>
+    <command name="tx" parameter="3840"/>
+    <command name="tx" parameter="5760"/>
+    <command name="tx" parameter="7680"/>
+    <command name="tx" parameter="9600"/>
+    <group>
+      <command name="f" parameter="2"/>
+      <command name="fs" parameter="24"/>
+      <command name="cf" parameter="0"/>
+      <command name="chcbpat" parameter="1"/>
+      <chars>Ein Absatz mit Line-Separator:</chars>
+      <command name="line"/>
+      <chars>Der geht hier auf einer neuen Zeile weiter.</chars>
+    </group>
+    <command name="par"/>
+    <command name="pard"/>
+    <command name="plain"/>
+    <command name="s" parameter="0"/>
+    <command name="ql"/>
+    <command name="fi" parameter="-734"/>
+    <command name="li" parameter="734"/>
+    <command name="ri" parameter="0"/>
+    <command name="sb" parameter="480"/>
+    <command name="sa" parameter="240"/>
+    <command name="sl" parameter="240"/>
+    <command name="plain"/>
+    <command name="tx" parameter="720"/>
+    <command name="tqr"/>
+    <command name="tx" parameter="9580"/>
+    <command name="tx" parameter="9720"/>
+    <group>
+      <command name="f" parameter="2"/>
+      <command name="fs" parameter="24"/>
+      <command name="cf" parameter="0"/>
+      <command name="chcbpat" parameter="1"/>
+      <command name="tab"/>
+    </group>
+    <group>
+      <command name="f" parameter="2"/>
+      <command name="fs" parameter="24"/>
+      <command name="cf" parameter="0"/>
+      <command name="chcbpat" parameter="1"/>
+      <chars>INNEN. KÜCHE - TAG</chars>
+    </group>
+    <command name="par"/>
+    <command name="pard"/>
+    <command name="plain"/>
+    <command name="s" parameter="0"/>
+    <command name="qj"/>
+    <command name="fi" parameter="0"/>
+    <command name="li" parameter="734"/>
+    <command name="ri" parameter="864"/>
+    <command name="sb" parameter="240"/>
+    <command name="sl" parameter="240"/>
+    <command name="plain"/>
+    <command name="tx" parameter="1920"/>
+    <command name="tx" parameter="3840"/>
+    <command name="tx" parameter="5760"/>
+    <command name="tx" parameter="7680"/>
+    <command name="tx" parameter="9600"/>
+    <group>
+      <command name="f" parameter="2"/>
+      <command name="fs" parameter="24"/>
+      <command name="cf" parameter="0"/>
+      <command name="chcbpat" parameter="1"/>
+      <chars>Hier ist die zweite Szene.</chars>
+    </group>
+    <command name="par"/>
+  </group>
+</rtf>

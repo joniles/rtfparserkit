@@ -70,4 +70,10 @@ public class StandardRtfParserTest
    {
       TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testSpecialChars");
    }
+
+   @Test
+   public void testGitHubIssue6() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testGitHubIssue6");
+   }
 }
