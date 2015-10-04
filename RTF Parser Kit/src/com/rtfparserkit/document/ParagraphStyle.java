@@ -32,10 +32,12 @@ public interface ParagraphStyle extends CharacterStyle
       LEFT, CENTER, RIGHT, DECIMAL,
    }
 
+   @Override
    public ParagraphStyle createDerivedStyle();
 
    public CharacterStyle createDerivedCharacterStyle();
 
+   @Override
    public ParagraphStyle createFlattenedStyle();
 
    public void setAlignment(Alignment alignment);

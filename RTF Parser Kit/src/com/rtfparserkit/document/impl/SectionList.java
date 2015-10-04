@@ -41,6 +41,7 @@ public class SectionList implements Iterable<DefaultSection>
    /**
     * Returns and iterator over the Sections contained in this list.
     */
+   @Override
    public Iterator<DefaultSection> iterator()
    {
       return sections.iterator();

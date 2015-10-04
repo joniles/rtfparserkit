@@ -35,31 +35,37 @@ public class DefaultAnnotation extends ParagraphList implements Annotation
    {
    }
 
+   @Override
    public void setId(String id)
    {
       this.id = id;
    }
 
+   @Override
    public String getId()
    {
       return id;
    }
 
+   @Override
    public void setAuthor(String author)
    {
       this.author = author;
    }
 
+   @Override
    public String getAuthor()
    {
       return author;
    }
 
+   @Override
    public void setDate(Date date)
    {
       this.date = date.getTime();
    }
 
+   @Override
    public Date getDate()
    {
       return new Date(date);

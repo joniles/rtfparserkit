@@ -32,6 +32,7 @@ public class DefaultSection extends ParagraphList implements Section
    private final PageMargins pageMargins = new PageMargins();
    private final PageSize pageSize = new PageSize();
 
+   @Override
    public Header createHeader()
    {
       if (header == null)
@@ -39,11 +40,13 @@ public class DefaultSection extends ParagraphList implements Section
       return header;
    }
 
+   @Override
    public Header getHeader()
    {
       return header;
    }
 
+   @Override
    public Footer createFooter()
    {
       if (footer == null)
@@ -51,6 +54,7 @@ public class DefaultSection extends ParagraphList implements Section
       return footer;
    }
 
+   @Override
    public Footer getFooter()
    {
       return footer;
@@ -66,36 +70,43 @@ public class DefaultSection extends ParagraphList implements Section
       return pageSize;
    }
 
+   @Override
    public PageSettings getPageSettings()
    {
       return new PageSettings()
       {
 
+         @Override
          public void setPageMarginLeft(int value)
          {
             pageMargins.left = value;
          }
 
+         @Override
          public void setPageMarginRight(int value)
          {
             pageMargins.right = value;
          }
 
+         @Override
          public void setPageMarginTop(int value)
          {
             pageMargins.top = value;
          }
 
+         @Override
          public void setPageMarginBottom(int value)
          {
             pageMargins.bottom = value;
          }
 
+         @Override
          public void setPageWidth(int value)
          {
             pageSize.width = value;
          }
 
+         @Override
          public void setPageHeight(int value)
          {
             pageSize.height = value;

@@ -45,16 +45,19 @@ public class DefaultColor implements Color
       this.blue = other.getBlue();
    }
 
+   @Override
    public int getRed()
    {
       return red;
    }
 
+   @Override
    public int getGreen()
    {
       return green;
    }
 
+   @Override
    public int getBlue()
    {
       return blue;

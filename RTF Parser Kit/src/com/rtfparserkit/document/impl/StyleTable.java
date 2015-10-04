@@ -33,6 +33,7 @@ class StyleTable<E extends Style> implements Iterable<E>
       styles = new HashMap<Integer, E>();
    }
 
+   @Override
    public Iterator<E> iterator()
    {
       return styles.values().iterator();

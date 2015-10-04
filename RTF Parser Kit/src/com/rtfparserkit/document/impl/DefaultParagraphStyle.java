@@ -73,6 +73,7 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
       return new DefaultParagraphStyle(this);
    }
 
+   @Override
    public CharacterStyle createDerivedCharacterStyle()
    {
       return new DefaultCharacterStyle(this);
@@ -115,12 +116,14 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
       return parent == other.parent && alignment == other.alignment && spacingTop == other.spacingTop && spacingBottom == other.spacingBottom && firstLineIndent == other.firstLineIndent && leftIndent == other.leftIndent && rightIndent == other.rightIndent && lineSpacing == other.lineSpacing;
    }
 
+   @Override
    public void setAlignment(Alignment alignment)
    {
       this.alignment = alignment;
       overriddenProperties.add(Property.ALIGNMENT);
    }
 
+   @Override
    public Alignment getAlignment()
    {
       if (overriddenProperties.contains(Property.ALIGNMENT))
@@ -129,12 +132,14 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
          return parent.getAlignment();
    }
 
+   @Override
    public void setSpacingTop(float value)
    {
       spacingTop = value;
       overriddenProperties.add(Property.SPACING_TOP);
    }
 
+   @Override
    public float getSpacingTop()
    {
       if (overriddenProperties.contains(Property.SPACING_TOP))
@@ -143,12 +148,14 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
          return parent.getSpacingTop();
    }
 
+   @Override
    public void setSpacingBottom(float value)
    {
       spacingBottom = value;
       overriddenProperties.add(Property.SPACING_BOTTOM);
    }
 
+   @Override
    public float getSpacingBottom()
    {
       if (overriddenProperties.contains(Property.SPACING_BOTTOM))
@@ -157,12 +164,14 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
          return parent.getSpacingBottom();
    }
 
+   @Override
    public void setFirstLineIndent(float value)
    {
       firstLineIndent = value;
       overriddenProperties.add(Property.FIRST_LINE_INDENT);
    }
 
+   @Override
    public float getFirstLineIndent()
    {
       if (overriddenProperties.contains(Property.FIRST_LINE_INDENT))
@@ -171,12 +180,14 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
          return parent.getFirstLineIndent();
    }
 
+   @Override
    public void setLeftIndent(float value)
    {
       leftIndent = value;
       overriddenProperties.add(Property.LEFT_INDENT);
    }
 
+   @Override
    public float getLeftIndent()
    {
       if (overriddenProperties.contains(Property.LEFT_INDENT))
@@ -185,12 +196,14 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
          return parent.getLeftIndent();
    }
 
+   @Override
    public void setRightIndent(float value)
    {
       rightIndent = value;
       overriddenProperties.add(Property.RIGHT_INDENT);
    }
 
+   @Override
    public float getRightIndent()
    {
       if (overriddenProperties.contains(Property.RIGHT_INDENT))
@@ -199,12 +212,14 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
          return parent.getRightIndent();
    }
 
+   @Override
    public void setLineSpacing(float value)
    {
       lineSpacing = value;
       overriddenProperties.add(Property.LINE_SPACING);
    }
 
+   @Override
    public float getLineSpacing()
    {
       if (overriddenProperties.contains(Property.LINE_SPACING))
@@ -213,6 +228,7 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
          return parent.getLineSpacing();
    }
 
+   @Override
    public void addTab(float position, TabAlignment aligment)
    {
       // TODO Auto-generated method stub

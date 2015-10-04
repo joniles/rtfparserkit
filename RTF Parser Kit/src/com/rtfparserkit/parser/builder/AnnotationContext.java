@@ -47,6 +47,7 @@ class AnnotationContext extends DocumentPartContext
          case atndate:
             stack.pushContext(new TimeContext(new DateListener()
             {
+               @Override
                public void setDate(Date date)
                {
                   annotation.setDate(date);

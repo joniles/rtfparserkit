@@ -26,36 +26,43 @@ import com.rtfparserkit.rtf.Command;
 class NullContext implements RtfContext
 {
 
+   @Override
    public void processGroupStart(RtfContextStack stack)
    {
       stack.pushContext(new NullContext());
    }
 
+   @Override
    public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
    {
       processGroupStart(stack);
    }
 
+   @Override
    public void processGroupEnd(RtfContextStack stack)
    {
       stack.popContext();
    }
 
+   @Override
    public void processCharacterBytes(byte[] data)
    {
       // Ignore
    }
 
+   @Override
    public void processBinaryBytes(byte[] data)
    {
       // Ignore
    }
 
+   @Override
    public void processString(String string)
    {
       // Ignore
    }
 
+   @Override
    public void processCommand(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
    {
       // Ignore

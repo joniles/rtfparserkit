@@ -30,16 +30,19 @@ public class DefaultFont implements Font
       name = fontName;
    }
 
+   @Override
    public void setName(String name)
    {
       this.name = name;
    }
 
+   @Override
    public String getName()
    {
       return name;
    }
 
+   @Override
    public boolean equals(Font object)
    {
       if (object == this)

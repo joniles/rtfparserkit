@@ -44,11 +44,13 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph
       this.style = style;
    }
 
+   @Override
    public Iterator<Element> iterator()
    {
       return chunks.iterator();
    }
 
+   @Override
    public String getText()
    {
       StringBuilder builder = new StringBuilder();
@@ -60,16 +62,19 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph
       return builder.toString();
    }
 
+   @Override
    public int countElements()
    {
       return chunks.size();
    }
 
+   @Override
    public Element elementAt(int index)
    {
       return chunks.get(index);
    }
 
+   @Override
    public ParagraphStyle getStyle()
    {
       return style;

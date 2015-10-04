@@ -32,11 +32,13 @@ class DefaultStyleSheet implements StyleSheet
       characterStyleTable = new DefaultCharacterStyleTable();
    }
 
+   @Override
    public ParagraphStyleTable getParagraphStyleTable()
    {
       return paragraphStyleTable;
    }
 
+   @Override
    public CharacterStyleTable getCharacterStyleTable()
    {
       return characterStyleTable;

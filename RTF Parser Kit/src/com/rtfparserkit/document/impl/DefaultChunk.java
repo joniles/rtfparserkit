@@ -33,16 +33,19 @@ public class DefaultChunk implements Chunk
       this.style = style;
    }
 
+   @Override
    public String getText()
    {
       return stringBuilder.toString();
    }
 
+   @Override
    public ParagraphStyle getStyle()
    {
       return style;
    }
 
+   @Override
    public void append(String string)
    {
       stringBuilder.append(string);

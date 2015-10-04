@@ -42,38 +42,45 @@ abstract class AbstractRtfContext implements RtfContext
       this.throwExceptions = throwExceptions;
    }
 
+   @Override
    public void processGroupStart(RtfContextStack stack)
    {
       handleUnexpectedEvent("Unexpected anonymous group start");
       stack.pushContext(this);
    }
 
+   @Override
    public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
    {
       handleUnexpectedEvent("Unexpected destination group start");
       stack.pushContext(this);
    }
 
+   @Override
    public void processGroupEnd(RtfContextStack stack)
    {
       stack.popContext();
    }
 
+   @Override
    public void processCharacterBytes(byte[] data)
    {
       handleUnexpectedEvent("Unexpected character bytes");
    }
 
+   @Override
    public void processBinaryBytes(byte[] data)
    {
       handleUnexpectedEvent("Unexpected binary bytes");
    }
 
+   @Override
    public void processString(String string)
    {
       handleUnexpectedEvent("Unexpected string '" + string + "'");
    }
 
+   @Override
    public void processCommand(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
    {
       handleUnexpectedEvent("Unexpected command '" + command + "'");

@@ -48,19 +48,23 @@ public class DocumentBuilder implements IRtfListener
       debugEvents = debug;
    }
 
+   @Override
    public void processDocumentStart()
    {
    }
 
+   @Override
    public void processDocumentEnd()
    {
    }
 
+   @Override
    public void processGroupStart()
    {
       atGroupStart = true;
    }
 
+   @Override
    public void processGroupEnd()
    {
       handleDelayedGroupStart();
@@ -71,6 +75,7 @@ public class DocumentBuilder implements IRtfListener
       atGroupStart = false;
    }
 
+   @Override
    public void processCharacterBytes(byte[] data)
    {
       handleDelayedGroupStart();
@@ -79,6 +84,7 @@ public class DocumentBuilder implements IRtfListener
       stack.getContext().processCharacterBytes(data);
    }
 
+   @Override
    public void processBinaryBytes(byte[] data)
    {
       handleDelayedGroupStart();
@@ -87,6 +93,7 @@ public class DocumentBuilder implements IRtfListener
       stack.getContext().processBinaryBytes(data);
    }
 
+   @Override
    public void processString(String string)
    {
       handleDelayedGroupStart();
@@ -95,6 +102,7 @@ public class DocumentBuilder implements IRtfListener
       stack.getContext().processString(string);
    }
 
+   @Override
    public void processCommand(Command command, int parameter, boolean hasParameter, boolean optional)
    {
       if (atGroupStart)

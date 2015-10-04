@@ -21,8 +21,8 @@ import com.rtfparserkit.document.Document;
 import com.rtfparserkit.document.DocumentSettings;
 import com.rtfparserkit.document.PageSettings;
 import com.rtfparserkit.document.Paragraph;
-import com.rtfparserkit.document.Section;
 import com.rtfparserkit.document.ParagraphStyle;
+import com.rtfparserkit.document.Section;
 
 /**
  * Default implementation of Document. Note that Document itself is also
@@ -39,16 +39,19 @@ public class DefaultDocument extends SectionList implements Document
    private final PageMargins pageMargins = new PageMargins();
    private final PageSize pageSize = new PageSize();
 
+   @Override
    public DefaultFontTable getFontTable()
    {
       return fonts;
    }
 
+   @Override
    public DefaultColorTable getColorTable()
    {
       return colors;
    }
 
+   @Override
    public DefaultStyleSheet getStyleSheet()
    {
       return styles;
@@ -64,40 +67,48 @@ public class DefaultDocument extends SectionList implements Document
       return pageSize;
    }
 
+   @Override
    public DocumentSettings getDocumentSettings()
    {
       return new DocumentSettings()
       {
 
+         @Override
          public PageSettings getPageSettings()
          {
             return new PageSettings()
             {
+               @Override
                public void setPageMarginLeft(int value)
                {
                   pageMargins.left = value;
                }
 
+               @Override
                public void setPageMarginRight(int value)
                {
                   pageMargins.right = value;
                }
 
+               @Override
                public void setPageMarginTop(int value)
                {
                   pageMargins.top = value;
                }
 
+               @Override
                public void setPageMarginBottom(int value)
                {
                   pageMargins.bottom = value;
                }
 
+               @Override
                public void setPageWidth(int value)
                {
                   pageSize.width = value;
                }
 
+               @Override
                public void setPageHeight(int value)
                {
                   pageSize.height = value;
@@ -113,6 +124,7 @@ public class DefaultDocument extends SectionList implements Document
     * @param text The string to append
     * @param style The Style in which the appended string is to appear.
     */
+   @Override
    public void append(String text, ParagraphStyle style)
    {
       getLastSection().append(text, style);
@@ -124,6 +136,7 @@ public class DefaultDocument extends SectionList implements Document
     * 
     * @param lastStyle The Style to be set on the previous paragraph.
     */
+   @Override
    public void nextParagraph(ParagraphStyle lastStyle)
    {
       getLastSection().nextParagraph(lastStyle);
@@ -132,6 +145,7 @@ public class DefaultDocument extends SectionList implements Document
    /**
     * Creates a new line at the last Section.
     */
+   @Override
    public void nextLine()
    {
       getLastSection().nextLine();
@@ -140,6 +154,7 @@ public class DefaultDocument extends SectionList implements Document
    /**
     * @return The default Style created by the last Section.
     */
+   @Override
    public ParagraphStyle createDefaultStyle()
    {
       return getLastSection().createDefaultStyle();
@@ -148,6 +163,7 @@ public class DefaultDocument extends SectionList implements Document
    /**
     * @return The total count of all paragraphs contained in all Sections.
     */
+   @Override
    public int countParagraphs()
    {
       int count = 0;
@@ -160,6 +176,7 @@ public class DefaultDocument extends SectionList implements Document
     * @param index The index of the paragraph relative to the total paragraph
     * 		count of all Sections.
     */
+   @Override
    public Paragraph paragraphAt(int index)
    {
       int originalIndex = index;
@@ -182,6 +199,7 @@ public class DefaultDocument extends SectionList implements Document
     * 
     * @return The appended annotation
     */
+   @Override
    public Annotation appendAnnotation()
    {
       return getLastSection().appendAnnotation();

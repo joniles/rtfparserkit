@@ -25,6 +25,7 @@ import com.rtfparserkit.document.ParagraphStyleTable;
 public class DefaultParagraphStyleTable extends StyleTable<ParagraphStyle>implements ParagraphStyleTable
 {
 
+   @Override
    public ParagraphStyle createStyle()
    {
       return new DefaultParagraphStyle();

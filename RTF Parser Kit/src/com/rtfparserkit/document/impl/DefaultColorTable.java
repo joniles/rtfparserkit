@@ -35,16 +35,19 @@ public class DefaultColorTable implements ColorTable
       colors = new ArrayList<DefaultColor>();
    }
 
+   @Override
    public void addColor(int red, int green, int blue)
    {
       colors.add(new DefaultColor(red, green, blue));
    }
 
+   @Override
    public int countColors()
    {
       return colors.size();
    }
 
+   @Override
    public Color colorAt(int index)
    {
       return colors.get(index);

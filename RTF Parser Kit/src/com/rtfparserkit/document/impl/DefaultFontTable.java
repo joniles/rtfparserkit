@@ -17,16 +17,19 @@ public class DefaultFontTable implements FontTable
       fonts = new ArrayList<DefaultFont>();
    }
 
+   @Override
    public void addFont(String name, String alternativeName, String fileName, FontFamily fontFamily)
    {
       fonts.add(new DefaultFont(name));
    }
 
+   @Override
    public int countFonts()
    {
       return fonts.size();
    }
 
+   @Override
    public Font fontAt(int index)
    {
       return fonts.get(index);

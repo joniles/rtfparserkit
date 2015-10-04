@@ -34,21 +34,25 @@ abstract class DefaultStyle implements Style
       overriddenProperties = EnumSet.noneOf(Property.class);
    }
 
+   @Override
    public void setName(String name)
    {
       this.name = name;
    }
 
+   @Override
    public String getName()
    {
       return name;
    }
 
+   @Override
    public EnumSet<Property> getOverriddenProperties()
    {
       return overriddenProperties;
    }
 
+   @Override
    public boolean equals(Style object)
    {
       if (object == this)

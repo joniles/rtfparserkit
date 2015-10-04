@@ -46,6 +46,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
    /**
     * Returns and iterator over the Paragraphs contained in this list.
     */
+   @Override
    public Iterator<Paragraph> iterator()
    {
       return new ParagraphIterator(paragraphs.iterator());
@@ -55,6 +56,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
     * Finalizes the current paragraph by appending a line-break character '\n'.
     * Starts the next paragraph by appending a new empty Paragraph to the list.
     */
+   @Override
    public void nextParagraph(ParagraphStyle lastStyle)
    {
       if (countParagraphs() > 0)
@@ -66,6 +68,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
     * Implements nextLine() by appending the Unicode character "Line Separator"
     * to the current paragraph.
     */
+   @Override
    public void nextLine()
    {
       getLastParagraph().append("\u2028");
@@ -74,6 +77,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
    /**
     * @return The concatenated text of all contained Paragraphs.
     */
+   @Override
    public String getText()
    {
       StringBuilder builder = new StringBuilder();
@@ -82,6 +86,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
       return builder.toString();
    }
 
+   @Override
    public ParagraphStyle createDefaultStyle()
    {
       return new DefaultParagraphStyle();
@@ -99,6 +104,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
     * 
     * @see #nextParagraph()
     */
+   @Override
    public void append(String text, ParagraphStyle style)
    {
       int offset = 0;
@@ -126,6 +132,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
       append(string, style);
    }
 
+   @Override
    public Annotation appendAnnotation()
    {
       Annotation annotation = new DefaultAnnotation();
@@ -156,6 +163,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
    /**
     * @return The number of paragraphs in this list.
     */
+   @Override
    public int countParagraphs()
    {
       return paragraphs.size();
@@ -169,6 +177,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
     * @return The paragraph at the given index. Throws an
     * 		IndexOutOfBoundsExpception if index is out of bounds.
     */
+   @Override
    public Paragraph paragraphAt(int index)
    {
       return paragraphs.get(index);
@@ -184,16 +193,19 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
          internalIterator = iterator;
       }
 
+      @Override
       public boolean hasNext()
       {
          return internalIterator.hasNext();
       }
 
+      @Override
       public Paragraph next()
       {
          return internalIterator.next();
       }
 
+      @Override
       public void remove()
       {
          internalIterator.remove();

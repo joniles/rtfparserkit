@@ -25,6 +25,7 @@ import com.rtfparserkit.document.CharacterStyleTable;
 public class DefaultCharacterStyleTable extends StyleTable<CharacterStyle>implements CharacterStyleTable
 {
 
+   @Override
    public CharacterStyle createStyle()
    {
       return new DefaultCharacterStyle();
