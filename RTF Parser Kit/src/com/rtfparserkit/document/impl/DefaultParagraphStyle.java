@@ -27,8 +27,7 @@ import com.rtfparserkit.document.Style;
  */
 public class DefaultParagraphStyle extends DefaultCharacterStyle implements ParagraphStyle
 {
-
-   private final ParagraphStyle parent;
+   private ParagraphStyle parent;
 
    private Alignment alignment;
    private float spacingTop;
@@ -49,6 +48,12 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
    {
       super(other);
       parent = other;
+   }
+
+   @Override
+   public ParagraphStyle getParent()
+   {
+      return parent;
    }
 
    @Override
@@ -114,6 +119,23 @@ public class DefaultParagraphStyle extends DefaultCharacterStyle implements Para
 
       DefaultParagraphStyle other = (DefaultParagraphStyle) object;
       return parent == other.parent && alignment == other.alignment && spacingTop == other.spacingTop && spacingBottom == other.spacingBottom && firstLineIndent == other.firstLineIndent && leftIndent == other.leftIndent && rightIndent == other.rightIndent && lineSpacing == other.lineSpacing;
+   }
+
+   @Override
+   public void setTo(Style other)
+   {
+      if (other == this)
+         return;
+      if (other == null)
+         throw new IllegalArgumentException("Style must not be null");
+      if (!(other instanceof CharacterStyle))
+         throw new IllegalArgumentException("Incompatible type of Style");
+
+      ParagraphStyle style = (ParagraphStyle) other;
+
+      copyFrom(style);
+      parent = style.getParent();
+      overriddenProperties = style.getOverriddenProperties();
    }
 
    @Override

@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.rtfparserkit.document.Annotation;
+import com.rtfparserkit.document.CharacterStyle;
 import com.rtfparserkit.document.DocumentPart;
 import com.rtfparserkit.document.Paragraph;
 import com.rtfparserkit.document.ParagraphStyle;
@@ -57,7 +58,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
     * Starts the next paragraph by appending a new empty Paragraph to the list.
     */
    @Override
-   public void nextParagraph(ParagraphStyle lastStyle)
+   public void nextParagraph(CharacterStyle lastStyle)
    {
       if (countParagraphs() > 0)
          getLastParagraph().end(lastStyle);
@@ -105,7 +106,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
     * @see #nextParagraph()
     */
    @Override
-   public void append(String text, ParagraphStyle style)
+   public void append(String text, CharacterStyle style)
    {
       int offset = 0;
       while (offset < text.length())
@@ -128,7 +129,7 @@ public class ParagraphList implements Iterable<Paragraph>, DocumentPart
 
    public void append(String string)
    {
-      ParagraphStyle style = getLastParagraph().getLastStyle();
+      CharacterStyle style = getLastParagraph().getLastStyle();
       append(string, style);
    }
 

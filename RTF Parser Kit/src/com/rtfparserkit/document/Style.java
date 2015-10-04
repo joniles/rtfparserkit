@@ -23,7 +23,6 @@ import java.util.EnumSet;
  */
 public interface Style
 {
-
    public enum Property
    {
       ALIGNMENT, SPACING_TOP, SPACING_BOTTOM, FIRST_LINE_INDENT, LEFT_INDENT, RIGHT_INDENT, LINE_SPACING, TABS, FONT, FONT_SIZE, BOLD, ITALIC, UNDERLINED, STRIKE_OUT, CAPS, BACKGROUND_COLOR, FOREGROUND_COLOR
@@ -33,10 +32,13 @@ public interface Style
 
    public String getName();
 
+   public Style getParent();
+
    public EnumSet<Property> getOverriddenProperties();
 
    public void resetToDefaults();
 
    public boolean equals(Style other);
 
+   public void setTo(Style other);
 }

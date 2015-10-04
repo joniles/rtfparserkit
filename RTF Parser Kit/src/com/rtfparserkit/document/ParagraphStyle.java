@@ -21,7 +21,6 @@ package com.rtfparserkit.document;
  */
 public interface ParagraphStyle extends CharacterStyle
 {
-
    public enum Alignment
    {
       LEFT, RIGHT, CENTER, JUSTIFIED, DISTRIBUTED,
@@ -39,6 +38,9 @@ public interface ParagraphStyle extends CharacterStyle
 
    @Override
    public ParagraphStyle createFlattenedStyle();
+
+   @Override
+   public ParagraphStyle getParent();
 
    public void setAlignment(Alignment alignment);
 
@@ -69,5 +71,4 @@ public interface ParagraphStyle extends CharacterStyle
    public float getLineSpacing();
 
    public void addTab(float position, TabAlignment aligment);
-
 }

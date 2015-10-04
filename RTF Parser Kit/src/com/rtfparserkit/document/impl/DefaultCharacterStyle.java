@@ -28,8 +28,7 @@ import com.rtfparserkit.document.Style;
  */
 public class DefaultCharacterStyle extends DefaultStyle implements CharacterStyle
 {
-
-   private final CharacterStyle parent;
+   private CharacterStyle parent;
 
    private Font font;
    private float fontSize;
@@ -53,6 +52,12 @@ public class DefaultCharacterStyle extends DefaultStyle implements CharacterStyl
    public DefaultCharacterStyle(CharacterStyle other)
    {
       parent = other;
+   }
+
+   @Override
+   public CharacterStyle getParent()
+   {
+      return parent;
    }
 
    @Override
@@ -118,6 +123,23 @@ public class DefaultCharacterStyle extends DefaultStyle implements CharacterStyl
 
       DefaultCharacterStyle other = (DefaultCharacterStyle) object;
       return parent == other.parent && (font != null ? font.equals(other.font) : other.font == null) && fontSize == other.fontSize && bold == other.bold && italic == other.italic && underlineStyle == other.underlineStyle && strikeOut == other.strikeOut && caps == other.caps && backgroundColor == other.backgroundColor && foregroundColor == other.foregroundColor;
+   }
+
+   @Override
+   public void setTo(Style other)
+   {
+      if (other == this)
+         return;
+      if (other == null)
+         throw new IllegalArgumentException("Style must not be null");
+      if (!(other instanceof CharacterStyle))
+         throw new IllegalArgumentException("Incompatible type of Style");
+
+      CharacterStyle style = (CharacterStyle) other;
+
+      copyFrom(style);
+      parent = style.getParent();
+      overriddenProperties = style.getOverriddenProperties();
    }
 
    @Override

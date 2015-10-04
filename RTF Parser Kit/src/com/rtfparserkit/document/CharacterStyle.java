@@ -21,7 +21,6 @@ package com.rtfparserkit.document;
  */
 public interface CharacterStyle extends Style
 {
-
    public enum UnderlineStyle
    {
       NONE, SINGLE, DOUBLE, WORD, DOTTED, DASHED, DASH_DOTTED, DASH_DOT_DOTTED, LONG_DASHED, THICK, THICK_DOTTED, THICK_DASHED, THICK_DASH_DOTTED, THICK_DASH_DOT_DOTTED, THICK_LONG_DASHED, WAVE, HEAVY_WAVE, DOUBLE_WAVE
@@ -30,6 +29,9 @@ public interface CharacterStyle extends Style
    public CharacterStyle createDerivedStyle();
 
    public CharacterStyle createFlattenedStyle();
+
+   @Override
+   public CharacterStyle getParent();
 
    public void setFont(Font font);
 
@@ -66,5 +68,4 @@ public interface CharacterStyle extends Style
    public void setForegroundColor(Color color);
 
    public Color getForegroundColor();
-
 }
