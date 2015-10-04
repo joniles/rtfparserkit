@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
@@ -20,12 +21,13 @@ package com.rtfparserkit.document;
  * sheet contains four style tables: Paragraph styles, character styles,
  * section styles and table styles. Each have their own index name space.
  */
-public interface StyleSheet {
+public interface StyleSheet
+{
 
-	public ParagraphStyleTable getParagraphStyleTable();
+   public ParagraphStyleTable getParagraphStyleTable();
 
-	public CharacterStyleTable getCharacterStyleTable();
+   public CharacterStyleTable getCharacterStyleTable();
 
-	// TODO: Section style table
-	// TODO: Table style table
+   // TODO: Section style table
+   // TODO: Table style table
 }

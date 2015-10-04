@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * A chunk of text with a certain style.
  */
-public interface Chunk extends Element {
+public interface Chunk extends Element
+{
 
-	public String getText();
-	
-	public ParagraphStyle getStyle();
+   public String getText();
 
-	public void append(String string);
+   public ParagraphStyle getStyle();
+
+   public void append(String string);
 }

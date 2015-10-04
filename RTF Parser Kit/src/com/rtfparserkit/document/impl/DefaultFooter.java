@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.Footer;
 
-
 /**
  * Default Footer implementation.
  */
-public class DefaultFooter extends ParagraphList implements Footer {
+public class DefaultFooter extends ParagraphList implements Footer
+{
 
 }

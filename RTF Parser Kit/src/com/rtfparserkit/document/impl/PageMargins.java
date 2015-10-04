@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 /**
  * Simple parameter storage for page margins.
  */
-public class PageMargins {
-	public int left;
-	public int right;
-	public int top;
-	public int bottom;
+public class PageMargins
+{
+   public int left;
+   public int right;
+   public int top;
+   public int bottom;
 }

@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for adding a color to the global color table and retrieving
  * a Color instance at a specific index.
  */
-public interface ColorTable {
+public interface ColorTable
+{
 
-	public void addColor(int red, int green, int blue);
-	
-	public int countColors();
-	
-	public Color colorAt(int index);
+   public void addColor(int red, int green, int blue);
+
+   public int countColors();
+
+   public Color colorAt(int index);
 }

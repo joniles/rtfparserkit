@@ -13,17 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for paragraph functionality. A Paragraph contains Elements
  * which currently may be of type Chunk and Annotation.
  */
-public interface Paragraph extends Iterable<Element>, Text {
+public interface Paragraph extends Iterable<Element>, Text
+{
+   public int countElements();
 
-	public int countElements();
-	
-	public Element elementAt(int index);
+   public Element elementAt(int index);
 
-	public ParagraphStyle getStyle();
+   public ParagraphStyle getStyle();
 }

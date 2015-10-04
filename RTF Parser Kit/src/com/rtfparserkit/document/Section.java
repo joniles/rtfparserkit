@@ -13,21 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for starting a new section in a document. A section can have
  * its own paper settings (for example orientation and margins).
  */
-public interface Section extends DocumentPart, Iterable<Paragraph> {
+public interface Section extends DocumentPart, Iterable<Paragraph>
+{
 
-	public Header createHeader();
-	
-	public Footer createFooter();
+   public Header createHeader();
 
-	public Header getHeader();
-	
-	public Footer getFooter();
-	
-	public PageSettings getPageSettings();
+   public Footer createFooter();
+
+   public Header getHeader();
+
+   public Footer getFooter();
+
+   public PageSettings getPageSettings();
 }

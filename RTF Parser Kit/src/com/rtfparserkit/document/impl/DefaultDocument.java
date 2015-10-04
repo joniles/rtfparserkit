@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.Annotation;
@@ -28,137 +29,161 @@ import com.rtfparserkit.document.ParagraphStyle;
  * a DocumentPart. It implements relevant functionality by forwarding to the
  * last Section.
  */
-public class DefaultDocument extends SectionList implements Document {
+public class DefaultDocument extends SectionList implements Document
+{
 
-	private final DefaultColorTable colors = new DefaultColorTable();
-	private final DefaultFontTable fonts = new DefaultFontTable();
-	private final DefaultStyleSheet styles = new DefaultStyleSheet();
-	
-	private final PageMargins pageMargins = new PageMargins(); 
-	private final PageSize pageSize = new PageSize(); 
-	
-	public DefaultFontTable getFontTable() {
-		return fonts;
-	}
+   private final DefaultColorTable colors = new DefaultColorTable();
+   private final DefaultFontTable fonts = new DefaultFontTable();
+   private final DefaultStyleSheet styles = new DefaultStyleSheet();
 
-	public DefaultColorTable getColorTable() {
-		return colors;
-	}
-	
-	public DefaultStyleSheet getStyleSheet() {
-		return styles;
-	}
-	
-	public PageMargins getPageMargins() {
-		return pageMargins;
-	}
+   private final PageMargins pageMargins = new PageMargins();
+   private final PageSize pageSize = new PageSize();
 
-	public PageSize getPageSize() {
-		return pageSize;
-	}
+   public DefaultFontTable getFontTable()
+   {
+      return fonts;
+   }
 
-	public DocumentSettings getDocumentSettings() {
-		return new DocumentSettings() {
+   public DefaultColorTable getColorTable()
+   {
+      return colors;
+   }
 
-			public PageSettings getPageSettings() {
-				return new PageSettings() {
-					public void setPageMarginLeft(int value) {
-						pageMargins.left = value;
-					}
+   public DefaultStyleSheet getStyleSheet()
+   {
+      return styles;
+   }
 
-					public void setPageMarginRight(int value) {
-						pageMargins.right = value;
-					}
+   public PageMargins getPageMargins()
+   {
+      return pageMargins;
+   }
 
-					public void setPageMarginTop(int value) {
-						pageMargins.top = value;
-					}
+   public PageSize getPageSize()
+   {
+      return pageSize;
+   }
 
-					public void setPageMarginBottom(int value) {
-						pageMargins.bottom = value;
-					}
+   public DocumentSettings getDocumentSettings()
+   {
+      return new DocumentSettings()
+      {
 
-					public void setPageWidth(int value) {
-						pageSize.width = value;
-					}
+         public PageSettings getPageSettings()
+         {
+            return new PageSettings()
+            {
+               public void setPageMarginLeft(int value)
+               {
+                  pageMargins.left = value;
+               }
 
-					public void setPageHeight(int value) {
-						pageSize.height = value;
-					}
-				};
-			}
-		};
-	}
+               public void setPageMarginRight(int value)
+               {
+                  pageMargins.right = value;
+               }
 
-	/**
-	 * Appends a string of text to the last Section.
-	 * 
-	 * @param text The string to append
-	 * @param style The Style in which the appended string is to appear.
-	 */
-	public void append(String text, ParagraphStyle style) {
-		getLastSection().append(text, style);
-	}
+               public void setPageMarginTop(int value)
+               {
+                  pageMargins.top = value;
+               }
 
-	/**
-	 * Starts a new Paragraph at the last Section and sets the Style of the
-	 * previous last Paragraph.
-	 * 
-	 * @param lastStyle The Style to be set on the previous paragraph.
-	 */
-	public void nextParagraph(ParagraphStyle lastStyle) {
-		getLastSection().nextParagraph(lastStyle);
-	}
+               public void setPageMarginBottom(int value)
+               {
+                  pageMargins.bottom = value;
+               }
 
-	/**
-	 * Creates a new line at the last Section.
-	 */
-	public void nextLine() {
-		getLastSection().nextLine();
-	}
+               public void setPageWidth(int value)
+               {
+                  pageSize.width = value;
+               }
 
-	/**
-	 * @return The default Style created by the last Section.
-	 */
-	public ParagraphStyle createDefaultStyle() {
-		return getLastSection().createDefaultStyle();
-	}
+               public void setPageHeight(int value)
+               {
+                  pageSize.height = value;
+               }
+            };
+         }
+      };
+   }
 
-	/**
-	 * @return The total count of all paragraphs contained in all Sections.
-	 */
-	public int countParagraphs() {
-		int count = 0;
-		for (Section section : this)
-			count += section.countParagraphs();
-		return count;
-	}
+   /**
+    * Appends a string of text to the last Section.
+    * 
+    * @param text The string to append
+    * @param style The Style in which the appended string is to appear.
+    */
+   public void append(String text, ParagraphStyle style)
+   {
+      getLastSection().append(text, style);
+   }
 
-	/**
-	 * @param index The index of the paragraph relative to the total paragraph
-	 * 		count of all Sections.
-	 */
-	public Paragraph paragraphAt(int index) {
-		int originalIndex = index;
-		for (Section section : this) {
-			int paragrapgsInSection = section.countParagraphs();
-			if (index > paragrapgsInSection) {
-				index -= paragrapgsInSection;
-				continue;
-			}
-			return section.paragraphAt(index);
-		}
-		
-		throw new IndexOutOfBoundsException("paragraphs in section: "
-			+ countParagraphs() + ", requested index: " + originalIndex);
-	}
+   /**
+    * Starts a new Paragraph at the last Section and sets the Style of the
+    * previous last Paragraph.
+    * 
+    * @param lastStyle The Style to be set on the previous paragraph.
+    */
+   public void nextParagraph(ParagraphStyle lastStyle)
+   {
+      getLastSection().nextParagraph(lastStyle);
+   }
 
-	/**
-	 * Creates a new Annotation instance and appends it to the last Section.
-	 * 
-	 * @return The appended annotation
-	 */
-	public Annotation appendAnnotation() {
-		return getLastSection().appendAnnotation();
-	}
+   /**
+    * Creates a new line at the last Section.
+    */
+   public void nextLine()
+   {
+      getLastSection().nextLine();
+   }
+
+   /**
+    * @return The default Style created by the last Section.
+    */
+   public ParagraphStyle createDefaultStyle()
+   {
+      return getLastSection().createDefaultStyle();
+   }
+
+   /**
+    * @return The total count of all paragraphs contained in all Sections.
+    */
+   public int countParagraphs()
+   {
+      int count = 0;
+      for (Section section : this)
+         count += section.countParagraphs();
+      return count;
+   }
+
+   /**
+    * @param index The index of the paragraph relative to the total paragraph
+    * 		count of all Sections.
+    */
+   public Paragraph paragraphAt(int index)
+   {
+      int originalIndex = index;
+      for (Section section : this)
+      {
+         int paragrapgsInSection = section.countParagraphs();
+         if (index > paragrapgsInSection)
+         {
+            index -= paragrapgsInSection;
+            continue;
+         }
+         return section.paragraphAt(index);
+      }
+
+      throw new IndexOutOfBoundsException("paragraphs in section: " + countParagraphs() + ", requested index: " + originalIndex);
+   }
+
+   /**
+    * Creates a new Annotation instance and appends it to the last Section.
+    * 
+    * @return The appended annotation
+    */
+   public Annotation appendAnnotation()
+   {
+      return getLastSection().appendAnnotation();
+   }
 }

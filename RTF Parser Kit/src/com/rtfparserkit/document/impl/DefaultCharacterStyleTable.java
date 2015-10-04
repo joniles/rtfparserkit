@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.CharacterStyle;
@@ -21,11 +22,12 @@ import com.rtfparserkit.document.CharacterStyleTable;
 /**
  * Default CharacterStyleTable implementation.
  */
-public class DefaultCharacterStyleTable extends StyleTable<CharacterStyle>
-	implements CharacterStyleTable {
+public class DefaultCharacterStyleTable extends StyleTable<CharacterStyle>implements CharacterStyleTable
+{
 
-	public CharacterStyle createStyle() {
-		return new DefaultCharacterStyle();
-	}
+   public CharacterStyle createStyle()
+   {
+      return new DefaultCharacterStyle();
+   }
 
 }

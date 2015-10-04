@@ -13,20 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for style table in which paragraph styles can be
  * retrieved by their ID.
  */
-public interface ParagraphStyleTable extends Iterable<ParagraphStyle> {
+public interface ParagraphStyleTable extends Iterable<ParagraphStyle>
+{
 
-	public ParagraphStyle createStyle();
-	
-	public void addStyle(int id, ParagraphStyle style);
-	
-	public ParagraphStyle styleFor(int id);
-	
-	public int countStyles();
+   public ParagraphStyle createStyle();
+
+   public void addStyle(int id, ParagraphStyle style);
+
+   public ParagraphStyle styleFor(int id);
+
+   public int countStyles();
 
 }

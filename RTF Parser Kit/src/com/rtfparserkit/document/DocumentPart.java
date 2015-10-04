@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
@@ -20,19 +21,20 @@ package com.rtfparserkit.document;
  * String representation of all contained text can be obtained via the Text
  * functionality.
  */
-public interface DocumentPart extends Text {
+public interface DocumentPart extends Text
+{
 
-	public int countParagraphs();
-	
-	public Paragraph paragraphAt(int index);
+   public int countParagraphs();
 
-	public void append(String text, ParagraphStyle style);
-	
-	public void nextParagraph(ParagraphStyle lastStyle);
-	
-	public void nextLine();
+   public Paragraph paragraphAt(int index);
 
-	public Annotation appendAnnotation();
-	
-	public ParagraphStyle createDefaultStyle();
+   public void append(String text, ParagraphStyle style);
+
+   public void nextParagraph(ParagraphStyle lastStyle);
+
+   public void nextLine();
+
+   public Annotation appendAnnotation();
+
+   public ParagraphStyle createDefaultStyle();
 }

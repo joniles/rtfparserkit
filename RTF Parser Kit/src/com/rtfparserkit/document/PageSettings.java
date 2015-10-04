@@ -13,22 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for controlling page settings
  */
-public interface PageSettings {
+public interface PageSettings
+{
 
-	public void setPageMarginLeft(int value);
-	
-	public void setPageMarginRight(int value);
-	
-	public void setPageMarginTop(int value);
-	
-	public void setPageMarginBottom(int value);
-	
-	public void setPageWidth(int value);
-	
-	public void setPageHeight(int value);
+   public void setPageMarginLeft(int value);
+
+   public void setPageMarginRight(int value);
+
+   public void setPageMarginTop(int value);
+
+   public void setPageMarginBottom(int value);
+
+   public void setPageWidth(int value);
+
+   public void setPageHeight(int value);
 }

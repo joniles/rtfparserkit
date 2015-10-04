@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.rtf.Command;
@@ -26,52 +27,61 @@ import com.rtfparserkit.rtf.Command;
  * The only method which is supposed to be used by sub-classes is
  * processGroupEnd(), which pops the context from the provided RtfContextStack.
  */
-abstract class AbstractRtfContext implements RtfContext {
-	
-	private final boolean throwExceptions;
-	
-	protected AbstractRtfContext() {
-		this(true);
-	}
+abstract class AbstractRtfContext implements RtfContext
+{
 
-	protected AbstractRtfContext(boolean throwExceptions) {
-		this.throwExceptions = throwExceptions;
-	}
+   private final boolean throwExceptions;
 
-	public void processGroupStart(RtfContextStack stack) {
-		handleUnexpectedEvent("Unexpected anonymous group start");
-		stack.pushContext(this);
-	}
+   protected AbstractRtfContext()
+   {
+      this(true);
+   }
 
-	public void processGroupStart(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		handleUnexpectedEvent("Unexpected destination group start");
-		stack.pushContext(this);
-	}
+   protected AbstractRtfContext(boolean throwExceptions)
+   {
+      this.throwExceptions = throwExceptions;
+   }
 
-	public void processGroupEnd(RtfContextStack stack) {
-		stack.popContext();
-	}
+   public void processGroupStart(RtfContextStack stack)
+   {
+      handleUnexpectedEvent("Unexpected anonymous group start");
+      stack.pushContext(this);
+   }
 
-	public void processCharacterBytes(byte[] data) {
-		handleUnexpectedEvent("Unexpected character bytes");
-	}
+   public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      handleUnexpectedEvent("Unexpected destination group start");
+      stack.pushContext(this);
+   }
 
-	public void processBinaryBytes(byte[] data) {
-		handleUnexpectedEvent("Unexpected binary bytes");
-	}
+   public void processGroupEnd(RtfContextStack stack)
+   {
+      stack.popContext();
+   }
 
-	public void processString(String string) {
-		handleUnexpectedEvent("Unexpected string '" + string + "'");
-	}
+   public void processCharacterBytes(byte[] data)
+   {
+      handleUnexpectedEvent("Unexpected character bytes");
+   }
 
-	public void processCommand(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		handleUnexpectedEvent("Unexpected command '" + command + "'");
-	}
+   public void processBinaryBytes(byte[] data)
+   {
+      handleUnexpectedEvent("Unexpected binary bytes");
+   }
 
-	private void handleUnexpectedEvent(String eventInfo) {
-		if (throwExceptions)
-			throw new IllegalStateException(eventInfo);
-	}
+   public void processString(String string)
+   {
+      handleUnexpectedEvent("Unexpected string '" + string + "'");
+   }
+
+   public void processCommand(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      handleUnexpectedEvent("Unexpected command '" + command + "'");
+   }
+
+   private void handleUnexpectedEvent(String eventInfo)
+   {
+      if (throwExceptions)
+         throw new IllegalStateException(eventInfo);
+   }
 }

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.document.CharacterStyle;
@@ -22,38 +23,42 @@ import com.rtfparserkit.rtf.Command;
  * RtfContext for parsing a style definition group located in the style sheet
  * section of an RTF document.
  */
-class CharacterStyleContext extends AbstractRtfContext {
+class CharacterStyleContext extends AbstractRtfContext
+{
 
-	private final CharacterStyle style;
-	
-	CharacterStyleContext(CharacterStyle style) {
-		this.style = style;
-	}
+   private final CharacterStyle style;
 
-	@Override
-	public void processGroupStart(RtfContextStack stack) {
-		// TODO: Implement
-		stack.pushContext(new NullContext());
-	}
+   CharacterStyleContext(CharacterStyle style)
+   {
+      this.style = style;
+   }
 
-	@Override
-	public void processGroupStart(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		// TODO: Implement
-		stack.pushContext(new NullContext());
-	}
+   @Override
+   public void processGroupStart(RtfContextStack stack)
+   {
+      // TODO: Implement
+      stack.pushContext(new NullContext());
+   }
 
-	@Override
-	public void processString(String string) {
-		int semicolon = string.indexOf(';');
-		int end = semicolon >= 0 ? semicolon : string.length();
-		string = string.substring(0, end);
-		style.setName(string);
-	}
+   @Override
+   public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      // TODO: Implement
+      stack.pushContext(new NullContext());
+   }
 
-	@Override
-	public void processCommand(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		// TODO: Implement
-	}
+   @Override
+   public void processString(String string)
+   {
+      int semicolon = string.indexOf(';');
+      int end = semicolon >= 0 ? semicolon : string.length();
+      string = string.substring(0, end);
+      style.setName(string);
+   }
+
+   @Override
+   public void processCommand(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      // TODO: Implement
+   }
 }

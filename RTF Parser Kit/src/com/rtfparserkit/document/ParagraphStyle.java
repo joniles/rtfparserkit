@@ -13,62 +13,59 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for storing paragraph style parameters.
  */
-public interface ParagraphStyle extends CharacterStyle {
+public interface ParagraphStyle extends CharacterStyle
+{
 
-	public enum Alignment {
-		LEFT,
-		RIGHT,
-		CENTER,
-		JUSTIFIED,
-		DISTRIBUTED,
-	}
-	
-	public enum TabAlignment {
-		LEFT,
-		CENTER,
-		RIGHT,
-		DECIMAL,
-	}
+   public enum Alignment
+   {
+      LEFT, RIGHT, CENTER, JUSTIFIED, DISTRIBUTED,
+   }
 
-	public ParagraphStyle createDerivedStyle();
-	
-	public CharacterStyle createDerivedCharacterStyle();
-	
-	public ParagraphStyle createFlattenedStyle();
-	
-	public void setAlignment(Alignment alignment);
-	
-	public Alignment getAlignment();
-	
-	public void setSpacingTop(float value);
-	
-	public float getSpacingTop();
-	
-	public void setSpacingBottom(float value);
-	
-	public float getSpacingBottom();
-	
-	public void setFirstLineIndent(float value);
+   public enum TabAlignment
+   {
+      LEFT, CENTER, RIGHT, DECIMAL,
+   }
 
-	public float getFirstLineIndent();
-	
-	public void setLeftIndent(float value);
-	
-	public float getLeftIndent();
-	
-	public void setRightIndent(float value);
-	
-	public float getRightIndent();
-	
-	public void setLineSpacing(float value);
-	
-	public float getLineSpacing();
-	
-	public void addTab(float position, TabAlignment aligment);
+   public ParagraphStyle createDerivedStyle();
+
+   public CharacterStyle createDerivedCharacterStyle();
+
+   public ParagraphStyle createFlattenedStyle();
+
+   public void setAlignment(Alignment alignment);
+
+   public Alignment getAlignment();
+
+   public void setSpacingTop(float value);
+
+   public float getSpacingTop();
+
+   public void setSpacingBottom(float value);
+
+   public float getSpacingBottom();
+
+   public void setFirstLineIndent(float value);
+
+   public float getFirstLineIndent();
+
+   public void setLeftIndent(float value);
+
+   public float getLeftIndent();
+
+   public void setRightIndent(float value);
+
+   public float getRightIndent();
+
+   public void setLineSpacing(float value);
+
+   public float getLineSpacing();
+
+   public void addTab(float position, TabAlignment aligment);
 
 }

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.Footer;
@@ -23,68 +24,83 @@ import com.rtfparserkit.document.Section;
 /**
  * Default Section implementation
  */
-public class DefaultSection extends ParagraphList implements Section {
+public class DefaultSection extends ParagraphList implements Section
+{
 
-	private DefaultHeader header;
-	private DefaultFooter footer;
-	private final PageMargins pageMargins = new PageMargins(); 
-	private final PageSize pageSize = new PageSize(); 
-	
-	public Header createHeader() {
-		if (header == null)
-			header = new DefaultHeader();
-		return header;
-	}
-	
-	public Header getHeader() {
-		return header;
-	}
+   private DefaultHeader header;
+   private DefaultFooter footer;
+   private final PageMargins pageMargins = new PageMargins();
+   private final PageSize pageSize = new PageSize();
 
-	public Footer createFooter() {
-		if (footer == null)
-			footer = new DefaultFooter();
-		return footer;
-	}
-	
-	public Footer getFooter() {
-		return footer;
-	}
+   public Header createHeader()
+   {
+      if (header == null)
+         header = new DefaultHeader();
+      return header;
+   }
 
-	public PageMargins getPageMargins() {
-		return pageMargins;
-	}
+   public Header getHeader()
+   {
+      return header;
+   }
 
-	public PageSize getPageSize() {
-		return pageSize;
-	}
+   public Footer createFooter()
+   {
+      if (footer == null)
+         footer = new DefaultFooter();
+      return footer;
+   }
 
-	public PageSettings getPageSettings() {
-		return new PageSettings() {
+   public Footer getFooter()
+   {
+      return footer;
+   }
 
-			public void setPageMarginLeft(int value) {
-				pageMargins.left = value;
-			}
+   public PageMargins getPageMargins()
+   {
+      return pageMargins;
+   }
 
-			public void setPageMarginRight(int value) {
-				pageMargins.right = value;
-			}
+   public PageSize getPageSize()
+   {
+      return pageSize;
+   }
 
-			public void setPageMarginTop(int value) {
-				pageMargins.top = value;
-			}
+   public PageSettings getPageSettings()
+   {
+      return new PageSettings()
+      {
 
-			public void setPageMarginBottom(int value) {
-				pageMargins.bottom = value;
-			}
+         public void setPageMarginLeft(int value)
+         {
+            pageMargins.left = value;
+         }
 
-			public void setPageWidth(int value) {
-				pageSize.width = value;
-			}
+         public void setPageMarginRight(int value)
+         {
+            pageMargins.right = value;
+         }
 
-			public void setPageHeight(int value) {
-				pageSize.height = value;
-			}
-		};
-	}
+         public void setPageMarginTop(int value)
+         {
+            pageMargins.top = value;
+         }
+
+         public void setPageMarginBottom(int value)
+         {
+            pageMargins.bottom = value;
+         }
+
+         public void setPageWidth(int value)
+         {
+            pageSize.width = value;
+         }
+
+         public void setPageHeight(int value)
+         {
+            pageSize.height = value;
+         }
+      };
+   }
 
 }

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import java.util.HashMap;
@@ -23,26 +24,32 @@ import com.rtfparserkit.document.Style;
 /**
  * A table of Style objects. Styles can be added and retrieved by ID.
  */
-class StyleTable<E extends Style> implements Iterable<E> {
-	private final HashMap<Integer, E> styles;
-	
-	StyleTable() {
-		styles = new HashMap<Integer, E>();
-	}
+class StyleTable<E extends Style> implements Iterable<E>
+{
+   private final HashMap<Integer, E> styles;
 
-	public Iterator<E> iterator() {
-		return styles.values().iterator();
-	}
+   StyleTable()
+   {
+      styles = new HashMap<Integer, E>();
+   }
 
-	public void addStyle(int id, E style) {
-		styles.put(id, style);
-	}
-	
-	public int countStyles() {
-		return styles.size();
-	}
-	
-	public E styleFor(int id) {
-		return styles.get(id);
-	}
+   public Iterator<E> iterator()
+   {
+      return styles.values().iterator();
+   }
+
+   public void addStyle(int id, E style)
+   {
+      styles.put(id, style);
+   }
+
+   public int countStyles()
+   {
+      return styles.size();
+   }
+
+   public E styleFor(int id)
+   {
+      return styles.get(id);
+   }
 }

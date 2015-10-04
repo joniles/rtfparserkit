@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.document.CharacterStyle;
@@ -24,49 +25,50 @@ import com.rtfparserkit.rtf.Command;
  * Processes RTF events that may be encountered in the style sheet section of
  * the file.
  */
-class StyleSheetContext extends NullContext {
+class StyleSheetContext extends NullContext
+{
 
-	private final StyleSheet styleSheet;
-	
-	StyleSheetContext(StyleSheet styleSheet) {
-		this.styleSheet = styleSheet;
-	}
+   private final StyleSheet styleSheet;
 
-	@Override
-	public void processGroupStart(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		// The Style Sheet should only contain style definition groups. These
-		// can start with one of these commands, 
-		switch (command) {
-		case s:
-		{
-			// Paragraph style
-			ParagraphStyle style = styleSheet.getParagraphStyleTable()
-				.createStyle();
-			styleSheet.getParagraphStyleTable().addStyle(parameter, style);
-			stack.pushContext(new ParagraphStyleContext(style));
-			break;
-		}
-		case cs:
-		{
-			// Character style
-			CharacterStyle style = styleSheet.getCharacterStyleTable()
-				.createStyle();
-			styleSheet.getCharacterStyleTable().addStyle(parameter, style);
-			stack.pushContext(new CharacterStyleContext(style));
-			break;
-		}
-		case ds:
-			// TODO: Section style
-			stack.pushContext(new NullContext());
-			break;
-		case ts:
-			// TODO: Table style
-			stack.pushContext(new NullContext());
-			break;
-		default:
-			stack.pushContext(new NullContext());
-			break;
-		}
-	}
+   StyleSheetContext(StyleSheet styleSheet)
+   {
+      this.styleSheet = styleSheet;
+   }
+
+   @Override
+   public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      // The Style Sheet should only contain style definition groups. These
+      // can start with one of these commands, 
+      switch (command)
+      {
+         case s:
+         {
+            // Paragraph style
+            ParagraphStyle style = styleSheet.getParagraphStyleTable().createStyle();
+            styleSheet.getParagraphStyleTable().addStyle(parameter, style);
+            stack.pushContext(new ParagraphStyleContext(style));
+            break;
+         }
+         case cs:
+         {
+            // Character style
+            CharacterStyle style = styleSheet.getCharacterStyleTable().createStyle();
+            styleSheet.getCharacterStyleTable().addStyle(parameter, style);
+            stack.pushContext(new CharacterStyleContext(style));
+            break;
+         }
+         case ds:
+            // TODO: Section style
+            stack.pushContext(new NullContext());
+            break;
+         case ts:
+            // TODO: Table style
+            stack.pushContext(new NullContext());
+            break;
+         default:
+            stack.pushContext(new NullContext());
+            break;
+      }
+   }
 }

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.document.Document;
@@ -28,127 +29,146 @@ import com.rtfparserkit.rtf.CommandType;
  *
  * @author stippi
  */
-public class DocumentBuilder implements IRtfListener {
+public class DocumentBuilder implements IRtfListener
+{
 
-	private int level = 0;
-	private boolean atGroupStart = false;
-	private boolean debugEvents = false;
+   private int level = 0;
+   private boolean atGroupStart = false;
+   private boolean debugEvents = false;
 
-	private final RtfContextStack stack;
-	
-	public DocumentBuilder(Document document) {
-		stack = new RtfContextStack(new RootContext(document));
-	}
-	
-	public void setDebugEvents(boolean debug) {
-		debugEvents = debug;
-	}
-	
-	public void processDocumentStart() {
-	}
+   private final RtfContextStack stack;
 
-	public void processDocumentEnd() {
-	}
+   public DocumentBuilder(Document document)
+   {
+      stack = new RtfContextStack(new RootContext(document));
+   }
 
-	public void processGroupStart() {
-		atGroupStart = true;
-	}
+   public void setDebugEvents(boolean debug)
+   {
+      debugEvents = debug;
+   }
 
-	public void processGroupEnd() {
-		handleDelayedGroupStart();
-		if (debugEvents)
-			System.out.println(getIndentation() + "processGroupEnd()");
-		stack.getContext().processGroupEnd(stack);
-		level--;
-		atGroupStart = false;
-	}
+   public void processDocumentStart()
+   {
+   }
 
-	public void processCharacterBytes(byte[] data) {
-		handleDelayedGroupStart();
-		if (debugEvents)
-			System.out.println(getIndentation() + "processCharacterBytes()");
-		stack.getContext().processCharacterBytes(data);
-	}
+   public void processDocumentEnd()
+   {
+   }
 
-	public void processBinaryBytes(byte[] data) {
-		handleDelayedGroupStart();
-		if (debugEvents)
-			System.out.println(getIndentation() + "processBinaryBytes()");
-		stack.getContext().processBinaryBytes(data);
-	}
+   public void processGroupStart()
+   {
+      atGroupStart = true;
+   }
 
-	public void processString(String string) {
-		handleDelayedGroupStart();
-		if (debugEvents)
-			System.out.println(getIndentation() + "processString(" + string + ")");
-		stack.getContext().processString(string);
-	}
+   public void processGroupEnd()
+   {
+      handleDelayedGroupStart();
+      if (debugEvents)
+         System.out.println(getIndentation() + "processGroupEnd()");
+      stack.getContext().processGroupEnd(stack);
+      level--;
+      atGroupStart = false;
+   }
 
-	public void processCommand(Command command, int parameter,
-		boolean hasParameter, boolean optional) {
-		if (atGroupStart) {
-			// Handle delayed group start.
-			if (command == Command.optionalcommand) {
-				// Optional group with an unknown command, completely ignore
-				// this.
-				if (debugEvents) {
-					System.out.println(getIndentation() + "processGroupStart("
-						+ command + ")");
-				}
-				level++;
-				stack.pushContext(new NullContext());
-				// Do not handle this command as processCommand() a second time.
-				groupStarted();
-				return;
-			} if (command.getCommandType() == CommandType.Destination) {
-				if (debugEvents) {
-					System.out.println(getIndentation() + "processGroupStart("
-						+ command + ")");
-				}
-				level++;
-				stack.getContext().processGroupStart(stack, command, parameter,
-					hasParameter, optional);
-				// Do not handle this command as processCommand() a second time.
-				groupStarted();
-				return;
-			} else {
-				handleDelayedGroupStart();
-			}
-		}
-		
-		if (debugEvents) {
-			System.out.print(getIndentation() + "processCommand() " + command);
-			if (hasParameter)
-				System.out.print(", parameter: " + parameter);
-			if (optional)
-				System.out.print(" (optional)");
-			System.out.println();
-		}
+   public void processCharacterBytes(byte[] data)
+   {
+      handleDelayedGroupStart();
+      if (debugEvents)
+         System.out.println(getIndentation() + "processCharacterBytes()");
+      stack.getContext().processCharacterBytes(data);
+   }
 
-		stack.getContext().processCommand(stack, command, parameter,
-			hasParameter, optional);
-	}
+   public void processBinaryBytes(byte[] data)
+   {
+      handleDelayedGroupStart();
+      if (debugEvents)
+         System.out.println(getIndentation() + "processBinaryBytes()");
+      stack.getContext().processBinaryBytes(data);
+   }
 
-	private String getIndentation() {
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < level; i++)
-			builder.append("  ");
-		builder.append(stack.getContext().getClass().getSimpleName());
-		builder.append('.');
-		return builder.toString();
-	}
-	
-	private void handleDelayedGroupStart() {
-		if (atGroupStart) {
-			if (debugEvents)
-				System.out.println(getIndentation() + "processGroupStart()");
-			level++;
-			stack.getContext().processGroupStart(stack);
-			groupStarted();
-		}
-	}
-	
-	private void groupStarted() {
-		atGroupStart = false;
-	}
+   public void processString(String string)
+   {
+      handleDelayedGroupStart();
+      if (debugEvents)
+         System.out.println(getIndentation() + "processString(" + string + ")");
+      stack.getContext().processString(string);
+   }
+
+   public void processCommand(Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      if (atGroupStart)
+      {
+         // Handle delayed group start.
+         if (command == Command.optionalcommand)
+         {
+            // Optional group with an unknown command, completely ignore
+            // this.
+            if (debugEvents)
+            {
+               System.out.println(getIndentation() + "processGroupStart(" + command + ")");
+            }
+            level++;
+            stack.pushContext(new NullContext());
+            // Do not handle this command as processCommand() a second time.
+            groupStarted();
+            return;
+         }
+         if (command.getCommandType() == CommandType.Destination)
+         {
+            if (debugEvents)
+            {
+               System.out.println(getIndentation() + "processGroupStart(" + command + ")");
+            }
+            level++;
+            stack.getContext().processGroupStart(stack, command, parameter, hasParameter, optional);
+            // Do not handle this command as processCommand() a second time.
+            groupStarted();
+            return;
+         }
+         else
+         {
+            handleDelayedGroupStart();
+         }
+      }
+
+      if (debugEvents)
+      {
+         System.out.print(getIndentation() + "processCommand() " + command);
+         if (hasParameter)
+            System.out.print(", parameter: " + parameter);
+         if (optional)
+            System.out.print(" (optional)");
+         System.out.println();
+      }
+
+      stack.getContext().processCommand(stack, command, parameter, hasParameter, optional);
+   }
+
+   private String getIndentation()
+   {
+      StringBuilder builder = new StringBuilder();
+      for (int i = 0; i < level; i++)
+         builder.append("  ");
+      builder.append(stack.getContext().getClass().getSimpleName());
+      builder.append('.');
+      return builder.toString();
+   }
+
+   private void handleDelayedGroupStart()
+   {
+      if (atGroupStart)
+      {
+         if (debugEvents)
+            System.out.println(getIndentation() + "processGroupStart()");
+         level++;
+         stack.getContext().processGroupStart(stack);
+         groupStarted();
+      }
+   }
+
+   private void groupStarted()
+   {
+      atGroupStart = false;
+   }
 }

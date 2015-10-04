@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 import java.util.Date;
@@ -22,18 +23,19 @@ import java.util.Date;
  * via the DocumentPart functionality. Note that this would mean support for
  * nested annotations.
  */
-public interface Annotation extends DocumentPart {
-	
-	public void setId(String id);
-	
-	public String getId();
-	
-	public void setAuthor(String author);
-	
-	public String getAuthor();
-	
-	public void setDate(Date date);
-	
-	public Date getDate();
+public interface Annotation extends DocumentPart
+{
+
+   public void setId(String id);
+
+   public String getId();
+
+   public void setAuthor(String author);
+
+   public String getAuthor();
+
+   public void setDate(Date date);
+
+   public Date getDate();
 
 }

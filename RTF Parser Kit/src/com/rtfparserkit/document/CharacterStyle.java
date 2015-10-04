@@ -13,73 +13,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.rtfparserkit.document;
 
+package com.rtfparserkit.document;
 
 /**
  * Interface for storing paragraph style parameters.
  */
-public interface CharacterStyle extends Style {
+public interface CharacterStyle extends Style
+{
 
-	public enum UnderlineStyle {
-		NONE,
-		SINGLE,
-		DOUBLE,
-		WORD,
-		DOTTED,
-		DASHED,
-		DASH_DOTTED,
-		DASH_DOT_DOTTED,
-		LONG_DASHED,
-		THICK,
-		THICK_DOTTED,
-		THICK_DASHED,
-		THICK_DASH_DOTTED,
-		THICK_DASH_DOT_DOTTED,
-		THICK_LONG_DASHED,
-		WAVE,
-		HEAVY_WAVE,
-		DOUBLE_WAVE
-	}
-	
-	public CharacterStyle createDerivedStyle();
-	
-	public CharacterStyle createFlattenedStyle();
-	
-	public void setFont(Font font);
-	
-	public Font getFont();
-	
-	public void setFontSize(float value);
-	
-	public float getFontSize();
-	
-	public void setBold(boolean bold);
-	
-	public boolean getBold();
-	
-	public void setItalic(boolean italic);
+   public enum UnderlineStyle
+   {
+      NONE, SINGLE, DOUBLE, WORD, DOTTED, DASHED, DASH_DOTTED, DASH_DOT_DOTTED, LONG_DASHED, THICK, THICK_DOTTED, THICK_DASHED, THICK_DASH_DOTTED, THICK_DASH_DOT_DOTTED, THICK_LONG_DASHED, WAVE, HEAVY_WAVE, DOUBLE_WAVE
+   }
 
-	public boolean getItalic();
-	
-	public void setCaps(boolean caps);
-	
-	public boolean getCaps();
-	
-	public void setStrikeOut(boolean strikeOut);
-	
-	public boolean getStrikeOut();
-	
-	public void setUnderlined(UnderlineStyle style);
+   public CharacterStyle createDerivedStyle();
 
-	public UnderlineStyle getUnderlined();
-	
-	public void setBackgroundColor(Color color);
+   public CharacterStyle createFlattenedStyle();
 
-	public Color getBackgroundColor();
+   public void setFont(Font font);
 
-	public void setForegroundColor(Color color);
+   public Font getFont();
 
-	public Color getForegroundColor();
+   public void setFontSize(float value);
+
+   public float getFontSize();
+
+   public void setBold(boolean bold);
+
+   public boolean getBold();
+
+   public void setItalic(boolean italic);
+
+   public boolean getItalic();
+
+   public void setCaps(boolean caps);
+
+   public boolean getCaps();
+
+   public void setStrikeOut(boolean strikeOut);
+
+   public boolean getStrikeOut();
+
+   public void setUnderlined(UnderlineStyle style);
+
+   public UnderlineStyle getUnderlined();
+
+   public void setBackgroundColor(Color color);
+
+   public Color getBackgroundColor();
+
+   public void setForegroundColor(Color color);
+
+   public Color getForegroundColor();
 
 }

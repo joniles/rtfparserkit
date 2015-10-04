@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.document.Document;
@@ -22,32 +23,36 @@ import com.rtfparserkit.rtf.Command;
  * Initial RtfContext. Pushes a DocumentContext upon encountering a group
  * starting with \rtf.
  */
-class RootContext extends AbstractRtfContext {
+class RootContext extends AbstractRtfContext
+{
 
-	private final Document document;
-	
-	RootContext(Document document) {
-		this.document = document;
-	}
+   private final Document document;
 
-	@Override
-	public void processGroupStart(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		switch (command) {
-		case rtf:
-			stack.pushContext(new DocumentContext(document));
-			break;
+   RootContext(Document document)
+   {
+      this.document = document;
+   }
 
-		default:
-			// Unknown destinations should be ignored.
-			stack.pushContext(new NullContext());
-			break;
-		}
-	}
-	
-	@Override
-	public void processGroupStart(RtfContextStack stack) {
-		// Unknown groups should be ignored.
-		stack.pushContext(new NullContext());
-	}
+   @Override
+   public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      switch (command)
+      {
+         case rtf:
+            stack.pushContext(new DocumentContext(document));
+            break;
+
+         default:
+            // Unknown destinations should be ignored.
+            stack.pushContext(new NullContext());
+            break;
+      }
+   }
+
+   @Override
+   public void processGroupStart(RtfContextStack stack)
+   {
+      // Unknown groups should be ignored.
+      stack.pushContext(new NullContext());
+   }
 }

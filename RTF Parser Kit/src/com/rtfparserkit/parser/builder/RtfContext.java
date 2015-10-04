@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.rtf.Command;
@@ -22,22 +23,21 @@ import com.rtfparserkit.rtf.Command;
  * knows how to handle the events based on the current "context" (location in
  * the file and group hierarchy).
  */
-interface RtfContext {
+interface RtfContext
+{
 
-	public void processGroupStart(RtfContextStack stack);
+   public void processGroupStart(RtfContextStack stack);
 
-	public void processGroupStart(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional);
+   public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional);
 
-	public void processGroupEnd(RtfContextStack stack);
+   public void processGroupEnd(RtfContextStack stack);
 
-	public void processCharacterBytes(byte[] data);
+   public void processCharacterBytes(byte[] data);
 
-	public void processBinaryBytes(byte[] data);
+   public void processBinaryBytes(byte[] data);
 
-	public void processString(String string);
+   public void processString(String string);
 
-	public void processCommand(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional);
+   public void processCommand(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional);
 
 }

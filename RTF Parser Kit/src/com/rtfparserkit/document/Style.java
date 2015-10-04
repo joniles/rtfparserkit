@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 import java.util.EnumSet;
@@ -20,36 +21,22 @@ import java.util.EnumSet;
 /**
  * Interface style base class. Also defines a bunch of properties.
  */
-public interface Style {
+public interface Style
+{
 
-	public enum Property {
-		ALIGNMENT,
-		SPACING_TOP,
-		SPACING_BOTTOM,
-		FIRST_LINE_INDENT,
-		LEFT_INDENT,
-		RIGHT_INDENT,
-		LINE_SPACING,
-		TABS,
-		FONT,
-		FONT_SIZE,
-		BOLD,
-		ITALIC,
-		UNDERLINED,
-		STRIKE_OUT,
-		CAPS,
-		BACKGROUND_COLOR,
-		FOREGROUND_COLOR
-	}
-	
-	public void setName(String name);
-	
-	public String getName();
+   public enum Property
+   {
+      ALIGNMENT, SPACING_TOP, SPACING_BOTTOM, FIRST_LINE_INDENT, LEFT_INDENT, RIGHT_INDENT, LINE_SPACING, TABS, FONT, FONT_SIZE, BOLD, ITALIC, UNDERLINED, STRIKE_OUT, CAPS, BACKGROUND_COLOR, FOREGROUND_COLOR
+   }
 
-	public EnumSet<Property> getOverriddenProperties();
-	
-	public void resetToDefaults();
+   public void setName(String name);
 
-	public boolean equals(Style other);
+   public String getName();
+
+   public EnumSet<Property> getOverriddenProperties();
+
+   public void resetToDefaults();
+
+   public boolean equals(Style other);
 
 }

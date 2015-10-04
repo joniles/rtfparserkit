@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.ParagraphStyle;
@@ -21,11 +22,12 @@ import com.rtfparserkit.document.ParagraphStyleTable;
 /**
  * Default ParagraphStyleTable implementation.
  */
-public class DefaultParagraphStyleTable extends StyleTable<ParagraphStyle>
-	implements ParagraphStyleTable {
+public class DefaultParagraphStyleTable extends StyleTable<ParagraphStyle>implements ParagraphStyleTable
+{
 
-	public ParagraphStyle createStyle() {
-		return new DefaultParagraphStyle();
-	}
+   public ParagraphStyle createStyle()
+   {
+      return new DefaultParagraphStyle();
+   }
 
 }

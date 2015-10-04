@@ -13,13 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Base type for Elements which can return a flattened String for their text
  * contents.
  */
-public interface Text extends Element {
+public interface Text extends Element
+{
 
-	public String getText();
+   public String getText();
 }

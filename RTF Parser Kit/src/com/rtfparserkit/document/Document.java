@@ -13,26 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for getting to all relevant parts of the document model.
  */
-public interface Document extends DocumentPart {
+public interface Document extends DocumentPart
+{
 
-	public FontTable getFontTable();
-	
-	public ColorTable getColorTable();
-	
-	public StyleSheet getStyleSheet();
+   public FontTable getFontTable();
 
-	public DocumentSettings getDocumentSettings();
+   public ColorTable getColorTable();
 
-	public int countSections();
-	
-	public Section sectionAt(int index);
-	
-	public void nextSection();
-	
-	public Section getLastSection();
+   public StyleSheet getStyleSheet();
+
+   public DocumentSettings getDocumentSettings();
+
+   public int countSections();
+
+   public Section sectionAt(int index);
+
+   public void nextSection();
+
+   public Section getLastSection();
 }

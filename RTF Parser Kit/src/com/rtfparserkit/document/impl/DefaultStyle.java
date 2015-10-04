@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import java.util.EnumSet;
@@ -22,35 +23,40 @@ import com.rtfparserkit.document.Style;
 /**
  * Default Style implementation
  */
-abstract class DefaultStyle implements Style {
+abstract class DefaultStyle implements Style
+{
 
-	private String name;
-	protected EnumSet<Property> overriddenProperties;
-	
-	protected DefaultStyle() {
-		overriddenProperties = EnumSet.noneOf(Property.class);
-	}
+   private String name;
+   protected EnumSet<Property> overriddenProperties;
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public EnumSet<Property> getOverriddenProperties() {
-		return overriddenProperties;
-	}
+   protected DefaultStyle()
+   {
+      overriddenProperties = EnumSet.noneOf(Property.class);
+   }
 
-	public boolean equals(Style object) {
-		if (object == this)
-			return true;
-		if (object == null || !(object instanceof DefaultStyle))
-			return false;
-		
-		DefaultStyle other = (DefaultStyle) object;
-		return (name != null ? name.equals(other.name) : other.name == null)
-			&& overriddenProperties.equals(other.overriddenProperties);
-	}
+   public void setName(String name)
+   {
+      this.name = name;
+   }
+
+   public String getName()
+   {
+      return name;
+   }
+
+   public EnumSet<Property> getOverriddenProperties()
+   {
+      return overriddenProperties;
+   }
+
+   public boolean equals(Style object)
+   {
+      if (object == this)
+         return true;
+      if (object == null || !(object instanceof DefaultStyle))
+         return false;
+
+      DefaultStyle other = (DefaultStyle) object;
+      return (name != null ? name.equals(other.name) : other.name == null) && overriddenProperties.equals(other.overriddenProperties);
+   }
 }

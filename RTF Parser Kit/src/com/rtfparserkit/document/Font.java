@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Simple interface for storing font information.
  */
-public interface Font {
+public interface Font
+{
+   public void setName(String name);
 
-	public void setName(String name);
+   public String getName();
 
-	public String getName();
-
-	public boolean equals(Font other);
+   public boolean equals(Font other);
 }

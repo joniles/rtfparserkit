@@ -13,27 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.CharacterStyleTable;
 import com.rtfparserkit.document.ParagraphStyleTable;
 import com.rtfparserkit.document.StyleSheet;
 
-class DefaultStyleSheet implements StyleSheet {
+class DefaultStyleSheet implements StyleSheet
+{
 
-	private final ParagraphStyleTable paragraphStyleTable;
-	private final CharacterStyleTable characterStyleTable;
+   private final ParagraphStyleTable paragraphStyleTable;
+   private final CharacterStyleTable characterStyleTable;
 
-	DefaultStyleSheet() {
-		paragraphStyleTable = new DefaultParagraphStyleTable();
-		characterStyleTable = new DefaultCharacterStyleTable();
-	}
-	
-	public ParagraphStyleTable getParagraphStyleTable() {
-		return paragraphStyleTable;
-	}
+   DefaultStyleSheet()
+   {
+      paragraphStyleTable = new DefaultParagraphStyleTable();
+      characterStyleTable = new DefaultCharacterStyleTable();
+   }
 
-	public CharacterStyleTable getCharacterStyleTable() {
-		return characterStyleTable;
-	}
+   public ParagraphStyleTable getParagraphStyleTable()
+   {
+      return paragraphStyleTable;
+   }
+
+   public CharacterStyleTable getCharacterStyleTable()
+   {
+      return characterStyleTable;
+   }
 }

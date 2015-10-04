@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import java.util.Date;
@@ -21,91 +22,101 @@ import com.rtfparserkit.document.Annotation;
 import com.rtfparserkit.parser.builder.TimeContext.DateListener;
 import com.rtfparserkit.rtf.Command;
 
-
 /**
  * Parses the body of an Annotation.
  */
-class AnnotationContext extends DocumentPartContext {
+class AnnotationContext extends DocumentPartContext
+{
 
-	private final Annotation annotation;
-	private final DocumentPartContext parent;
-	
-	AnnotationContext(Annotation annotation, DocumentPartContext parent) {
-		super(annotation, parent.document);
-		this.annotation = annotation;
-		this.parent = parent;
-	}
-	
-	@Override
-	public void processGroupStart(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		switch (command) {
-		case atntime:
-		case atndate:
-			stack.pushContext(new TimeContext(new DateListener() {
-				public void setDate(Date date) {
-					annotation.setDate(date);
-				}
-			}));
-			break;
-		case atnref:
-			// TODO: Handle annotation references. The reference is in
-			// the parameter.
-			stack.pushContext(new AnnotationReferenceContext());
-			break;
-		case atnparent:
-			stack.pushContext(new AnnotationParentContext());
-			break;
-		case atrfstart:
-			stack.pushContext(new BookmarkStartContext());
-			break;
-		case atrfend:
-			stack.pushContext(new BookmarkEndContext());
-			break;
-		default:
-			super.processGroupStart(stack, command, parameter, hasParameter,
-				optional);
-		}
-	}
+   private final Annotation annotation;
+   private final DocumentPartContext parent;
 
-	@Override
-	public void processGroupEnd(RtfContextStack stack) {
-		// Inform the parent context that parsing the annotation body has
-		// finished.
-		parent.annotationFinished();
-		super.processGroupEnd(stack);
-	}
+   AnnotationContext(Annotation annotation, DocumentPartContext parent)
+   {
+      super(annotation, parent.document);
+      this.annotation = annotation;
+      this.parent = parent;
+   }
 
-	private class AnnotationParentContext extends AbstractRtfContext {
-		@Override
-		public void processGroupStart(RtfContextStack stack, Command command,
-			int parameter, boolean hasParameter, boolean optional) {
-			switch (command) {
-			case atnid:
-				stack.pushContext(new AnnotationIdContext());
-				break;
-			default:
-				super.processGroupStart(stack, command, parameter, hasParameter,
-					optional);
-			}
-		}
-	}
+   @Override
+   public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      switch (command)
+      {
+         case atntime:
+         case atndate:
+            stack.pushContext(new TimeContext(new DateListener()
+            {
+               public void setDate(Date date)
+               {
+                  annotation.setDate(date);
+               }
+            }));
+            break;
+         case atnref:
+            // TODO: Handle annotation references. The reference is in
+            // the parameter.
+            stack.pushContext(new AnnotationReferenceContext());
+            break;
+         case atnparent:
+            stack.pushContext(new AnnotationParentContext());
+            break;
+         case atrfstart:
+            stack.pushContext(new BookmarkStartContext());
+            break;
+         case atrfend:
+            stack.pushContext(new BookmarkEndContext());
+            break;
+         default:
+            super.processGroupStart(stack, command, parameter, hasParameter, optional);
+      }
+   }
 
-	private class AnnotationIdContext extends AbstractRtfContext {
-		@Override
-		public void processString(String string) {
-			// TODO: The string is the ID of a parent Annotation. Do something
-			// with it.
-		}
-	}
+   @Override
+   public void processGroupEnd(RtfContextStack stack)
+   {
+      // Inform the parent context that parsing the annotation body has
+      // finished.
+      parent.annotationFinished();
+      super.processGroupEnd(stack);
+   }
 
-	private class AnnotationReferenceContext extends AbstractRtfContext {
-	}
+   private class AnnotationParentContext extends AbstractRtfContext
+   {
+      @Override
+      public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+      {
+         switch (command)
+         {
+            case atnid:
+               stack.pushContext(new AnnotationIdContext());
+               break;
+            default:
+               super.processGroupStart(stack, command, parameter, hasParameter, optional);
+         }
+      }
+   }
 
-	private class BookmarkStartContext extends AbstractRtfContext {
-	}
+   private class AnnotationIdContext extends AbstractRtfContext
+   {
+      @Override
+      public void processString(String string)
+      {
+         // TODO: The string is the ID of a parent Annotation. Do something
+         // with it.
+      }
+   }
 
-	private class BookmarkEndContext extends AbstractRtfContext {
-	}
-	
+   private class AnnotationReferenceContext extends AbstractRtfContext
+   {
+   }
+
+   private class BookmarkStartContext extends AbstractRtfContext
+   {
+   }
+
+   private class BookmarkEndContext extends AbstractRtfContext
+   {
+   }
+
 }

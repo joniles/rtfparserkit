@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for controlling global settings of the document.
  */
-public interface DocumentSettings {
-
-	public PageSettings getPageSettings();
+public interface DocumentSettings
+{
+   public PageSettings getPageSettings();
 }

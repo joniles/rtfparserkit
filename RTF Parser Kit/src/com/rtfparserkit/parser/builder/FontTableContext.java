@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.document.FontTable;
@@ -25,21 +26,24 @@ import com.rtfparserkit.rtf.Command;
  * Note that FontTableContext inherits from FontContext, since RTF files may
  * or may not have the \font elements within a group.
  */
-class FontTableContext extends FontContext {
+class FontTableContext extends FontContext
+{
 
-	FontTableContext(FontTable table) {
-		super(table);
-	}
+   FontTableContext(FontTable table)
+   {
+      super(table);
+   }
 
-	@Override
-	public void processGroupStart(RtfContextStack stack) {
-		stack.pushContext(new FontContext(fontTable));
-	}
+   @Override
+   public void processGroupStart(RtfContextStack stack)
+   {
+      stack.pushContext(new FontContext(fontTable));
+   }
 
-	@Override
-	public void processGroupStart(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		stack.pushContext(new FontContext(fontTable));
-	}
+   @Override
+   public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      stack.pushContext(new FontContext(fontTable));
+   }
 
 }

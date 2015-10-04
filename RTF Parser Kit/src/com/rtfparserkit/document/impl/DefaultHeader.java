@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.Header;
 
-
 /**
  * Default Header implementation
  */
-public class DefaultHeader extends ParagraphList implements Header {
+public class DefaultHeader extends ParagraphList implements Header
+{
 
 }

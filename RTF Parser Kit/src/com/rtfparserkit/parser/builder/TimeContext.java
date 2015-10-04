@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.parser.builder;
 
 import java.util.Calendar;
@@ -25,62 +26,70 @@ import com.rtfparserkit.rtf.Command;
  * a DateListener provided at construction time about the Date that has been
  * parsed.
  */
-class TimeContext extends AbstractRtfContext {
-	
-	public interface DateListener {
-		public void setDate(Date date);
-	}
+class TimeContext extends AbstractRtfContext
+{
 
-	private Calendar calendar = Calendar.getInstance();
+   public interface DateListener
+   {
+      public void setDate(Date date);
+   }
 
-	private final DateListener dateListener;
-	
-	TimeContext(DateListener listener) {
-		dateListener = listener;
-	}
-	
-	@Override
-	public void processGroupEnd(RtfContextStack stack) {
-		dateListener.setDate(calendar.getTime());
-		super.processGroupEnd(stack);
-	}
+   private Calendar calendar = Calendar.getInstance();
 
-	@Override
-	public void processString(String string) {
-		try {
-			long time = Long.parseLong(string);
-			calendar.setTimeInMillis(time * 1000);
-		} catch (Exception e) {
-			// Ignore
-		}
-	}
+   private final DateListener dateListener;
 
-	@Override
-	public void processCommand(RtfContextStack stack, Command command,
-		int parameter, boolean hasParameter, boolean optional) {
-		switch (command) {
-		case yr:
-			calendar.set(Calendar.YEAR, parameter);
-			break;
-		case mo:
-			calendar.set(Calendar.MONTH, parameter);
-			break;
-		case dy:
-			calendar.set(Calendar.DAY_OF_MONTH, parameter);
-			break;
-		case hr:
-			calendar.set(Calendar.HOUR, parameter);
-			break;
-		case min:
-			calendar.set(Calendar.MINUTE, parameter);
-			break;
-		case sec:
-			calendar.set(Calendar.SECOND, parameter);
-			break;
+   TimeContext(DateListener listener)
+   {
+      dateListener = listener;
+   }
 
-		default:
-			super.processCommand(stack, command, parameter, hasParameter,
-				optional);
-		}
-	}
+   @Override
+   public void processGroupEnd(RtfContextStack stack)
+   {
+      dateListener.setDate(calendar.getTime());
+      super.processGroupEnd(stack);
+   }
+
+   @Override
+   public void processString(String string)
+   {
+      try
+      {
+         long time = Long.parseLong(string);
+         calendar.setTimeInMillis(time * 1000);
+      }
+      catch (Exception e)
+      {
+         // Ignore
+      }
+   }
+
+   @Override
+   public void processCommand(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
+   {
+      switch (command)
+      {
+         case yr:
+            calendar.set(Calendar.YEAR, parameter);
+            break;
+         case mo:
+            calendar.set(Calendar.MONTH, parameter);
+            break;
+         case dy:
+            calendar.set(Calendar.DAY_OF_MONTH, parameter);
+            break;
+         case hr:
+            calendar.set(Calendar.HOUR, parameter);
+            break;
+         case min:
+            calendar.set(Calendar.MINUTE, parameter);
+            break;
+         case sec:
+            calendar.set(Calendar.SECOND, parameter);
+            break;
+
+         default:
+            super.processCommand(stack, command, parameter, hasParameter, optional);
+      }
+   }
 }

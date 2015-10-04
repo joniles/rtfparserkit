@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import java.util.ArrayList;
@@ -24,23 +25,28 @@ import com.rtfparserkit.document.ColorTable;
 /**
  * Default implementation of ColorTable.
  */
-public class DefaultColorTable implements ColorTable {
+public class DefaultColorTable implements ColorTable
+{
 
-	private final List<DefaultColor> colors;
-	
-	public DefaultColorTable() {
-		colors = new ArrayList<DefaultColor>();
-	}
-	
-	public void addColor(int red, int green, int blue) {
-		colors.add(new DefaultColor(red, green, blue));
-	}
+   private final List<DefaultColor> colors;
 
-	public int countColors() {
-		return colors.size();
-	}
-	
-	public Color colorAt(int index) {
-		return colors.get(index);
-	}
+   public DefaultColorTable()
+   {
+      colors = new ArrayList<DefaultColor>();
+   }
+
+   public void addColor(int red, int green, int blue)
+   {
+      colors.add(new DefaultColor(red, green, blue));
+   }
+
+   public int countColors()
+   {
+      return colors.size();
+   }
+
+   public Color colorAt(int index)
+   {
+      return colors.get(index);
+   }
 }

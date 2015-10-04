@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.Chunk;
@@ -21,24 +22,29 @@ import com.rtfparserkit.document.ParagraphStyle;
 /**
  * Default Chunk implementation.
  */
-public class DefaultChunk implements Chunk {
-	private final StringBuilder stringBuilder;
-	private final ParagraphStyle style;
+public class DefaultChunk implements Chunk
+{
+   private final StringBuilder stringBuilder;
+   private final ParagraphStyle style;
 
-	public DefaultChunk(ParagraphStyle style) {
-		stringBuilder = new StringBuilder();
-		this.style = style;
-	}
-	
-	public String getText() {
-		return stringBuilder.toString();
-	}
-	
-	public ParagraphStyle getStyle() {
-		return style;
-	}
+   public DefaultChunk(ParagraphStyle style)
+   {
+      stringBuilder = new StringBuilder();
+      this.style = style;
+   }
 
-	public void append(String string) {
-		stringBuilder.append(string);
-	}
+   public String getText()
+   {
+      return stringBuilder.toString();
+   }
+
+   public ParagraphStyle getStyle()
+   {
+      return style;
+   }
+
+   public void append(String string)
+   {
+      stringBuilder.append(string);
+   }
 }

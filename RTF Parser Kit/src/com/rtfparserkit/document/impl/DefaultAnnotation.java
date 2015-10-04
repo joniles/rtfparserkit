@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document.impl;
 
 import java.util.Calendar;
@@ -23,37 +24,45 @@ import com.rtfparserkit.document.Annotation;
 /**
  * Default implementation for Annotation.
  */
-public class DefaultAnnotation extends ParagraphList implements Annotation {
+public class DefaultAnnotation extends ParagraphList implements Annotation
+{
 
-	private String id = "";
-	private String author = "";
-	private long date = Calendar.getInstance().getTimeInMillis();
-	
-	public DefaultAnnotation() {
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
+   private String id = "";
+   private String author = "";
+   private long date = Calendar.getInstance().getTimeInMillis();
 
-	public String getId() {
-		return id;
-	}
+   public DefaultAnnotation()
+   {
+   }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+   public void setId(String id)
+   {
+      this.id = id;
+   }
 
-	public String getAuthor() {
-		return author;
-	}
+   public String getId()
+   {
+      return id;
+   }
 
-	public void setDate(Date date) {
-		this.date = date.getTime();
-	}
+   public void setAuthor(String author)
+   {
+      this.author = author;
+   }
 
-	public Date getDate() {
-		return new Date(date);
-	}
+   public String getAuthor()
+   {
+      return author;
+   }
+
+   public void setDate(Date date)
+   {
+      this.date = date.getTime();
+   }
+
+   public Date getDate()
+   {
+      return new Date(date);
+   }
 
 }

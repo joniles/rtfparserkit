@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Represents a color that can be placed in the ColorTable.
  */
-public interface Color {
+public interface Color
+{
 
-	public int getRed();
-	
-	public int getGreen();
-	
-	public int getBlue();
-	
+   public int getRed();
+
+   public int getGreen();
+
+   public int getBlue();
+
 }

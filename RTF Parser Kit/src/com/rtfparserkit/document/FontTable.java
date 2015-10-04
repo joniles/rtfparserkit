@@ -13,29 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.rtfparserkit.document;
 
 /**
  * Interface for adding a font definition to the global font table and 
  * retrieving the font information at a specific index.
  */
-public interface FontTable {
+public interface FontTable
+{
 
-	public enum FontFamily {
-		DEFAULT,
-		ROMAN,
-		SWISS,
-		MODERN,
-		SCRIPT,
-		DECOR,
-		TECH,
-		BIDI
-	}
-	
-	public void addFont(String name, String alternativeName, String fileName,
-		FontFamily fontFamily);
-	
-	public int countFonts();
+   public enum FontFamily
+   {
+      DEFAULT, ROMAN, SWISS, MODERN, SCRIPT, DECOR, TECH, BIDI
+   }
 
-	public Font fontAt(int index);
+   public void addFont(String name, String alternativeName, String fileName, FontFamily fontFamily);
+
+   public int countFonts();
+
+   public Font fontAt(int index);
 }
