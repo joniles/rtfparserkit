@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.rtfparserkit.document.CharacterStyle;
 import com.rtfparserkit.document.Chunk;
 import com.rtfparserkit.document.Element;
 import com.rtfparserkit.document.Paragraph;
@@ -115,7 +116,7 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph
     * @param string The string to append
     * @param style The Style in which the string is to appear
     */
-   public void append(String string, ParagraphStyle style)
+   public void append(String string, CharacterStyle style)
    {
       if (string == null)
          throw new IllegalArgumentException("String may not be null!");
@@ -135,12 +136,12 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph
       end(getLastStyle());
    }
 
-   public void end(ParagraphStyle lastStyle)
+   public void end(CharacterStyle lastStyle)
    {
       append("\n", lastStyle);
    }
 
-   public ParagraphStyle getLastStyle()
+   public CharacterStyle getLastStyle()
    {
       // Try to use the last used Style instead of the default style
       Chunk lastChunk = findLastChunk();
@@ -170,7 +171,7 @@ public class DefaultParagraph implements Iterable<Element>, Paragraph
       }
    }
 
-   private void appendString(String string, ParagraphStyle style)
+   private void appendString(String string, CharacterStyle style)
    {
       Chunk chunk = null;
       if (chunks.size() > 0)

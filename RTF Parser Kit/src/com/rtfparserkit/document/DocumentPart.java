@@ -28,9 +28,9 @@ public interface DocumentPart extends Text
 
    public Paragraph paragraphAt(int index);
 
-   public void append(String text, ParagraphStyle style);
+   public void append(String text, CharacterStyle style);
 
-   public void nextParagraph(ParagraphStyle lastStyle);
+   public void nextParagraph(CharacterStyle lastStyle);
 
    public void nextLine();
 

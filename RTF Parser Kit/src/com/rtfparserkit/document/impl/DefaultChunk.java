@@ -16,8 +16,8 @@
 
 package com.rtfparserkit.document.impl;
 
+import com.rtfparserkit.document.CharacterStyle;
 import com.rtfparserkit.document.Chunk;
-import com.rtfparserkit.document.ParagraphStyle;
 
 /**
  * Default Chunk implementation.
@@ -25,9 +25,9 @@ import com.rtfparserkit.document.ParagraphStyle;
 public class DefaultChunk implements Chunk
 {
    private final StringBuilder stringBuilder;
-   private final ParagraphStyle style;
+   private final CharacterStyle style;
 
-   public DefaultChunk(ParagraphStyle style)
+   public DefaultChunk(CharacterStyle style)
    {
       stringBuilder = new StringBuilder();
       this.style = style;
@@ -40,7 +40,7 @@ public class DefaultChunk implements Chunk
    }
 
    @Override
-   public ParagraphStyle getStyle()
+   public CharacterStyle getStyle()
    {
       return style;
    }

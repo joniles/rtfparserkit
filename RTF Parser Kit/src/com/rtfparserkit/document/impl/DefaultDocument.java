@@ -17,6 +17,7 @@
 package com.rtfparserkit.document.impl;
 
 import com.rtfparserkit.document.Annotation;
+import com.rtfparserkit.document.CharacterStyle;
 import com.rtfparserkit.document.Document;
 import com.rtfparserkit.document.DocumentSettings;
 import com.rtfparserkit.document.PageSettings;
@@ -125,7 +126,7 @@ public class DefaultDocument extends SectionList implements Document
     * @param style The Style in which the appended string is to appear.
     */
    @Override
-   public void append(String text, ParagraphStyle style)
+   public void append(String text, CharacterStyle style)
    {
       getLastSection().append(text, style);
    }
@@ -137,7 +138,7 @@ public class DefaultDocument extends SectionList implements Document
     * @param lastStyle The Style to be set on the previous paragraph.
     */
    @Override
-   public void nextParagraph(ParagraphStyle lastStyle)
+   public void nextParagraph(CharacterStyle lastStyle)
    {
       getLastSection().nextParagraph(lastStyle);
    }

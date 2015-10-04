@@ -24,7 +24,7 @@ public interface Chunk extends Element
 
    public String getText();
 
-   public ParagraphStyle getStyle();
+   public CharacterStyle getStyle();
 
    public void append(String string);
 }
