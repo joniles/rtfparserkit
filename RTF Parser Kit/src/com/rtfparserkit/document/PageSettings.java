@@ -21,7 +21,6 @@ package com.rtfparserkit.document;
  */
 public interface PageSettings
 {
-
    public void setPageMarginLeft(int value);
 
    public void setPageMarginRight(int value);

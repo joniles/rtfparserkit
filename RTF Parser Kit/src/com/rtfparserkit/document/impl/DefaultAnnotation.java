@@ -26,7 +26,6 @@ import com.rtfparserkit.document.Annotation;
  */
 public class DefaultAnnotation extends ParagraphList implements Annotation
 {
-
    private String id = "";
    private String author = "";
    private long date = Calendar.getInstance().getTimeInMillis();
@@ -70,5 +69,4 @@ public class DefaultAnnotation extends ParagraphList implements Annotation
    {
       return new Date(date);
    }
-
 }
