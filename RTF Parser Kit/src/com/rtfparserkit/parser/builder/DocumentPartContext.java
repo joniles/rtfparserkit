@@ -17,11 +17,11 @@
 package com.rtfparserkit.parser.builder;
 
 import com.rtfparserkit.document.Annotation;
+import com.rtfparserkit.document.CharacterStyle.UnderlineStyle;
 import com.rtfparserkit.document.Document;
 import com.rtfparserkit.document.DocumentPart;
 import com.rtfparserkit.document.ParagraphStyle;
 import com.rtfparserkit.document.ParagraphStyle.Alignment;
-import com.rtfparserkit.document.CharacterStyle.UnderlineStyle;
 import com.rtfparserkit.rtf.Command;
 
 /**
@@ -30,7 +30,6 @@ import com.rtfparserkit.rtf.Command;
  */
 class DocumentPartContext extends AbstractRtfContext
 {
-
    private final DocumentPart documentPart;
    protected final Document document;
    private final ParagraphStyle style;
@@ -66,7 +65,7 @@ class DocumentPartContext extends AbstractRtfContext
             // A new Annotation started
             if (currentAnnotation != null)
             {
-               stack.handleError("An annotation has already" + "started, but encountered another annotation ID.");
+               stack.handleError("An annotation has already started, but encountered another annotation ID.");
             }
             currentAnnotation = documentPart.appendAnnotation();
             stack.pushContext(new AnnotationIdContext());
