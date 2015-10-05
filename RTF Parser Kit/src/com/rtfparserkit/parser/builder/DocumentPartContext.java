@@ -268,10 +268,10 @@ class DocumentPartContext extends AbstractRtfContext
 
    private void setUnderlined(UnderlineStyle underline, boolean hasParamter, int parameter)
    {
-      if (!hasParamter || parameter == 0)
-         style.setUnderlined(UnderlineStyle.NONE);
-      else
+      if (!hasParamter || parameter != 0)
          style.setUnderlined(underline);
+      else
+         style.setUnderlined(UnderlineStyle.NONE);
    }
 
    private static float fromTwips(int value)

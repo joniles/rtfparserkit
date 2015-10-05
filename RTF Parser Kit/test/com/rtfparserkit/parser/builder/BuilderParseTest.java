@@ -11,6 +11,7 @@ import java.io.InputStream;
 import org.junit.Test;
 
 import com.rtfparserkit.document.Annotation;
+import com.rtfparserkit.document.CharacterStyle.UnderlineStyle;
 import com.rtfparserkit.document.Chunk;
 import com.rtfparserkit.document.Document;
 import com.rtfparserkit.document.Element;
@@ -100,7 +101,8 @@ public class BuilderParseTest
    @Test
    public void testStyles()
    {
-      String[] files = {"variousStyles", "variousStylesPages", "variousStylesGrouped",};
+      // NOTE: Pages did not write the foreground/background colors
+      String[] files = {"variousStyles", /*"variousStylesPages",*/ "variousStylesGrouped",};
 
       for (String file : files)
       {
@@ -124,23 +126,29 @@ public class BuilderParseTest
       {
          Paragraph paragraph = section.paragraphAt(i);
 
-         if (i == 0)
-            assertNormalBoldItalic(paragraph);
-         //       else {
-         String text = paragraph.getText();
-         System.out.print("[" + i + "]: " + text);
-         if (!text.endsWith("\n"))
-            System.out.println();
-         for (Element element : paragraph)
+         switch (i)
          {
-            if (element instanceof Chunk)
-            {
-               Chunk chunk = (Chunk) element;
-               System.out.println("  '" + chunk.getText().replaceAll("\n", "") + "' " + chunk.getStyle());
-            }
+            case 0:
+               assertNormalBoldItalic(paragraph);
+               break;
+            case 1:
+               assertFontSizesAndColors(paragraph);
+               break;
+            default:
+               String text = paragraph.getText();
+               System.out.print("[" + i + "]: " + text);
+               if (!text.endsWith("\n"))
+                  System.out.println();
+               for (Element element : paragraph)
+               {
+                  if (element instanceof Chunk)
+                  {
+                     Chunk chunk = (Chunk) element;
+                     System.out.println("  '" + chunk.getText().replaceAll("\n", "") + "' " + chunk.getStyle());
+                  }
+               }
          }
       }
-      //    }
    }
 
    private void assertNormalBoldItalic(Paragraph paragraph)
@@ -172,6 +180,49 @@ public class BuilderParseTest
       assertEquals(" Normal.\n", chunk.getText());
       assertFalse(chunk.getStyle().getBold());
       assertFalse(chunk.getStyle().getItalic());
+   }
+
+   private void assertFontSizesAndColors(Paragraph paragraph)
+   {
+      int chunks = paragraph.countElements();
+      assertEquals(5, chunks);
+
+      Chunk chunk = (Chunk) paragraph.elementAt(0);
+      assertEquals("Bigger Font (18). ", chunk.getText());
+      assertEquals(18.0f, chunk.getStyle().getFontSize(), 0.0f);
+      assertEquals("Helvetica", chunk.getStyle().getFont().getName());
+      assertEquals(UnderlineStyle.NONE, chunk.getStyle().getUnderlined());
+
+      chunk = (Chunk) paragraph.elementAt(1);
+      assertEquals("Underlined", chunk.getText());
+      assertEquals(18.0f, chunk.getStyle().getFontSize(), 0.0f);
+      assertEquals(UnderlineStyle.SINGLE, chunk.getStyle().getUnderlined());
+
+      chunk = (Chunk) paragraph.elementAt(2);
+      assertEquals(" Normal size. ", chunk.getText());
+      assertEquals(12.0f, chunk.getStyle().getFontSize(), 0.0f);
+      assertEquals(UnderlineStyle.NONE, chunk.getStyle().getUnderlined());
+      assertEquals(0, chunk.getStyle().getForegroundColor().getRed());
+      assertEquals(0, chunk.getStyle().getForegroundColor().getGreen());
+      assertEquals(0, chunk.getStyle().getForegroundColor().getBlue());
+
+      chunk = (Chunk) paragraph.elementAt(3);
+      assertEquals("Red text. ", chunk.getText());
+      assertEquals(217, chunk.getStyle().getForegroundColor().getRed());
+      assertEquals(11, chunk.getStyle().getForegroundColor().getGreen());
+      assertEquals(0, chunk.getStyle().getForegroundColor().getBlue());
+      assertEquals(255, chunk.getStyle().getBackgroundColor().getRed());
+      assertEquals(255, chunk.getStyle().getBackgroundColor().getGreen());
+      assertEquals(255, chunk.getStyle().getBackgroundColor().getBlue());
+
+      chunk = (Chunk) paragraph.elementAt(4);
+      assertEquals("On yellow background.\n", chunk.getText());
+      assertEquals(217, chunk.getStyle().getForegroundColor().getRed());
+      assertEquals(11, chunk.getStyle().getForegroundColor().getGreen());
+      assertEquals(0, chunk.getStyle().getForegroundColor().getBlue());
+      assertEquals(255, chunk.getStyle().getBackgroundColor().getRed());
+      assertEquals(249, chunk.getStyle().getBackgroundColor().getGreen());
+      assertEquals(89, chunk.getStyle().getBackgroundColor().getBlue());
    }
 
    private void parseStream(String fileName, Document document, boolean debug)
