@@ -29,6 +29,7 @@ class FontContext extends AbstractRtfContext
 
    protected final FontTable fontTable;
 
+   private int id = 0;
    private String fontName = "";
    private String alternativeName = "";
    private String fileName = "";
@@ -44,6 +45,12 @@ class FontContext extends AbstractRtfContext
    FontContext(FontTable fontTable)
    {
       this.fontTable = fontTable;
+   }
+
+   FontContext(int id, FontTable fontTable)
+   {
+      this(fontTable);
+      this.id = id;
    }
 
    @Override
@@ -63,7 +70,7 @@ class FontContext extends AbstractRtfContext
 
          if (semicolon == offset)
          {
-            fontTable.addFont(fontName, alternativeName, fileName, fontFamily);
+            fontTable.addFont(id, fontName, alternativeName, fileName, fontFamily);
             offset = semicolon + 1;
             continue;
          }
@@ -94,6 +101,10 @@ class FontContext extends AbstractRtfContext
    {
       switch (command)
       {
+         case f:
+            id = parameter;
+            break;
+
          case fname:
             expectedName = ExpectedName.DEFAULT;
             break;
@@ -130,7 +141,6 @@ class FontContext extends AbstractRtfContext
             break;
 
          default:
-            super.processCommand(stack, command, parameter, hasParameter, optional);
             break;
       }
    }

@@ -130,7 +130,7 @@ class DocumentPartContext extends AbstractRtfContext
             style.resetToDefaults();
             break;
          case f:
-            style.setFont(document.getFontTable().fontAt(parameter));
+            style.setFont(document.getFontTable().fontFor(parameter));
             break;
          case fs:
             style.setFontSize(fromHalfPoints(parameter));

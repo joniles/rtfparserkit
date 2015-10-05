@@ -43,7 +43,15 @@ class FontTableContext extends FontContext
    @Override
    public void processGroupStart(RtfContextStack stack, Command command, int parameter, boolean hasParameter, boolean optional)
    {
-      stack.pushContext(new FontContext(fontTable));
+      switch (command)
+      {
+         case f:
+            stack.pushContext(new FontContext(parameter, fontTable));
+            break;
+         default:
+            super.processGroupStart(stack, command, parameter, hasParameter, optional);
+            break;
+      }
    }
 
 }

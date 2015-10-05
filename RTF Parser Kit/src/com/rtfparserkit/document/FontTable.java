@@ -28,9 +28,9 @@ public interface FontTable
       DEFAULT, ROMAN, SWISS, MODERN, SCRIPT, DECOR, TECH, BIDI
    }
 
-   public void addFont(String name, String alternativeName, String fileName, FontFamily fontFamily);
+   public void addFont(int id, String name, String alternativeName, String fileName, FontFamily fontFamily);
 
    public int countFonts();
 
-   public Font fontAt(int index);
+   public Font fontFor(int id);
 }

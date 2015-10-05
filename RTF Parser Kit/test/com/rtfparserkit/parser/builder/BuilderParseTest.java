@@ -35,7 +35,7 @@ public class BuilderParseTest
       assertEquals(5, paragraphCount);
 
       assertEquals("INNEN. KÜCHE - TAG\n", section.paragraphAt(0).getText());
-      assertEquals("Ein Absatz mit Line-Separator:\u2028" + "Der geht hier auf einer neuen Zeile weiter.\n", section.paragraphAt(1).getText());
+      assertEquals("Ein Absatz mit Line-Separator:\u2028Der geht hier auf einer neuen Zeile weiter.\n", section.paragraphAt(1).getText());
       assertEquals("INNEN. KÜCHE - TAG\n", section.paragraphAt(2).getText());
       assertEquals("Hier ist die zweite Szene.\n", section.paragraphAt(3).getText());
       assertEquals("", section.paragraphAt(4).getText());
@@ -66,25 +66,6 @@ public class BuilderParseTest
    }
 
    @Test
-   public void testStyles()
-   {
-
-      String[] files = {"variousStyles", "variousStylesPages", "variousStylesGrouped",};
-
-      for (String file : files)
-      {
-         System.out.println("################################");
-
-         DefaultDocument document = new DefaultDocument();
-         parseStream(file, document, false);
-
-         assertEquals(1, document.countSections());
-         Section section = document.sectionAt(0);
-         assertStyles(section);
-      }
-   }
-
-   @Test
    public void testAnnotations()
    {
       DefaultDocument document = new DefaultDocument();
@@ -106,7 +87,7 @@ public class BuilderParseTest
       element = paragraph.elementAt(1);
       assertTrue(element instanceof Annotation);
       Annotation annotation = (Annotation) element;
-      assertEquals("How about some examples that deal with social science? " + "That is what this paper is about.", annotation.getText());
+      assertEquals("How about some examples that deal with social science? That is what this paper is about.", annotation.getText());
       assertEquals("JD", annotation.getId());
       assertEquals("John Doe", annotation.getAuthor());
 
@@ -114,6 +95,24 @@ public class BuilderParseTest
       assertTrue(element instanceof Chunk);
       chunk = (Chunk) element;
       assertEquals(" ", chunk.getText());
+   }
+
+   @Test
+   public void testStyles()
+   {
+      String[] files = {"variousStyles", "variousStylesPages", "variousStylesGrouped",};
+
+      for (String file : files)
+      {
+         System.out.println("################################");
+
+         DefaultDocument document = new DefaultDocument();
+         parseStream(file, document, false);
+
+         assertEquals(1, document.countSections());
+         Section section = document.sectionAt(0);
+         assertStyles(section);
+      }
    }
 
    private void assertStyles(Section section)
@@ -127,7 +126,7 @@ public class BuilderParseTest
 
          if (i == 0)
             assertNormalBoldItalic(paragraph);
-         //			else {
+         //       else {
          String text = paragraph.getText();
          System.out.print("[" + i + "]: " + text);
          if (!text.endsWith("\n"))
@@ -141,7 +140,7 @@ public class BuilderParseTest
             }
          }
       }
-      //		}
+      //    }
    }
 
    private void assertNormalBoldItalic(Paragraph paragraph)
