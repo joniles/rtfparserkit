@@ -2,18 +2,18 @@
 package com.rtfparserkit.document.impl;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import com.rtfparserkit.document.Font;
 import com.rtfparserkit.document.FontTable;
 
 public class DefaultFontTable implements FontTable
 {
-
-   private final HashMap<Integer, DefaultFont> fonts;
+   private final HashMap<Integer, Font> fonts;
 
    public DefaultFontTable()
    {
-      fonts = new HashMap<Integer, DefaultFont>();
+      fonts = new HashMap<Integer, Font>();
    }
 
    @Override
@@ -32,5 +32,11 @@ public class DefaultFontTable implements FontTable
    public Font fontFor(int id)
    {
       return fonts.get(id);
+   }
+
+   @Override
+   public Iterator<Font> iterator()
+   {
+      return fonts.values().iterator();
    }
 }

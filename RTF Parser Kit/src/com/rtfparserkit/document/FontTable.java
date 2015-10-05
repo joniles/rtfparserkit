@@ -20,7 +20,7 @@ package com.rtfparserkit.document;
  * Interface for adding a font definition to the global font table and 
  * retrieving the font information at a specific index.
  */
-public interface FontTable
+public interface FontTable extends Iterable<Font>
 {
 
    public enum FontFamily
