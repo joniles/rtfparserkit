@@ -76,4 +76,11 @@ public class StandardRtfParserTest
    {
       TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testGitHubIssue6");
    }
+
+   @Test
+   public void testTurkishEncoding() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testTurkishEncoding");
+   }
+
 }

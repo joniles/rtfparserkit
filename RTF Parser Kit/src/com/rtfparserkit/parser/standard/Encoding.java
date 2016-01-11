@@ -69,6 +69,7 @@ class Encoding
       LOCALEID_MAPPING.put("1250", "Cp1250"); // Windows Latin 2 (Central Europe)
       LOCALEID_MAPPING.put("1251", "Cp1251"); // Cyrillic
       LOCALEID_MAPPING.put("1252", "Cp1252"); // Latin
+      LOCALEID_MAPPING.put("1254", "Cp1254"); // Turkish      
       LOCALEID_MAPPING.put("1255", "Cp1255"); // Windows Hebrew
       LOCALEID_MAPPING.put("1256", "Cp1256"); // Arabic (Iraq)
       LOCALEID_MAPPING.put("2049", "Cp1256"); // Arabic (Iraq)
