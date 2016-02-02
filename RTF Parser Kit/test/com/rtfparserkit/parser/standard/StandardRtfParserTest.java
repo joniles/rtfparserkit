@@ -83,4 +83,10 @@ public class StandardRtfParserTest
       TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testTurkishEncoding");
    }
 
+   @Test
+   public void testGreekEncoding() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testGreekEncoding");
+   }
+
 }
