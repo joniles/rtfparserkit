@@ -33,6 +33,7 @@ class Encoding
    {
       LOCALEID_MAPPING.put("932", "SJIS"); // Japanese
       LOCALEID_MAPPING.put("936", "Cp936"); // Simplified Chinese
+      LOCALEID_MAPPING.put("949", "Cp949"); // Korean
       LOCALEID_MAPPING.put("1025", "Cp1256"); // Arabic (Saudi Arabia)
       LOCALEID_MAPPING.put("1026", "Cp1251"); // Bulgarian
       LOCALEID_MAPPING.put("1028", "Cp950"); // Chinese (Taiwan)
