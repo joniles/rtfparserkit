@@ -10,13 +10,18 @@ What's currently included?
 * Raw RTF Parser - parses RTF, sends events representing content to a listener. Performs minimal processing - you get the RTF commands and data exactly as they appear in the file.
 * Standard RTF Parser - parses RTF, sends events representing content to a listener. Handles character encoding, Unicode and so on, so you don't have to. This is probably the parser you want to use.
 * Text Converter - demonstrates very simple text extraction from an RTF file
+* RTF Dump - another demonstration, this time writing the RTF file contents as XML
 
-What's planned?
----------------
-* HTML converter
-* Parsing to an RTF document object model
-* RTF generation from an RTF document object model
+Getting Started
+===============
 
-That's a lot of stuff!
-----------------------
-Yes it is! It'll take me a while to work my way through the list of things I want to achieve, so I'd love for you to send me some code which extends what I've done or makes it better!
+You have a choice of two parsers to work with, the standard parser and the raw parser. The raw parser carries out minimal processing on the RTF, the standard parser handles character encodings, and translates commands which represent special characters into their Unicode equivalents. Most people will want to use the standard parser.
+
+The parser is invoked something like this:
+```java
+InputStream is = new FileInputStream("/path/to/my/file.rtf");
+IRtfSource source = new RtfStreamSource(is)
+IRtfParser parser = new StandardRtfParser();
+MyRtfListener listener = new MyRtfListener();
+parser.parse(source, listener);
+```
