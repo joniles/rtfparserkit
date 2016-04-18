@@ -17,7 +17,7 @@ Getting Started
 
 You have a choice of two parsers to work with, the standard parser and the raw parser. The raw parser carries out minimal processing on the RTF, the standard parser handles character encodings, and translates commands which represent special characters into their Unicode equivalents. Most people will want to use the standard parser.
 
-The parser is invoked something like this:
+The parser is invoked like this:
 ```java
 InputStream is = new FileInputStream("/path/to/my/file.rtf");
 IRtfSource source = new RtfStreamSource(is)
@@ -25,3 +25,4 @@ IRtfParser parser = new StandardRtfParser();
 MyRtfListener listener = new MyRtfListener();
 parser.parse(source, listener);
 ```
+You provide input to the parser via a class that implements the `IRtfSource` interface. Two implementations are provided for you, `RtfStreamSource`, for reading RTF from a stream, and `RtfStringSource` for reading RTF from a string.
