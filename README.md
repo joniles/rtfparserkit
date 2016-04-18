@@ -26,3 +26,5 @@ MyRtfListener listener = new MyRtfListener();
 parser.parse(source, listener);
 ```
 You provide input to the parser via a class that implements the `IRtfSource` interface. Two implementations are provided for you, `RtfStreamSource`, for reading RTF from a stream, and `RtfStringSource` for reading RTF from a string.
+
+The other thing you need to provide the parser with is alistener class. The listener class implements the `IRtfListener` listener interface. The interface consists of a set of methods which are called by the parser to inform you of when it encounters different parts of the docuent structure. The set of method, along with some comments describing their purpose can be seen [here](https://github.com/joniles/rtfparserkit/blob/master/RTF%20Parser%20Kit/src/com/rtfparserkit/parser/IRtfListener.java).
