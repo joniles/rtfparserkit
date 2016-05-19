@@ -77,7 +77,8 @@ class DocumentPartContext extends AbstractRtfContext
             stack.pushContext(new AnnotationContext(currentAnnotation, this));
             break;
          default:
-            stack.pushContext(new DocumentPartContext(this));
+            // Ignore groups with unknown command
+            stack.pushContext(new NullContext());
       }
    }
 
