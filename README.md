@@ -11,12 +11,23 @@ What's currently included?
 * Standard RTF Parser - parses RTF, sends events representing content to a listener. Handles character encoding, Unicode and so on, so you don't have to.
 * Document Builder RTF Parser - parses RTF and constructs a document object model via an implementation of the Document interface. You can either use the provided DefaultDocument implementation, or provide your own.  This is probably the parser you want to use.
 * Text Converter - demonstrates very simple text extraction from an RTF file
+* RTF Dump - another demonstration, this time writing the RTF file contents as XML
 
-What's planned?
----------------
-* HTML converter
-* RTF generation from the RTF document object model
+Getting Started
+===============
 
-That's a lot of stuff!
-----------------------
-Yes it is! It'll take me a while to work my way through the list of things I want to achieve, so I'd love for you to send me some code which extends what I've done or makes it better!
+You have a choice of two parsers to work with, the standard parser and the raw parser. The raw parser carries out minimal processing on the RTF, the standard parser handles character encodings, and translates commands which represent special characters into their Unicode equivalents. Most people will want to use the standard parser.
+
+The parser is invoked like this:
+```java
+InputStream is = new FileInputStream("/path/to/my/file.rtf");
+IRtfSource source = new RtfStreamSource(is)
+IRtfParser parser = new StandardRtfParser();
+MyRtfListener listener = new MyRtfListener();
+parser.parse(source, listener);
+```
+You provide input to the parser via a class that implements the `IRtfSource` interface. Two implementations are provided for you, `RtfStreamSource`, for reading RTF from a stream, and `RtfStringSource` for reading RTF from a string.
+
+The other thing you need to provide the parser with is alistener class. The listener class implements the `IRtfListener` listener interface. The interface consists of a set of methods which are called by the parser to inform you of when it encounters different parts of the docuent structure. The set of method, along with some comments describing their purpose can be seen [here](https://github.com/joniles/rtfparserkit/blob/master/RTF%20Parser%20Kit/src/com/rtfparserkit/parser/IRtfListener.java).
+
+You don't need to implement all of the `IRtfListener` interface yourself, if you wish you can subclass `RtfListenerAdaptor` which provides empty methods for all of the `IRtfListener` methods. You can then just override the methods you are interested in.

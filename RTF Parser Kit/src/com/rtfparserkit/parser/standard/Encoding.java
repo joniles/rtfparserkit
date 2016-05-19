@@ -33,6 +33,7 @@ class Encoding
    {
       LOCALEID_MAPPING.put("932", "SJIS"); // Japanese
       LOCALEID_MAPPING.put("936", "Cp936"); // Simplified Chinese
+      LOCALEID_MAPPING.put("949", "Cp949"); // Korean
       LOCALEID_MAPPING.put("1025", "Cp1256"); // Arabic (Saudi Arabia)
       LOCALEID_MAPPING.put("1026", "Cp1251"); // Bulgarian
       LOCALEID_MAPPING.put("1028", "Cp950"); // Chinese (Taiwan)
@@ -69,6 +70,8 @@ class Encoding
       LOCALEID_MAPPING.put("1250", "Cp1250"); // Windows Latin 2 (Central Europe)
       LOCALEID_MAPPING.put("1251", "Cp1251"); // Cyrillic
       LOCALEID_MAPPING.put("1252", "Cp1252"); // Latin
+      LOCALEID_MAPPING.put("1253", "Cp1253"); // Greek
+      LOCALEID_MAPPING.put("1254", "Cp1254"); // Turkish      
       LOCALEID_MAPPING.put("1255", "Cp1255"); // Windows Hebrew
       LOCALEID_MAPPING.put("1256", "Cp1256"); // Arabic (Iraq)
       LOCALEID_MAPPING.put("2049", "Cp1256"); // Arabic (Iraq)

@@ -64,7 +64,7 @@ public class TestUtilities
       {
          is = parentTest.getClass().getResourceAsStream("data/" + filename + ".rtf");
          os = new FileOutputStream(outputFile);
-         parser.parse(new RtfStreamSource(is), new RtfDump(os));
+         parser.parse(new RtfStreamSource(is), new RtfDumpListener(os));
       }
 
       finally
@@ -150,7 +150,7 @@ public class TestUtilities
       {
          is = StandardRtfParserTest.class.getResourceAsStream("data/" + filename + ".rtf");
          os = new FileOutputStream(outputFile);
-         parser.parse(new RtfStreamSource(is), new RtfDump(os));
+         parser.parse(new RtfStreamSource(is), new RtfDumpListener(os));
       }
 
       finally
