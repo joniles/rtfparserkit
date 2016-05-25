@@ -331,6 +331,12 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
             break;
          }
 
+         case mac:
+         {
+            encoding = Encoding.MAC_ENCODING;
+            break;
+         }
+
          case ansicpg:
          {
             encoding = hasParameter ? Encoding.LOCALEID_MAPPING.get(Integer.toString(parameter)) : null;

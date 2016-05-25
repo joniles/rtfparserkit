@@ -27,6 +27,7 @@ class Encoding
    public static final String ANSI_ENCODING = "Cp1252";
    public static final String PC_ENCODING = "Cp437";
    public static final String PCA_ENCODING = "Cp850";
+   public static final String MAC_ENCODING = "MacRoman";
 
    public static final Map<String, String> LOCALEID_MAPPING = new HashMap<String, String>();
    static
