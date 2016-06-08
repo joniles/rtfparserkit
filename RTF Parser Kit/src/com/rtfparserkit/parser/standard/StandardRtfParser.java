@@ -339,7 +339,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
 
          case ansicpg:
          {
-            encoding = hasParameter ? Encoding.LOCALEID_MAPPING.get(Integer.toString(parameter)) : null;
+            encoding = hasParameter ? Encoding.LOCALEID_MAPPING.get(Integer.toString(unsignedValue(parameter))) : null;
             break;
          }
 
@@ -363,12 +363,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
     */
    private void processUnicode(int parameter)
    {
-      if (parameter < 0)
-      {
-         parameter += 65536;
-      }
-
-      processCharacter((char) parameter);
+      processCharacter((char) unsignedValue(parameter));
       skipBytes = state.unicodeAlternateSkipCount;
    }
 
@@ -421,6 +416,15 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
       {
          handler = handlerStack.pop();
       }
+   }
+
+   private int unsignedValue(int parameter)
+   {
+      if (parameter < 0)
+      {
+         parameter += 65536;
+      }
+      return parameter;
    }
 
    private IParserEventHandler handler;
