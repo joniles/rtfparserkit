@@ -39,7 +39,7 @@ class FontCharset
    {
       MAPPING[0] = "1252"; // ANSI
       MAPPING[1] = null; // Default
-      MAPPING[2] = "42"; // Symbol
+      MAPPING[2] = "1252"; // Symbol - according to the specs this is codepage 42 "Symbol". What's the Java equivalent? 1252 seems to work...
       MAPPING[77] = "10000"; // Mac Roman
       MAPPING[78] = "10001"; // Mac Shift Jis
       MAPPING[79] = "10003"; // Mac Hangul
