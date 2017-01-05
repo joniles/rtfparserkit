@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="cocoartf" parameter="824"/>
+    <command name="cocoasubrtf" parameter="230"/>
+    <group>
+      <command name="fonttbl"/>
+      <command name="f" parameter="0"/>
+      <command name="fnil"/>
+      <command name="fcharset" parameter="78"/>
+      <chars>HiraKakuPro-W6;</chars>
+      <command name="f" parameter="1"/>
+      <command name="fswiss"/>
+      <command name="fcharset" parameter="77"/>
+      <chars>Helvetica-Bold;</chars>
+      <command name="f" parameter="2"/>
+      <command name="fswiss"/>
+      <command name="fcharset" parameter="77"/>
+      <chars>Helvetica;</chars>
+      <command name="f" parameter="3"/>
+      <command name="fnil"/>
+      <command name="fcharset" parameter="78"/>
+      <chars>HiraKakuPro-W3;</chars>
+    </group>
+    <group>
+      <command name="colortbl"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+    </group>
+    <group>
+      <command name="listtable" optional="true"/>
+      <group>
+        <command name="list"/>
+        <command name="listtemplateid" parameter="1"/>
+        <command name="listhybrid"/>
+        <group>
+          <command name="listlevel"/>
+          <command name="levelnfc" parameter="23"/>
+          <command name="levelnfcn" parameter="23"/>
+          <command name="leveljc" parameter="2"/>
+          <command name="leveljcn" parameter="2"/>
+          <command name="levelfollow" parameter="0"/>
+          <command name="levelstartat" parameter="1"/>
+          <command name="levelspace" parameter="360"/>
+          <command name="levelindent" parameter="0"/>
+          <group>
+            <chars>{disc}</chars>
+          </group>
+          <group>
+            <command name="leveltext"/>
+            <command name="leveltemplateid" parameter="0"/>
+            <chars>.;</chars>
+          </group>
+          <group>
+            <command name="levelnumbers"/>
+            <chars>;</chars>
+          </group>
+        </group>
+        <group>
+          <command name="listname"/>
+          <chars>;</chars>
+        </group>
+        <command name="listid" parameter="1"/>
+      </group>
+    </group>
+    <group>
+      <command name="listoverridetable" optional="true"/>
+      <group>
+        <command name="listoverride"/>
+        <command name="listid" parameter="1"/>
+        <command name="listoverridecount" parameter="0"/>
+        <command name="ls" parameter="1"/>
+      </group>
+    </group>
+    <command name="margl" parameter="1440"/>
+    <command name="margr" parameter="1440"/>
+    <command name="viewkind" parameter="0"/>
+    <command name="pard"/>
+    <command name="tx" parameter="220"/>
+    <command name="tx" parameter="720"/>
+    <command name="tx" parameter="1133"/>
+    <command name="tx" parameter="1700"/>
+    <command name="tx" parameter="2267"/>
+    <command name="tx" parameter="2834"/>
+    <command name="tx" parameter="3401"/>
+    <command name="tx" parameter="3968"/>
+    <command name="tx" parameter="4535"/>
+    <command name="tx" parameter="5102"/>
+    <command name="tx" parameter="5669"/>
+    <command name="tx" parameter="6236"/>
+    <command name="tx" parameter="6803"/>
+    <command name="li" parameter="720"/>
+    <command name="fi" parameter="-720"/>
+    <command name="ql"/>
+    <command name="ls" parameter="1"/>
+    <command name="ilvl" parameter="0"/>
+    <command name="f" parameter="0"/>
+    <command name="b"/>
+    <command name="fs" parameter="50"/>
+    <command name="cf" parameter="0"/>
+    <chars>お読みください</chars>
+  </group>
+</rtf>

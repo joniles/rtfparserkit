@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="adeflang" parameter="1054"/>
+    <command name="adeff" parameter="22"/>
+    <command name="deff" parameter="0"/>
+    <command name="stshfdbch" parameter="0"/>
+    <command name="stshfloch" parameter="0"/>
+    <command name="stshfhich" parameter="0"/>
+    <command name="stshfbi" parameter="0"/>
+    <command name="deflang" parameter="1033"/>
+    <command name="deflangfe" parameter="1033"/>
+    <group>
+      <command name="fonttbl"/>
+      <group>
+        <command name="f" parameter="0"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="0"/>
+        <command name="fprq" parameter="2"/>
+        <group>
+          <command name="panose" optional="true"/>
+          <chars>02020603050405020304</chars>
+        </group>
+        <chars>Times New Roman;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="1"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="0"/>
+        <command name="fprq" parameter="2"/>
+        <group>
+          <command name="panose" optional="true"/>
+          <chars>020b0604020202020204</chars>
+        </group>
+        <chars>Arial;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="22"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="0"/>
+        <command name="fprq" parameter="2"/>
+        <group>
+          <command name="panose" optional="true"/>
+          <chars>02020603050405020304</chars>
+        </group>
+        <chars>Angsana New;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="36"/>
+        <command name="fnil"/>
+        <command name="fcharset" parameter="222"/>
+        <command name="fprq" parameter="0"/>
+        <group>
+          <command name="panose" optional="true"/>
+          <chars>00000000000000000000</chars>
+        </group>
+        <chars>SymbolMT;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="149"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="238"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman CE;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="150"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="204"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman Cyr;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="152"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="161"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman Greek;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="153"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="162"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman Tur;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="154"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="177"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman (Hebrew);</chars>
+      </group>
+      <group>
+        <command name="f" parameter="155"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="178"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman (Arabic);</chars>
+      </group>
+      <group>
+        <command name="f" parameter="156"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="186"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman Baltic;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="157"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="163"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Times New Roman (Vietnamese);</chars>
+      </group>
+      <group>
+        <command name="f" parameter="159"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="238"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial CE;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="160"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="204"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial Cyr;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="162"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="161"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial Greek;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="163"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="162"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial Tur;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="164"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="177"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial (Hebrew);</chars>
+      </group>
+      <group>
+        <command name="f" parameter="165"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="178"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial (Arabic);</chars>
+      </group>
+      <group>
+        <command name="f" parameter="166"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="186"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial Baltic;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="167"/>
+        <command name="fswiss"/>
+        <command name="fcharset" parameter="163"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Arial (Vietnamese);</chars>
+      </group>
+      <group>
+        <command name="f" parameter="378"/>
+        <command name="froman"/>
+        <command name="fcharset" parameter="222"/>
+        <command name="fprq" parameter="2"/>
+        <chars>Angsana New (Thai);</chars>
+      </group>
+    </group>
+    <group>
+      <command name="colortbl"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="128"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="128"/>
+      <command name="blue" parameter="128"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="128"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="128"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="128"/>
+      <chars>;</chars>
+      <command name="red" parameter="128"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="128"/>
+      <command name="green" parameter="128"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+      <command name="red" parameter="128"/>
+      <command name="green" parameter="128"/>
+      <command name="blue" parameter="128"/>
+      <chars>;</chars>
+      <command name="red" parameter="192"/>
+      <command name="green" parameter="192"/>
+      <command name="blue" parameter="192"/>
+      <chars>;</chars>
+    </group>
+    <group>
+      <command name="stylesheet"/>
+      <group>
+        <command name="ql"/>
+        <command name="li" parameter="0"/>
+        <command name="ri" parameter="0"/>
+        <command name="widctlpar"/>
+        <command name="aspalpha"/>
+        <command name="aspnum"/>
+        <command name="faauto"/>
+        <command name="adjustright"/>
+        <command name="rin" parameter="0"/>
+        <command name="lin" parameter="0"/>
+        <command name="itap" parameter="0"/>
+        <command name="fcs" parameter="1"/>
+        <command name="af" parameter="22"/>
+        <command name="afs" parameter="24"/>
+        <command name="alang" parameter="1054"/>
+        <command name="fcs" parameter="0"/>
+        <command name="fs" parameter="24"/>
+        <command name="lang" parameter="1033"/>
+        <command name="langfe" parameter="1033"/>
+        <command name="cgrid"/>
+        <command name="langnp" parameter="1033"/>
+        <command name="langfenp" parameter="1033"/>
+        <command name="snext" parameter="0"/>
+        <chars>Normal;</chars>
+      </group>
+      <group>
+        <command name="cs" parameter="10" optional="true"/>
+        <command name="additive"/>
+        <command name="ssemihidden"/>
+        <chars>Default Paragraph Font;</chars>
+      </group>
+      <group>
+        <command name="ts" parameter="11" optional="true"/>
+        <command name="tsrowd"/>
+        <command name="trftsWidthB" parameter="3"/>
+        <command name="trpaddl" parameter="108"/>
+        <command name="trpaddr" parameter="108"/>
+        <command name="trpaddfl" parameter="3"/>
+        <command name="trpaddft" parameter="3"/>
+        <command name="trpaddfb" parameter="3"/>
+        <command name="trpaddfr" parameter="3"/>
+        <command name="trcbpat" parameter="1"/>
+        <command name="trcfpat" parameter="1"/>
+        <command name="tscellwidthfts" parameter="0"/>
+        <command name="tsvertalt"/>
+        <command name="tsbrdrt"/>
+        <command name="tsbrdrl"/>
+        <command name="tsbrdrb"/>
+        <command name="tsbrdrr"/>
+        <command name="tsbrdrdgl"/>
+        <command name="tsbrdrdgr"/>
+        <command name="tsbrdrh"/>
+        <command name="tsbrdrv"/>
+        <command name="ql"/>
+        <command name="li" parameter="0"/>
+        <command name="ri" parameter="0"/>
+        <command name="widctlpar"/>
+        <command name="aspalpha"/>
+        <command name="aspnum"/>
+        <command name="faauto"/>
+        <command name="adjustright"/>
+        <command name="rin" parameter="0"/>
+        <command name="lin" parameter="0"/>
+        <command name="itap" parameter="0"/>
+        <command name="fcs" parameter="1"/>
+        <command name="af" parameter="0"/>
+        <command name="afs" parameter="20"/>
+        <command name="fcs" parameter="0"/>
+        <command name="fs" parameter="20"/>
+        <command name="lang" parameter="1024"/>
+        <command name="langfe" parameter="1024"/>
+        <command name="cgrid"/>
+        <command name="langnp" parameter="1024"/>
+        <command name="langfenp" parameter="1024"/>
+        <command name="snext" parameter="11"/>
+        <command name="ssemihidden"/>
+        <chars>Normal Table;</chars>
+      </group>
+    </group>
+    <group>
+      <command name="latentstyles" optional="true"/>
+      <command name="lsdstimax" parameter="156"/>
+      <command name="lsdlockeddef" parameter="0"/>
+    </group>
+    <group>
+      <command name="rsidtbl" optional="true"/>
+      <command name="rsid" parameter="3489504"/>
+      <command name="rsid" parameter="8663529"/>
+      <command name="rsid" parameter="13765641"/>
+    </group>
+    <group>
+      <command name="generator" optional="true"/>
+      <chars>Microsoft Word 11.0.5604;</chars>
+    </group>
+    <group>
+      <command name="info"/>
+      <group>
+        <command name="title"/>
+        <chars>3</chars>
+      </group>
+      <group>
+        <command name="author"/>
+        <chars>Carestream Health Inc.</chars>
+      </group>
+      <group>
+        <command name="operator"/>
+        <chars>SAMAK</chars>
+      </group>
+      <group>
+        <command name="creatim"/>
+        <command name="yr" parameter="2009"/>
+        <command name="mo" parameter="9"/>
+        <command name="dy" parameter="9"/>
+        <command name="hr" parameter="14"/>
+        <command name="min" parameter="28"/>
+      </group>
+      <group>
+        <command name="revtim"/>
+        <command name="yr" parameter="2009"/>
+        <command name="mo" parameter="9"/>
+        <command name="dy" parameter="9"/>
+        <command name="hr" parameter="14"/>
+        <command name="min" parameter="28"/>
+      </group>
+      <group>
+        <command name="version" parameter="2"/>
+      </group>
+      <group>
+        <command name="edmins" parameter="1"/>
+      </group>
+      <group>
+        <command name="nofpages" parameter="2"/>
+      </group>
+      <group>
+        <command name="nofwords" parameter="643"/>
+      </group>
+      <group>
+        <command name="nofchars" parameter="3669"/>
+      </group>
+      <group>
+        <command name="company" optional="true"/>
+        <chars> </chars>
+      </group>
+      <group>
+        <command name="nofcharsws" parameter="4304"/>
+      </group>
+      <group>
+        <command name="vern" parameter="24689"/>
+      </group>
+    </group>
+    <command name="widowctrl"/>
+    <command name="ftnbj"/>
+    <command name="aenddoc"/>
+    <command name="noxlattoyen"/>
+    <command name="expshrtn"/>
+    <command name="noultrlspc"/>
+    <command name="dntblnsbdb"/>
+    <command name="nospaceforul"/>
+    <command name="hyphcaps" parameter="0"/>
+    <command name="horzdoc"/>
+    <command name="dghspace" parameter="120"/>
+    <command name="dgvspace" parameter="120"/>
+    <command name="dghorigin" parameter="1701"/>
+    <command name="dgvorigin" parameter="1984"/>
+    <command name="dghshow" parameter="0"/>
+    <command name="dgvshow" parameter="3"/>
+    <command name="jcompress"/>
+    <command name="viewkind" parameter="4"/>
+    <command name="viewscale" parameter="100"/>
+    <command name="nolnhtadjtbl"/>
+    <command name="ApplyBrkRules"/>
+    <command name="rsidroot" parameter="8663529"/>
+    <command name="fet" parameter="0"/>
+    <command name="sectd"/>
+    <command name="linex" parameter="0"/>
+    <command name="sectdefaultcl"/>
+    <command name="sftnbj"/>
+    <group>
+      <command name="pnseclvl" parameter="1" optional="true"/>
+      <command name="pnucrm"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxta"/>
+        <chars>.</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="2" optional="true"/>
+      <command name="pnucltr"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxta"/>
+        <chars>.</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="3" optional="true"/>
+      <command name="pndec"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxta"/>
+        <chars>.</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="4" optional="true"/>
+      <command name="pnlcltr"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxta"/>
+        <chars>)</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="5" optional="true"/>
+      <command name="pndec"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxtb"/>
+        <chars>(</chars>
+      </group>
+      <group>
+        <command name="pntxta"/>
+        <chars>)</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="6" optional="true"/>
+      <command name="pnlcltr"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxtb"/>
+        <chars>(</chars>
+      </group>
+      <group>
+        <command name="pntxta"/>
+        <chars>)</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="7" optional="true"/>
+      <command name="pnlcrm"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxtb"/>
+        <chars>(</chars>
+      </group>
+      <group>
+        <command name="pntxta"/>
+        <chars>)</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="8" optional="true"/>
+      <command name="pnlcltr"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxtb"/>
+        <chars>(</chars>
+      </group>
+      <group>
+        <command name="pntxta"/>
+        <chars>)</chars>
+      </group>
+    </group>
+    <group>
+      <command name="pnseclvl" parameter="9" optional="true"/>
+      <command name="pnlcrm"/>
+      <command name="pnstart" parameter="1"/>
+      <command name="pnindent" parameter="720"/>
+      <command name="pnhang"/>
+      <group>
+        <command name="pntxtb"/>
+        <chars>(</chars>
+      </group>
+      <group>
+        <command name="pntxta"/>
+        <chars>)</chars>
+      </group>
+    </group>
+    <command name="pard"/>
+    <command name="plain"/>
+    <command name="ql"/>
+    <command name="li" parameter="0"/>
+    <command name="ri" parameter="0"/>
+    <command name="nowidctlpar"/>
+    <command name="faauto"/>
+    <command name="rin" parameter="0"/>
+    <command name="lin" parameter="0"/>
+    <command name="itap" parameter="0"/>
+    <command name="fcs" parameter="1"/>
+    <command name="af" parameter="22"/>
+    <command name="afs" parameter="24"/>
+    <command name="alang" parameter="1054"/>
+    <command name="fcs" parameter="0"/>
+    <command name="fs" parameter="24"/>
+    <command name="lang" parameter="1033"/>
+    <command name="langfe" parameter="1033"/>
+    <command name="cgrid"/>
+    <command name="langnp" parameter="1033"/>
+    <command name="langfenp" parameter="1033"/>
+    <group>
+      <command name="fcs" parameter="1"/>
+      <command name="ab"/>
+      <command name="af" parameter="1"/>
+      <command name="afs" parameter="28"/>
+      <command name="fcs" parameter="0"/>
+      <command name="b"/>
+      <command name="f" parameter="1"/>
+      <command name="fs" parameter="28"/>
+      <command name="cf" parameter="1"/>
+      <command name="insrsid" parameter="3489504"/>
+      <chars>1. Test Heading</chars>
+      <command name="par"/>
+    </group>
+    <group>
+      <command name="fcs" parameter="1"/>
+      <command name="af" parameter="1"/>
+      <command name="afs" parameter="20"/>
+      <command name="fcs" parameter="0"/>
+      <command name="f" parameter="1"/>
+      <command name="fs" parameter="20"/>
+      <command name="cf" parameter="1"/>
+      <command name="insrsid" parameter="3489504"/>
+      <chars>•</chars>
+    </group>
+    <group>
+      <command name="fcs" parameter="0"/>
+      <command name="afs" parameter="20"/>
+      <command name="fcs" parameter="1"/>
+      <command name="f" parameter="36"/>
+      <command name="fs" parameter="20"/>
+      <command name="cf" parameter="1"/>
+      <command name="lang" parameter="1054"/>
+      <command name="insrsid" parameter="3489504"/>
+      <chars> </chars>
+    </group>
+    <group>
+      <command name="fcs" parameter="1"/>
+      <command name="af" parameter="1"/>
+      <command name="afs" parameter="20"/>
+      <command name="fcs" parameter="0"/>
+      <command name="f" parameter="1"/>
+      <command name="fs" parameter="20"/>
+      <command name="cf" parameter="1"/>
+      <command name="insrsid" parameter="3489504"/>
+      <chars>Some test text </chars>
+      <command name="par"/>
+      <chars>•</chars>
+    </group>
+    <group>
+      <command name="fcs" parameter="0"/>
+      <command name="afs" parameter="20"/>
+      <command name="fcs" parameter="1"/>
+      <command name="f" parameter="36"/>
+      <command name="fs" parameter="20"/>
+      <command name="cf" parameter="1"/>
+      <command name="lang" parameter="1054"/>
+      <command name="insrsid" parameter="3489504"/>
+      <chars> </chars>
+    </group>
+    <group>
+      <command name="fcs" parameter="1"/>
+      <command name="af" parameter="1"/>
+      <command name="afs" parameter="20"/>
+      <command name="fcs" parameter="0"/>
+      <command name="f" parameter="1"/>
+      <command name="fs" parameter="20"/>
+      <command name="cf" parameter="1"/>
+      <command name="insrsid" parameter="3489504"/>
+      <chars>Some more test text</chars>
+    </group>
+  </group>
+</rtf>

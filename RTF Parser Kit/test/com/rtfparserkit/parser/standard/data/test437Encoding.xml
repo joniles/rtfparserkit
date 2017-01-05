@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="cocoartf" parameter="102"/>
+    <group>
+      <command name="fonttbl"/>
+      <group>
+        <command name="f" parameter="0"/>
+        <command name="fnil"/>
+        <command name="fcharset" parameter="77"/>
+        <chars>Times New Roman</chars>
+        <group>
+          <command name="falt" optional="true"/>
+          <chars>Times</chars>
+        </group>
+        <chars>;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="1"/>
+        <command name="fnil"/>
+        <command name="fcharset" parameter="77"/>
+        <chars>Helvetica-Bold</chars>
+        <group>
+          <command name="falt" optional="true"/>
+          <chars>Helvetica</chars>
+        </group>
+        <chars>;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="2"/>
+        <command name="fnil"/>
+        <command name="fcharset" parameter="77"/>
+        <chars>Helvetica;</chars>
+      </group>
+      <group>
+        <command name="f" parameter="3"/>
+        <command name="fnil"/>
+        <command name="fcharset" parameter="77"/>
+        <chars>LucidaGrande</chars>
+        <group>
+          <command name="falt" optional="true"/>
+          <chars>Lucida Grande</chars>
+        </group>
+        <chars>;</chars>
+      </group>
+    </group>
+    <group>
+      <command name="colortbl"/>
+      <chars>;</chars>
+      <command name="red" parameter="0"/>
+      <command name="green" parameter="0"/>
+      <command name="blue" parameter="0"/>
+      <chars>;</chars>
+    </group>
+    <group>
+      <command name="stylesheet"/>
+      <group>
+        <command name="cs" parameter="335" optional="true"/>
+        <group>
+          <command name="*"/>
+          <chars>The quick brown fox jumped over the lazy dogs.</chars>
+        </group>
+        <command name="super"/>
+        <chars>footnote reference;</chars>
+      </group>
+      <group>
+        <command name="cs" parameter="336" optional="true"/>
+        <group>
+          <command name="*"/>
+          <chars>The quick brown fox jumped over the lazy dogs.</chars>
+        </group>
+        <command name="super"/>
+        <chars>endnote reference;</chars>
+      </group>
+      <group>
+        <command name="s" parameter="337"/>
+        <group>
+          <command name="*"/>
+          <chars>Some text goes here so you can see what your style will look like.</chars>
+        </group>
+        <command name="f" parameter="3"/>
+        <chars>footnote text;</chars>
+      </group>
+      <group>
+        <command name="s" parameter="338"/>
+        <group>
+          <command name="*"/>
+          <chars>Sample text for Foot/End Notes Style</chars>
+        </group>
+        <command name="f" parameter="3"/>
+        <chars>endnote text;</chars>
+      </group>
+    </group>
+    <command name="deftab" parameter="720"/>
+    <command name="defformat"/>
+    <command name="viewkind" parameter="1"/>
+    <command name="viewzk" parameter="1"/>
+    <group>
+      <command name="*"/>
+    </group>
+    <command name="hyphauto" parameter="0"/>
+    <command name="ftnnar"/>
+    <command name="endnotes"/>
+    <command name="aendnotes"/>
+    <command name="aftnnar"/>
+    <command name="fet" parameter="2"/>
+    <command name="ftnbj"/>
+    <command name="paperw" parameter="12240"/>
+    <command name="paperh" parameter="15840"/>
+    <command name="margl" parameter="1440"/>
+    <command name="margr" parameter="1440"/>
+    <command name="margt" parameter="1440"/>
+    <command name="margb" parameter="1440"/>
+    <command name="gutter" parameter="0"/>
+    <command name="pgnstart" parameter="1"/>
+    <command name="nocolbal"/>
+    <command name="sectd"/>
+    <command name="sbknone"/>
+    <command name="cols" parameter="1"/>
+    <command name="ltrsect"/>
+    <command name="marglsxn" parameter="1440"/>
+    <command name="margrsxn" parameter="1440"/>
+    <command name="margtsxn" parameter="1440"/>
+    <command name="margbsxn" parameter="1440"/>
+    <command name="guttersxn" parameter="0"/>
+    <command name="headery" parameter="720"/>
+    <command name="footery" parameter="720"/>
+    <command name="pgnstarts" parameter="1"/>
+    <command name="pgnrestart"/>
+    <command name="pgndec"/>
+    <group>
+      <command name="header"/>
+      <command name="pard"/>
+      <command name="ql"/>
+      <command name="sb" parameter="0"/>
+      <command name="sa" parameter="0"/>
+      <command name="sl" parameter="240"/>
+      <command name="slmult" parameter="1"/>
+      <command name="ilvl" parameter="0"/>
+      <command name="li" parameter="0"/>
+      <command name="lin" parameter="0"/>
+      <command name="fi" parameter="0"/>
+      <command name="ri" parameter="0"/>
+      <command name="rin" parameter="0"/>
+      <command name="par"/>
+    </group>
+    <group>
+      <command name="footer"/>
+      <command name="pard"/>
+      <command name="ql"/>
+      <command name="sb" parameter="0"/>
+      <command name="sa" parameter="0"/>
+      <command name="sl" parameter="240"/>
+      <command name="slmult" parameter="1"/>
+      <command name="ilvl" parameter="0"/>
+      <command name="li" parameter="0"/>
+      <command name="lin" parameter="0"/>
+      <command name="fi" parameter="0"/>
+      <command name="ri" parameter="0"/>
+      <command name="rin" parameter="0"/>
+      <command name="par"/>
+    </group>
+    <group>
+      <command name="pard"/>
+      <command name="ql"/>
+      <command name="sb" parameter="0"/>
+      <command name="sa" parameter="0"/>
+      <command name="sl" parameter="240"/>
+      <command name="slmult" parameter="1"/>
+      <command name="ilvl" parameter="0"/>
+      <command name="li" parameter="0"/>
+      <command name="lin" parameter="0"/>
+      <command name="fi" parameter="0"/>
+      <command name="ri" parameter="0"/>
+      <command name="rin" parameter="0"/>
+      <group>
+        <command name="f" parameter="1"/>
+        <command name="fs" parameter="24"/>
+        <command name="b"/>
+        <command name="cf" parameter="1"/>
+        <chars>Test Document</chars>
+        <command name="par"/>
+        <command name="f" parameter="2"/>
+        <command name="b" parameter="0"/>
+        <command name="par"/>
+        <command name="b"/>
+        <chars>Test Title: </chars>
+        <command name="tab"/>
+        <chars>(Test Subtitle)</chars>
+        <command name="par"/>
+        <command name="b" parameter="0"/>
+        <command name="par"/>
+        <command name="b"/>
+        <chars>Test Heading:</chars>
+        <command name="b" parameter="0"/>
+        <chars>  </chars>
+        <command name="par"/>
+        <chars>Test Text.  </chars>
+        <command name="par"/>
+      </group>
+    </group>
+  </group>
+</rtf>

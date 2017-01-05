@@ -35,7 +35,7 @@ class Encoding
       // Comment lines based on: https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx
 
       // 037   IBM037      IBM EBCDIC US-Canada
-      // 437   IBM437      OEM United States
+      LOCALEID_MAPPING.put("437", "Cp437"); // IBM437      OEM United States
       // 500   IBM500      IBM EBCDIC International
       // 708   ASMO-708    Arabic (ASMO 708)
       // 709               Arabic (ASMO-449+, BCON V4)
@@ -57,12 +57,12 @@ class Encoding
       // 866   cp866 OEM   Russian; Cyrillic (DOS)
       // 869   ibm869      OEM Modern Greek; Greek, Modern (DOS)
       // 870   IBM870      IBM EBCDIC Multilingual/ROECE (Latin 2); IBM EBCDIC Multilingual Latin 2
-      // 874   windows-874 ANSI/OEM Thai (ISO 8859-11); Thai (Windows)
+      LOCALEID_MAPPING.put("874", "Cp874"); // windows-874 ANSI/OEM Thai (ISO 8859-11); Thai (Windows)
       // 875   cp875       IBM EBCDIC Greek Modern
       LOCALEID_MAPPING.put("932", "SJIS"); // Japanese
       LOCALEID_MAPPING.put("936", "Cp936"); // Simplified Chinese
       LOCALEID_MAPPING.put("949", "Cp949"); // Korean
-      // 950   big5  ANSI/OEM Traditional Chinese (Taiwan; Hong Kong SAR, PRC); Chinese Traditional (Big5)
+      LOCALEID_MAPPING.put("950", "Cp950"); // ANSI/OEM Traditional Chinese (Taiwan; Hong Kong SAR, PRC); Chinese Traditional (Big5)
       LOCALEID_MAPPING.put("1025", "Cp1256"); // Arabic (Saudi Arabia)
       LOCALEID_MAPPING.put("1026", "Cp1251"); // Bulgarian
       LOCALEID_MAPPING.put("1028", "Cp950"); // Chinese (Taiwan)
@@ -136,21 +136,21 @@ class Encoding
       LOCALEID_MAPPING.put("8193", "Cp1256"); // Arabic (Oman)
       LOCALEID_MAPPING.put("9217", "Cp1256"); // Arabic (Yemen)
       LOCALEID_MAPPING.put("10000", "MacRoman"); // Mac Roman
-      // 10001 x-mac-japanese Japanese (Mac)
+      LOCALEID_MAPPING.put("10001", "Shift_JIS"); // x-mac-japanese Japanese (Mac)
       // 10002 x-mac-chinesetrad MAC Traditional Chinese (Big5); Chinese Traditional (Mac)
       // 10003 x-mac-korean   Korean (Mac)
-      // 10004 x-mac-arabic   Arabic (Mac)
-      // 10005 x-mac-hebrew   Hebrew (Mac)
-      // 10006 x-mac-greek Greek (Mac)
-      // 10007 x-mac-cyrillic Cyrillic (Mac)
+      LOCALEID_MAPPING.put("10004", "x-MacArabic"); // x-mac-arabic   Arabic (Mac)
+      LOCALEID_MAPPING.put("10005", "x-MacHebrew"); // x-mac-hebrew   Hebrew (Mac)
+      LOCALEID_MAPPING.put("10006", "x-MacHebrew"); // x-mac-greek Greek (Mac)
+      LOCALEID_MAPPING.put("10007", "x-MacCyrillic"); // x-mac-cyrillic Cyrillic (Mac)
       // 10008 x-mac-chinesesimp MAC Simplified Chinese (GB 2312); Chinese Simplified (Mac)
-      // 10010 x-mac-romanian Romanian (Mac)
-      // 10017 x-mac-ukrainian   Ukrainian (Mac)
-      // 10021 x-mac-thai  Thai (Mac)
-      // 10029 x-mac-ce MAC Latin 2; Central European (Mac)
-      // 10079 x-mac-icelandic   Icelandic (Mac)
-      // 10081 x-mac-turkish  Turkish (Mac)
-      // 10082 x-mac-croatian Croatian (Mac)
+      LOCALEID_MAPPING.put("10010", "x-MacRomania"); // x-mac-romanian Romanian (Mac)
+      LOCALEID_MAPPING.put("10017", "x-MacUkraine"); // x-mac-ukrainian   Ukrainian (Mac)
+      LOCALEID_MAPPING.put("10021", "x-MacThai"); // x-mac-thai  Thai (Mac)     
+      LOCALEID_MAPPING.put("10029", "x-MacCentralEurope"); // x-mac-ce MAC Latin 2; Central European (Mac)
+      LOCALEID_MAPPING.put("10079", "x-MacIceland"); // x-mac-icelandic   Icelandic (Mac)
+      LOCALEID_MAPPING.put("10081", "x-MacTurkish"); // x-mac-turkish  Turkish (Mac)
+      LOCALEID_MAPPING.put("10082", "x-MacCroatian"); // x-mac-croatian Croatian (Mac)
       LOCALEID_MAPPING.put("10241", "Cp1256"); // Arabic (Syria)
       LOCALEID_MAPPING.put("11265", "Cp1256"); // Arabic (Jordan)
       // 12000 utf-32   Unicode UTF-32, little endian byte order

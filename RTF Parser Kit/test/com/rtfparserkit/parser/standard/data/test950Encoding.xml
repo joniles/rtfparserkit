@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="cocoartf" parameter="1187"/>
+    <command name="cocoasubrtf" parameter="340"/>
+    <group>
+      <command name="fonttbl"/>
+      <command name="f" parameter="0"/>
+      <command name="fnil"/>
+      <command name="fcharset" parameter="0"/>
+      <chars>LucidaGrande;</chars>
+    </group>
+    <group>
+      <command name="colortbl"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+    </group>
+    <group>
+      <command name="info"/>
+      <group>
+        <command name="title"/>
+        <chars>Title</chars>
+      </group>
+      <group>
+        <command name="author"/>
+        <chars>Test Author</chars>
+      </group>
+    </group>
+    <command name="paperw" parameter="11900"/>
+    <command name="paperh" parameter="16840"/>
+    <command name="margl" parameter="1440"/>
+    <command name="margr" parameter="1440"/>
+    <command name="viewkind" parameter="0"/>
+    <command name="deftab" parameter="720"/>
+    <command name="pard"/>
+    <command name="ri" parameter="0"/>
+    <command name="sl" parameter="560"/>
+    <command name="sa" parameter="120"/>
+    <command name="f" parameter="0"/>
+    <command name="fs" parameter="36"/>
+    <command name="cf" parameter="0"/>
+    <chars>Test Text</chars>
+    <command name="par"/>
+    <command name="pard"/>
+    <command name="ri" parameter="0"/>
+    <command name="sl" parameter="360"/>
+    <command name="sb" parameter="120"/>
+    <command name="fs" parameter="24"/>
+    <command name="cf" parameter="0"/>
+    <chars>Copyright © 2004-2013 Test Project</chars>
+  </group>
+</rtf>

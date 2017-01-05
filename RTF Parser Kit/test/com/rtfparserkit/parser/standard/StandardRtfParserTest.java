@@ -90,6 +90,36 @@ public class StandardRtfParserTest
    }
 
    @Test
+   public void test437Encoding() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "test437Encoding");
+   }
+
+   @Test
+   public void test874Encoding() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "test874Encoding");
+   }
+
+   @Test
+   public void test950Encoding() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "test950Encoding");
+   }
+
+   @Test
+   public void test10001Encoding() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "test10001Encoding");
+   }
+
+   @Test
+   public void test10007Encoding() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "test10007Encoding");
+   }
+
+   @Test
    public void testKoreanEncoding() throws Exception
    {
       TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testKoreanEncoding");

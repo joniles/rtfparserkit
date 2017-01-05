@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <command name="cocoartf" parameter="102"/>
+    <group>
+      <command name="fonttbl"/>
+      <command name="f" parameter="0"/>
+      <command name="fnil"/>
+      <command name="fcharset" parameter="77"/>
+      <chars>LucidaGrande;</chars>
+      <command name="f" parameter="1"/>
+      <command name="fnil"/>
+      <command name="fcharset" parameter="77"/>
+      <chars>Georgia;</chars>
+      <command name="f" parameter="2"/>
+      <command name="fnil"/>
+      <command name="fcharset" parameter="77"/>
+      <chars>Verdana;</chars>
+    </group>
+    <group>
+      <command name="colortbl"/>
+      <chars>;</chars>
+      <command name="red" parameter="255"/>
+      <command name="green" parameter="255"/>
+      <command name="blue" parameter="255"/>
+      <chars>;</chars>
+    </group>
+    <command name="margl" parameter="1440"/>
+    <command name="margr" parameter="1440"/>
+    <command name="viewkind" parameter="0"/>
+    <command name="pard"/>
+    <command name="tx" parameter="720"/>
+    <command name="tx" parameter="1440"/>
+    <command name="tx" parameter="2160"/>
+    <command name="tx" parameter="2880"/>
+    <command name="tx" parameter="3600"/>
+    <command name="tx" parameter="4320"/>
+    <command name="tx" parameter="5040"/>
+    <command name="tx" parameter="5760"/>
+    <command name="tx" parameter="6480"/>
+    <command name="tx" parameter="7200"/>
+    <command name="tx" parameter="7920"/>
+    <command name="tx" parameter="8640"/>
+    <command name="ql"/>
+    <command name="f" parameter="0"/>
+    <command name="fs" parameter="36"/>
+    <command name="cf" parameter="0"/>
+    <chars>Комманда разработчиков </chars>
+    <command name="f" parameter="1"/>
+    <command name="par"/>
+  </group>
+</rtf>
