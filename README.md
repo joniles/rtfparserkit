@@ -30,3 +30,16 @@ You provide input to the parser via a class that implements the `IRtfSource` int
 The other thing you need to provide the parser with is alistener class. The listener class implements the `IRtfListener` listener interface. The interface consists of a set of methods which are called by the parser to inform you of when it encounters different parts of the docuent structure. The set of method, along with some comments describing their purpose can be seen [here](https://github.com/joniles/rtfparserkit/blob/master/RTF%20Parser%20Kit/src/com/rtfparserkit/parser/IRtfListener.java).
 
 You don't need to implement all of the `IRtfListener` interface yourself, if you wish you can subclass `RtfListenerAdaptor` which provides empty methods for all of the `IRtfListener` methods. You can then just override the methods you are interested in.
+
+An example text extractor is provided, you can invoke it like this:
+```java
+new StreamTextConverter().convert(new RtfStreamSource(inputStream), outputStream, "UTF-8");
+```
+This code reads an RTF file from the `inputStream` and writes the resulting text to the `outputStream` in the encoding specified by the last argument.
+
+A second example text extractor is also provided, this one extracts text from the RTF file into a string:
+```java
+StringTextConverter converter = new StringTextConverter();
+converter.convert(new RtfStreamSource(inputStream));
+String extractedText = converter.getText();
+```
