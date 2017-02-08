@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtf>
+  <group>
+    <command name="rtf" parameter="1"/>
+    <chars>Test1</chars>
+    <command name="par"/>
+  </group>
+</rtf>

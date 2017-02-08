@@ -35,7 +35,7 @@ class ParserState
    }
 
    public int currentFont;
-   public String currentEncoding;
+   public String currentEncoding = Encoding.ANSI_ENCODING;
    public String currentFontEncoding;
    public int unicodeAlternateSkipCount = 1;
 }

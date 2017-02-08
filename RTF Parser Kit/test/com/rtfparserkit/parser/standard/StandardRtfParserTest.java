@@ -30,6 +30,12 @@ public class StandardRtfParserTest
    }
 
    @Test
+   public void testDefaultEncodingParse() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testDefaultEncodingParse");
+   }
+
+   @Test
    public void testStylesParse() throws Exception
    {
       TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testStyles");
