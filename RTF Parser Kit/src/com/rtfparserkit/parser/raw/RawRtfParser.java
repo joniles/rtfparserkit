@@ -135,7 +135,22 @@ public class RawRtfParser implements IRtfParser
          {
             throw new IllegalStateException("Unexpected end of file");
          }
-         b += HexUtils.parseHexDigit(ch);
+
+         // Have encountered malformed RTF where only a single hex digit
+         // has been supplied. e.g. \'AA\'B\'CC so we hit the next \
+         // rather than getting a hex digit. Try to handle this specific
+         // case gracefully by unreading the next character and working with
+         // the single digit we have.
+         if (ch == '\\')
+         {
+            b = b >> 4;
+            source.unread(ch);
+         }
+         else
+         {
+            b += HexUtils.parseHexDigit(ch);
+         }
+
          buffer.add(b);
          parsingHex = false;
       }
