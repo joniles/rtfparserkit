@@ -15,7 +15,18 @@ What's currently included?
 Getting Started
 ===============
 
-You have a choice of two parsers to work with, the standard parser and the raw parser. The raw parser carries out minimal processing on the RTF, the standard parser handles character encodings, and translates commands which represent special characters into their Unicode equivalents. Most people will want to use the standard parser.
+To install the library, you can either download the latest JAR directly from the GitHub releases page,
+or you can add RTF Parser Kit as a dependency using Maven:
+
+```xml
+<dependency>
+  <groupId>com.github.joniles</groupId>
+  <artifactId>rtfparserkit</artifactId>
+  <version>1.12.0</version>
+</dependency>
+```
+
+Once you have the library, you have a choice of two parsers to work with, the standard parser and the raw parser. The raw parser carries out minimal processing on the RTF, the standard parser handles character encodings, and translates commands which represent special characters into their Unicode equivalents. Most people will want to use the standard parser.
 
 The parser is invoked like this:
 ```java
