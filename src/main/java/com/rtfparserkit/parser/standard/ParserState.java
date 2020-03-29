@@ -28,12 +28,14 @@ class ParserState
 
    public ParserState(ParserState state)
    {
+      currentFontExplicitlySet = state.currentFontExplicitlySet;
       currentFont = state.currentFont;
       currentEncoding = state.currentEncoding;
       currentFontEncoding = state.currentFontEncoding;
       unicodeAlternateSkipCount = state.unicodeAlternateSkipCount;
    }
 
+   public boolean currentFontExplicitlySet = false;
    public int currentFont;
    public String currentEncoding = Encoding.ANSI_ENCODING;
    public String currentFontEncoding;

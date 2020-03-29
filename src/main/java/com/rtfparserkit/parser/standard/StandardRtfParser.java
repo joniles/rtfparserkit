@@ -100,6 +100,12 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
     */
    private String currentEncoding()
    {
+      // Assume font 0 if a font has not been set explicitly
+      if (!state.currentFontExplicitlySet)
+      {
+         state.currentFontExplicitlySet = true;
+         state.currentFontEncoding = m_fontEncodings.get(Integer.valueOf(0));
+      }
       return state.currentFontEncoding == null ? state.currentEncoding : state.currentFontEncoding;
    }
 
@@ -275,6 +281,13 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
                break;
             }
 
+            case cpg:
+            {
+               processFontCodepage(parameter);
+               handleCommand(command, parameter, hasParameter, optionalFlag);
+               break;
+            }
+
             default:
             {
                handleCommand(command, parameter, hasParameter, optionalFlag);
@@ -298,13 +311,26 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
     */
    private void processFontCharset(int parameter)
    {
-      String charset = FontCharset.getCharset(parameter);
-      if (charset != null)
-      {
-         m_fontEncodings.put(Integer.valueOf(state.currentFont), Encoding.LOCALEID_MAPPING.get(charset));
-      }
+	   setFontEncoding(FontCharset.getCharset(parameter));
    }
 
+   private void processFontCodepage(int parameter)
+   {
+	   setFontEncoding(Integer.toString(parameter));
+   }
+ 
+   private void setFontEncoding(String charset)
+   {
+      if (charset != null)
+      {
+         String encoding = Encoding.LOCALEID_MAPPING.get(charset);
+		 if (encoding != null)
+		 {
+		    m_fontEncodings.put(Integer.valueOf(state.currentFont), encoding);
+		 }
+	  }
+   }
+   
    /**
     * Switch the encoding based on the RTF command received.
     */

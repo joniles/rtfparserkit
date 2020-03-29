@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.joniles</groupId>
 	<artifactId>rtfparserkit</artifactId>
-	<version>1.12.0</version>
+	<version>1.14.0</version>
 	<packaging>jar</packaging>
 
 	<name>RTF Parser Kit</name>
