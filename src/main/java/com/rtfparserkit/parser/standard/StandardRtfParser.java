@@ -302,6 +302,7 @@ public class StandardRtfParser implements IRtfParser, IRtfListener
     */
    private void processFont(int parameter)
    {
+	  state.currentFontExplicitlySet = true;
       state.currentFont = parameter;
       state.currentFontEncoding = m_fontEncodings.get(Integer.valueOf(parameter));
    }
