@@ -8,7 +8,8 @@ The idea is to provide a "kit" of components which can either be used "as-is", f
 What's currently included?
 --------------------------
 * Raw RTF Parser - parses RTF, sends events representing content to a listener. Performs minimal processing - you get the RTF commands and data exactly as they appear in the file.
-* Standard RTF Parser - parses RTF, sends events representing content to a listener. Handles character encoding, Unicode and so on, so you don't have to. This is probably the parser you want to use.
+* Standard RTF Parser - parses RTF, sends events representing content to a listener. Handles character encoding, Unicode and so on, so you don't have to.
+* Document Builder RTF Parser - parses RTF and constructs a document object model via an implementation of the Document interface. You can either use the provided DefaultDocument implementation, or provide your own.  This is probably the parser you want to use.
 * Text Converter - demonstrates very simple text extraction from an RTF file
 * RTF Dump - another demonstration, this time writing the RTF file contents as XML
 
