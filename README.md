@@ -22,7 +22,7 @@ or you can add RTF Parser Kit as a dependency using Maven:
 <dependency>
   <groupId>com.github.joniles</groupId>
   <artifactId>rtfparserkit</artifactId>
-  <version>1.12.0</version>
+  <version>1.16.0</version>
 </dependency>
 ```
 
