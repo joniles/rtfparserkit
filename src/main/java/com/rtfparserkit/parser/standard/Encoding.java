@@ -59,7 +59,7 @@ class Encoding
       // 870   IBM870      IBM EBCDIC Multilingual/ROECE (Latin 2); IBM EBCDIC Multilingual Latin 2
       LOCALEID_MAPPING.put("874", "Cp874"); // windows-874 ANSI/OEM Thai (ISO 8859-11); Thai (Windows)
       // 875   cp875       IBM EBCDIC Greek Modern
-      LOCALEID_MAPPING.put("932", "SJIS"); // Japanese
+      LOCALEID_MAPPING.put("932", "MS932"); // Japanese
       LOCALEID_MAPPING.put("936", "Cp936"); // Simplified Chinese
       LOCALEID_MAPPING.put("949", "Cp949"); // Korean
       LOCALEID_MAPPING.put("950", "Cp950"); // ANSI/OEM Traditional Chinese (Taiwan; Hong Kong SAR, PRC); Chinese Traditional (Big5)

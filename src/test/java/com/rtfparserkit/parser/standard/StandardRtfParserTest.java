@@ -148,4 +148,10 @@ public class StandardRtfParserTest
    {
       TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testJapaneseJisEncodingTwoFonts");
    }
+   
+   @Test
+   public void testNecCharacters() throws Exception
+   {
+      TestUtilities.assertRtfParserDumpMatches(this, new StandardRtfParser(), "testNecCharacters");
+   }
 }
