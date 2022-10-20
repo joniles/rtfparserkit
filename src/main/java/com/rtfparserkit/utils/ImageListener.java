@@ -10,16 +10,12 @@ public abstract class ImageListener extends RtfListenerAdaptor
 {
    public abstract void handleImageData(Map<String, Object> data);
 
-   public void processGroupStart()
+   @Override public void processGroupStart()
    {
       ++groupDepth;
    }
 
-   /**
-    * Write a group end tag.
-    */
-   @Override
-   public void processGroupEnd()
+   @Override public void processGroupEnd()
    {
       --groupDepth;
       if (pictData != null && groupDepth < pictGroupDepth)
@@ -29,7 +25,7 @@ public abstract class ImageListener extends RtfListenerAdaptor
       }
    }
 
-   public void processCommand(Command command, int parameter, boolean hasParameter, boolean optional)
+   @Override public void processCommand(Command command, int parameter, boolean hasParameter, boolean optional)
    {
       if (pictData != null)
       {
@@ -46,7 +42,7 @@ public abstract class ImageListener extends RtfListenerAdaptor
       }
    }
 
-   public void processString(String string)
+   @Override public void processString(String string)
    {
       if (pictData != null)
       {
