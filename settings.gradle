@@ -1,4 +1,4 @@
 rootProject.name = 'rtfparserkit'
 include(':rtfparserkit')
 project(":rtfparserkit").projectDir = file('./rtfparserkit')
-
+include(':app')

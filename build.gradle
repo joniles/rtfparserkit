@@ -39,6 +39,14 @@ buildscript {
         maven{
             url "https://raw.githubusercontent.com/cybernhl/maven-repository/master/"
         }
+        maven { // The google mirror is less flaky than mavenCentral()
+            url "https://maven-central.storage-download.googleapis.com/repos/central/data/"
+        }
+        maven { url "https://jitpack.io" }
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+            allowInsecureProtocol = true
+        }
         mavenLocal()
     }
     dependencies {
@@ -62,6 +70,14 @@ allprojects {
         }
         maven{
             url "https://raw.githubusercontent.com/cybernhl/maven-repository/master/"
+        }
+        maven { // The google mirror is less flaky than mavenCentral()
+            url "https://maven-central.storage-download.googleapis.com/repos/central/data/"
+        }
+        maven { url "https://jitpack.io" }
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+            allowInsecureProtocol = true
         }
         mavenLocal()
     }
