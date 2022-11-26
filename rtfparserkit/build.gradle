@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+this.project.group = 'com.github.joniles'
+this.project.version = '1.16.0'
+this.description = 'RTF Parser Kit'
+this.archivesBaseName = this.project.name
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.1'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
